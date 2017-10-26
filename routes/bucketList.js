@@ -1,7 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+// grabs var storj from app
+router.get('/', (req, res, next) => {
+  var storj = req.storj;
+  console.log(storj);
+});
+
 // console logs for info(?) and buckets
+// hmm for some reason the var storj here is still undefined
+// need to figure out
 storj.getInfo((err, res) => {
   if (err) {
     return console.error(err);
@@ -16,11 +24,5 @@ storj.getInfo((err, res) => {
     storj.destroy();
   });
 });
-
-router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
-});
-
-
 
 module.exports = router;

@@ -6,6 +6,11 @@ const uploadFilePath = './storj-test-upload.data';
 const downloadFilePath = './storj-test-download.data';
 const fileName = 'storj-test-upload.data';
 
+// grabs var storj from app
+router.get('/', (req, res, next) => {
+  var storj = req.storj;
+});
+
 // upload file
 storj.storeFile(bucketId, uploadFilePath {
   filename: fileName,
