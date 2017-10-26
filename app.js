@@ -4,11 +4,23 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+require('dotenv').config();
 
 var index = require('./routes/index');
 var bucketList = require('./routes/bucketList');
 
 var app = express();
+
+// setup storj environment
+const { Environment } = require('storj');
+
+const storj = new Environment({
+  bridgeUrl: 'https://api.storj.io',
+  bridgeUser: process.env.BRIDGE_EMAIL,
+  bridgePass: process.env.BRIDGE_PASS,
+  encryptionKey: process.env.ENCRYPT_KEY,
+  logLevel: 0
+}); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
