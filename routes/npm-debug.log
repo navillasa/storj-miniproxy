@@ -1,0 +1,827 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'github:storj/node-libstorj',
+1 verbose cli   '--save' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.4
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData github:storj/node-libstorj
+8 silly fetchOtherPackageData github:storj/node-libstorj
+9 silly cache add args [ 'github:storj/node-libstorj', null ]
+10 verbose cache add spec github:storj/node-libstorj
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'github:storj/node-libstorj',
+11 silly cache add   scope: null,
+11 silly cache add   escapedName: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'github:storj/node-libstorj',
+11 silly cache add   spec: 'github:storj/node-libstorj',
+11 silly cache add   type: 'hosted',
+11 silly cache add   hosted:
+11 silly cache add    { type: 'github',
+11 silly cache add      ssh: 'git@github.com:storj/node-libstorj.git',
+11 silly cache add      sshUrl: 'git+ssh://git@github.com/storj/node-libstorj.git',
+11 silly cache add      httpsUrl: 'git+https://github.com/storj/node-libstorj.git',
+11 silly cache add      gitUrl: 'git://github.com/storj/node-libstorj.git',
+11 silly cache add      shortcut: 'github:storj/node-libstorj',
+11 silly cache add      directUrl: 'https://raw.githubusercontent.com/storj/node-libstorj/master/package.json' } }
+12 verbose addRemoteGit caching github:storj/node-libstorj
+13 verbose addRemoteGit storj/node-libstorj is a repository hosted by github
+14 silly tryGitProto attempting to clone git://github.com/storj/node-libstorj.git
+15 silly tryClone cloning storj/node-libstorj via git://github.com/storj/node-libstorj.git
+16 verbose tryClone git-github-com-storj-node-libstorj-git-9a07cc33 not in flight; caching
+17 verbose correctMkdir /Users/natalievillasana/.npm/_git-remotes correctMkdir not in flight; initializing
+18 info git [ 'config', '--get', 'remote.origin.url' ]
+19 silly validateExistingRemote storj/node-libstorj remote.origin.url: git://github.com/storj/node-libstorj.git
+20 verbose validateExistingRemote storj/node-libstorj is updating existing cached remote /Users/natalievillasana/.npm/_git-remotes/git-github-com-storj-node-libstorj-git-9a07cc33
+21 info git [ 'fetch', '-a', 'origin' ]
+22 verbose updateRemote git fetch -a origin (git://github.com/storj/node-libstorj.git)
+23 verbose correctMkdir /Users/natalievillasana/.npm/_git-remotes correctMkdir not in flight; initializing
+24 verbose setPermissions storj/node-libstorj set permissions on /Users/natalievillasana/.npm/_git-remotes/git-github-com-storj-node-libstorj-git-9a07cc33
+25 verbose resolveHead storj/node-libstorj original treeish: master
+26 info git [ 'rev-list', '-n1', 'master' ]
+27 silly resolveHead storj/node-libstorj resolved treeish: a66adfab0c86604d6a0bd46490ee654f7b9ce06c
+28 verbose resolveHead storj/node-libstorj resolved Git URL: git://github.com/storj/node-libstorj.git#a66adfab0c86604d6a0bd46490ee654f7b9ce06c
+29 silly resolveHead Git working directory: /var/folders/83/btk2b8cs0pl129h1z_xm9_t00000gn/T/npm-17266-0c9903dd/git-cache-958a30a5/a66adfab0c86604d6a0bd46490ee654f7b9ce06c
+30 info git [ 'clone',
+30 info git   '/Users/natalievillasana/.npm/_git-remotes/git-github-com-storj-node-libstorj-git-9a07cc33',
+30 info git   '/var/folders/83/btk2b8cs0pl129h1z_xm9_t00000gn/T/npm-17266-0c9903dd/git-cache-958a30a5/a66adfab0c86604d6a0bd46490ee654f7b9ce06c' ]
+31 verbose cloneResolved storj/node-libstorj clone Cloning into '/var/folders/83/btk2b8cs0pl129h1z_xm9_t00000gn/T/npm-17266-0c9903dd/git-cache-958a30a5/a66adfab0c86604d6a0bd46490ee654f7b9ce06c'...
+31 verbose cloneResolved done.
+32 info git [ 'checkout', 'a66adfab0c86604d6a0bd46490ee654f7b9ce06c' ]
+33 verbose checkoutTreeish storj/node-libstorj checkout Note: checking out 'a66adfab0c86604d6a0bd46490ee654f7b9ce06c'.
+33 verbose checkoutTreeish
+33 verbose checkoutTreeish You are in 'detached HEAD' state. You can look around, make experimental
+33 verbose checkoutTreeish changes and commit them, and you can discard any commits you make in this
+33 verbose checkoutTreeish state without impacting any branches by performing another checkout.
+33 verbose checkoutTreeish
+33 verbose checkoutTreeish If you want to create a new branch to retain commits you create, you may
+33 verbose checkoutTreeish do so (now or later) by using -b with the checkout command again. Example:
+33 verbose checkoutTreeish
+33 verbose checkoutTreeish   git checkout -b <new-branch-name>
+33 verbose checkoutTreeish
+33 verbose checkoutTreeish HEAD is now at a66adfa... Bump to v5.0.0
+34 info git [ 'submodule', '-q', 'update', '--init', '--recursive' ]
+35 verbose updateSubmodules storj/node-libstorj submodule update
+36 verbose addLocalDirectory /Users/natalievillasana/.npm/storj/5.0.0/package.tgz not in flight; packing
+37 verbose correctMkdir /Users/natalievillasana/.npm correctMkdir not in flight; initializing
+38 verbose tar pack [ '/Users/natalievillasana/.npm/storj/5.0.0/package.tgz',
+38 verbose tar pack   '/var/folders/83/btk2b8cs0pl129h1z_xm9_t00000gn/T/npm-17266-0c9903dd/git-cache-958a30a5/a66adfab0c86604d6a0bd46490ee654f7b9ce06c' ]
+39 verbose tarball /Users/natalievillasana/.npm/storj/5.0.0/package.tgz
+40 verbose folder /var/folders/83/btk2b8cs0pl129h1z_xm9_t00000gn/T/npm-17266-0c9903dd/git-cache-958a30a5/a66adfab0c86604d6a0bd46490ee654f7b9ce06c
+41 verbose addLocalTarball adding from inside cache /Users/natalievillasana/.npm/storj/5.0.0/package.tgz
+42 verbose correctMkdir /Users/natalievillasana/.npm correctMkdir not in flight; initializing
+43 verbose addRemoteGit data._from: storj/node-libstorj
+44 verbose addRemoteGit data._resolved: git://github.com/storj/node-libstorj.git#a66adfab0c86604d6a0bd46490ee654f7b9ce06c
+45 silly cache afterAdd storj@5.0.0
+46 verbose afterAdd /Users/natalievillasana/.npm/storj/5.0.0/package/package.json not in flight; writing
+47 verbose correctMkdir /Users/natalievillasana/.npm correctMkdir not in flight; initializing
+48 verbose afterAdd /Users/natalievillasana/.npm/storj/5.0.0/package/package.json written
+49 silly install normalizeTree
+50 silly loadCurrentTree Finishing
+51 silly loadIdealTree Starting
+52 silly install loadIdealTree
+53 silly cloneCurrentTree Starting
+54 silly install cloneCurrentTreeToIdealTree
+55 silly cloneCurrentTree Finishing
+56 silly loadShrinkwrap Starting
+57 silly install loadShrinkwrap
+58 silly loadShrinkwrap Finishing
+59 silly loadAllDepsIntoIdealTree Starting
+60 silly install loadAllDepsIntoIdealTree
+61 silly resolveWithNewModule storj@5.0.0 checking installable status
+62 silly loadAllDepsIntoIdealTree Finishing
+63 silly loadIdealTree Finishing
+64 silly currentTree storj-miniproxy@0.0.0
+64 silly currentTree ├── abstract-leveldown@2.7.2
+64 silly currentTree ├── aes@0.1.0
+64 silly currentTree ├── ajv@5.3.0
+64 silly currentTree ├── ansi-regex@2.1.1
+64 silly currentTree ├── aproba@1.2.0
+64 silly currentTree ├── are-we-there-yet@1.1.4
+64 silly currentTree ├── asn1@0.2.3
+64 silly currentTree ├── assert-plus@1.0.0
+64 silly currentTree ├── assertion-error@1.0.2
+64 silly currentTree ├── async@2.5.0
+64 silly currentTree ├── asynckit@0.4.0
+64 silly currentTree ├── atbf@1.1.0
+64 silly currentTree ├── aws-sign2@0.7.0
+64 silly currentTree ├── aws4@1.6.0
+64 silly currentTree ├── backoff@2.5.0
+64 silly currentTree ├── balanced-match@1.0.0
+64 silly currentTree ├── bcrypt-pbkdf@1.0.1
+64 silly currentTree ├── bindings@1.3.0
+64 silly currentTree ├── bip66@1.1.5
+64 silly currentTree ├── bitbuffer@0.1.3
+64 silly currentTree ├── bitcore-ecies@1.0.1
+64 silly currentTree ├─┬ bitcore-lib@0.13.19
+64 silly currentTree │ ├── bn.js@2.0.4
+64 silly currentTree │ ├── bs58@2.0.0
+64 silly currentTree │ ├── buffer-compare@1.0.0
+64 silly currentTree │ ├─┬ elliptic@3.0.3
+64 silly currentTree │ │ ├── brorand@1.0.5
+64 silly currentTree │ │ └── hash.js@1.0.3
+64 silly currentTree │ ├── inherits@2.0.1
+64 silly currentTree │ └── lodash@3.10.1
+64 silly currentTree ├── bitcore-message@1.0.4
+64 silly currentTree ├── bitcore-mnemonic@1.1.1
+64 silly currentTree ├── bl@1.2.1
+64 silly currentTree ├── block-stream@0.0.9
+64 silly currentTree ├── bloem@0.2.4
+64 silly currentTree ├── bluebird@2.11.0
+64 silly currentTree ├── bn.js@4.11.8
+64 silly currentTree ├── boom@4.3.1
+64 silly currentTree ├── brace-expansion@1.1.8
+64 silly currentTree ├── brorand@1.1.0
+64 silly currentTree ├── browserify-aes@1.1.1
+64 silly currentTree ├── bs58@2.0.1
+64 silly currentTree ├── buffer-xor@1.0.3
+64 silly currentTree ├── bunyan@1.8.12
+64 silly currentTree ├── caseless@0.12.0
+64 silly currentTree ├── chai@3.5.0
+64 silly currentTree ├── chownr@1.0.1
+64 silly currentTree ├── cipher-base@1.0.4
+64 silly currentTree ├── clarinet@0.11.0
+64 silly currentTree ├── co@4.6.0
+64 silly currentTree ├── code-point-at@1.1.0
+64 silly currentTree ├── coinstring@2.3.0
+64 silly currentTree ├── colors@1.1.2
+64 silly currentTree ├── combined-stream@1.0.5
+64 silly currentTree ├── commander@2.11.0
+64 silly currentTree ├── concat-map@0.0.1
+64 silly currentTree ├── concat-stream@1.6.0
+64 silly currentTree ├── console-control-strings@1.1.0
+64 silly currentTree ├── core-util-is@1.0.2
+64 silly currentTree ├── create-hash@1.1.3
+64 silly currentTree ├── create-hmac@1.1.6
+64 silly currentTree ├─┬ cryptiles@3.1.2
+64 silly currentTree │ └── boom@5.2.0
+64 silly currentTree ├── csv-generate@0.0.6
+64 silly currentTree ├── csv-parse@1.3.3
+64 silly currentTree ├── csv-stringify@0.0.8
+64 silly currentTree ├── csv@0.4.6
+64 silly currentTree ├── ctype@0.5.3
+64 silly currentTree ├── dashdash@1.14.1
+64 silly currentTree ├─┬ deep-eql@0.1.3
+64 silly currentTree │ └── type-detect@0.1.1
+64 silly currentTree ├── deep-extend@0.4.2
+64 silly currentTree ├── deferred-leveldown@2.0.2
+64 silly currentTree ├── delayed-stream@1.0.0
+64 silly currentTree ├── delegates@1.0.0
+64 silly currentTree ├── depd@1.1.1
+64 silly currentTree ├── destroy@1.0.4
+64 silly currentTree ├── detect-node@2.0.3
+64 silly currentTree ├── diff@1.4.0
+64 silly currentTree ├── diglet@1.0.6
+64 silly currentTree ├── diskusage@0.2.4
+64 silly currentTree ├── dom-storage@2.0.2
+64 silly currentTree ├── dotenv@4.0.0
+64 silly currentTree ├── drbg.js@1.0.1
+64 silly currentTree ├── dtrace-provider@0.8.5
+64 silly currentTree ├─┬ du@0.1.0
+64 silly currentTree │ └── async@0.1.22
+64 silly currentTree ├── ecc-jsbn@0.1.1
+64 silly currentTree ├── ee-first@1.1.1
+64 silly currentTree ├── elliptic@6.4.0
+64 silly currentTree ├── encodeurl@1.0.1
+64 silly currentTree ├── end-of-stream@1.4.0
+64 silly currentTree ├── errno@0.1.4
+64 silly currentTree ├── escape-html@1.0.3
+64 silly currentTree ├── escape-regexp-component@1.0.2
+64 silly currentTree ├── escape-string-regexp@1.0.2
+64 silly currentTree ├── etag@1.8.1
+64 silly currentTree ├── evp_bytestokey@1.0.3
+64 silly currentTree ├── expand-template@1.1.0
+64 silly currentTree ├── extend@3.0.1
+64 silly currentTree ├── extsprintf@1.3.0
+64 silly currentTree ├── fast-deep-equal@1.0.0
+64 silly currentTree ├── fast-future@1.0.2
+64 silly currentTree ├── fast-json-stable-stringify@2.0.0
+64 silly currentTree ├── fnv@0.1.3
+64 silly currentTree ├── forever-agent@0.6.1
+64 silly currentTree ├── form-data@2.3.1
+64 silly currentTree ├── formidable@1.1.1
+64 silly currentTree ├── fresh@0.5.2
+64 silly currentTree ├── fs.realpath@1.0.0
+64 silly currentTree ├── fstream@1.0.11
+64 silly currentTree ├── gauge@2.7.4
+64 silly currentTree ├── getpass@0.1.7
+64 silly currentTree ├── github-from-package@0.0.0
+64 silly currentTree ├── glob@6.0.4
+64 silly currentTree ├── graceful-fs@4.1.11
+64 silly currentTree ├── growl@1.9.2
+64 silly currentTree ├── handle-thing@1.2.5
+64 silly currentTree ├── har-schema@2.0.0
+64 silly currentTree ├── har-validator@5.0.3
+64 silly currentTree ├── has-unicode@2.0.1
+64 silly currentTree ├── hash-base@2.0.2
+64 silly currentTree ├── hash.js@1.1.3
+64 silly currentTree ├── hat@0.0.3
+64 silly currentTree ├── hawk@6.0.2
+64 silly currentTree ├── hdkey@0.7.1
+64 silly currentTree ├── hmac-drbg@1.0.1
+64 silly currentTree ├── hoek@4.2.0
+64 silly currentTree ├── hpack.js@2.1.6
+64 silly currentTree ├── http-deceiver@1.2.7
+64 silly currentTree ├── http-errors@1.6.2
+64 silly currentTree ├── http-signature@1.2.0
+64 silly currentTree ├── inflight@1.0.6
+64 silly currentTree ├── inherits@2.0.3
+64 silly currentTree ├── ini@1.3.4
+64 silly currentTree ├── ip@1.1.4
+64 silly currentTree ├── is-fullwidth-code-point@1.0.0
+64 silly currentTree ├── is-typedarray@1.0.0
+64 silly currentTree ├── isarray@1.0.0
+64 silly currentTree ├── isstream@0.1.2
+64 silly currentTree ├─┬ jade@0.26.3
+64 silly currentTree │ ├── commander@0.6.1
+64 silly currentTree │ └── mkdirp@0.3.0
+64 silly currentTree ├── jsbn@0.1.1
+64 silly currentTree ├── jsen@0.6.4
+64 silly currentTree ├── json-schema-traverse@0.3.1
+64 silly currentTree ├── json-schema@0.2.3
+64 silly currentTree ├── json-stable-stringify@1.0.1
+64 silly currentTree ├── json-stringify-safe@5.0.1
+64 silly currentTree ├── jsonify@0.0.0
+64 silly currentTree ├── jsprim@1.4.1
+64 silly currentTree ├── kad-fs@0.0.4
+64 silly currentTree ├── kad-localstorage@0.0.7
+64 silly currentTree ├── kad-logger-json@0.1.2
+64 silly currentTree ├── kad-memstore@0.0.1
+64 silly currentTree ├─┬ kad-quasar@1.2.4
+64 silly currentTree │ ├── async@1.5.2
+64 silly currentTree │ └── uuid@3.1.0
+64 silly currentTree ├─┬ kad@1.6.5
+64 silly currentTree │ ├── async@0.9.2
+64 silly currentTree │ └── lodash@3.10.1
+64 silly currentTree ├── keep-alive-agent@0.0.1
+64 silly currentTree ├── kfs@4.0.0
+64 silly currentTree ├── knuth-shuffle@1.0.1
+64 silly currentTree ├── level-errors@1.1.1
+64 silly currentTree ├── level-iterator-stream@2.0.0
+64 silly currentTree ├── leveldown@2.0.0
+64 silly currentTree ├── levelup@2.0.0
+64 silly currentTree ├── lodash@4.17.4
+64 silly currentTree ├── lru-cache@4.1.1
+64 silly currentTree ├─┬ md5.js@1.3.4
+64 silly currentTree │ └── hash-base@3.0.4
+64 silly currentTree ├── merge@1.2.0
+64 silly currentTree ├── mime-db@1.30.0
+64 silly currentTree ├── mime-types@2.1.17
+64 silly currentTree ├── mime@1.4.1
+64 silly currentTree ├── minimalistic-assert@1.0.0
+64 silly currentTree ├── minimalistic-crypto-utils@1.0.1
+64 silly currentTree ├── minimatch@3.0.4
+64 silly currentTree ├── minimist@0.0.8
+64 silly currentTree ├── mkdirp@0.5.1
+64 silly currentTree ├─┬ mocha@2.5.3
+64 silly currentTree │ ├── commander@2.3.0
+64 silly currentTree │ ├── debug@2.2.0
+64 silly currentTree │ ├── glob@3.2.11
+64 silly currentTree │ ├── lru-cache@2.7.3
+64 silly currentTree │ ├── minimatch@0.3.0
+64 silly currentTree │ └── ms@0.7.1
+64 silly currentTree ├── moment@2.19.1
+64 silly currentTree ├── mout@0.11.1
+64 silly currentTree ├── ms@0.7.3
+64 silly currentTree ├── mtree@1.0.0
+64 silly currentTree ├─┬ mv@2.1.1
+64 silly currentTree │ └── rimraf@2.4.5
+64 silly currentTree ├── nan@2.7.0
+64 silly currentTree ├── nat-upnp@1.1.0
+64 silly currentTree ├── ncp@2.0.0
+64 silly currentTree ├── negotiator@0.6.1
+64 silly currentTree ├── node-abi@2.1.1
+64 silly currentTree ├── node-tar.gz@1.0.0
+64 silly currentTree ├── node-uuid@1.4.8
+64 silly currentTree ├── noop-logger@0.1.1
+64 silly currentTree ├── npmlog@4.1.2
+64 silly currentTree ├── ntp-client@0.5.5
+64 silly currentTree ├── number-is-nan@1.0.1
+64 silly currentTree ├── oauth-sign@0.8.2
+64 silly currentTree ├── object-assign@4.1.1
+64 silly currentTree ├── obuf@1.1.1
+64 silly currentTree ├── on-finished@2.3.0
+64 silly currentTree ├── once@1.4.0
+64 silly currentTree ├── os-homedir@1.0.2
+64 silly currentTree ├── parseurl@1.3.2
+64 silly currentTree ├── path-is-absolute@1.0.1
+64 silly currentTree ├── performance-now@2.1.0
+64 silly currentTree ├─┬ portastic@1.0.1
+64 silly currentTree │ ├── debug@2.6.9
+64 silly currentTree │ └── ms@2.0.0
+64 silly currentTree ├─┬ portfinder@1.0.13
+64 silly currentTree │ ├── async@1.5.2
+64 silly currentTree │ ├── debug@2.6.9
+64 silly currentTree │ └── ms@2.0.0
+64 silly currentTree ├─┬ prebuild-install@2.3.0
+64 silly currentTree │ └── minimist@1.2.0
+64 silly currentTree ├── precond@0.2.3
+64 silly currentTree ├── process-nextick-args@1.0.7
+64 silly currentTree ├── prr@0.0.0
+64 silly currentTree ├── pseudomap@1.0.2
+64 silly currentTree ├── pump@1.0.2
+64 silly currentTree ├── punycode@1.4.1
+64 silly currentTree ├── qs@6.5.1
+64 silly currentTree ├── range-parser@1.2.0
+64 silly currentTree ├─┬ rc@1.2.2
+64 silly currentTree │ └── minimist@1.2.0
+64 silly currentTree ├── readable-stream@2.3.3
+64 silly currentTree ├─┬ request@2.83.0
+64 silly currentTree │ └── uuid@3.1.0
+64 silly currentTree ├─┬ restify@4.3.1
+64 silly currentTree │ ├── asn1@0.1.11
+64 silly currentTree │ ├── assert-plus@0.1.5
+64 silly currentTree │ ├── http-signature@0.11.0
+64 silly currentTree │ ├── semver@4.3.6
+64 silly currentTree │ ├── tunnel-agent@0.4.3
+64 silly currentTree │ └── uuid@3.1.0
+64 silly currentTree ├─┬ rimraf@2.6.2
+64 silly currentTree │ └── glob@7.1.2
+64 silly currentTree ├── ripemd160@2.0.1
+64 silly currentTree ├── safe-buffer@5.1.1
+64 silly currentTree ├── safe-json-stringify@1.0.4
+64 silly currentTree ├── sax@1.2.4
+64 silly currentTree ├── scrypt@6.0.3
+64 silly currentTree ├── secp256k1@3.3.0
+64 silly currentTree ├── select-hose@2.0.0
+64 silly currentTree ├── semver@5.4.1
+64 silly currentTree ├─┬ send@0.16.1
+64 silly currentTree │ ├── debug@2.6.9
+64 silly currentTree │ └── ms@2.0.0
+64 silly currentTree ├── serve-static@1.13.1
+64 silly currentTree ├── set-blocking@2.0.0
+64 silly currentTree ├── setprototypeof@1.0.3
+64 silly currentTree ├── sha.js@2.4.9
+64 silly currentTree ├── sigmund@1.0.1
+64 silly currentTree ├── signal-exit@3.0.2
+64 silly currentTree ├── simple-get@1.4.3
+64 silly currentTree ├── sntp@2.1.0
+64 silly currentTree ├─┬ spdy-transport@2.0.20
+64 silly currentTree │ ├── debug@2.6.9
+64 silly currentTree │ └── ms@2.0.0
+64 silly currentTree ├─┬ spdy@3.4.7
+64 silly currentTree │ ├── debug@2.6.9
+64 silly currentTree │ └── ms@2.0.0
+64 silly currentTree ├── sshpk@1.13.1
+64 silly currentTree ├── statuses@1.3.1
+64 silly currentTree ├── storj-lib@8.4.2
+64 silly currentTree ├── stream-transform@0.1.2
+64 silly currentTree ├── string_decoder@1.0.3
+64 silly currentTree ├── string-width@1.0.2
+64 silly currentTree ├── stringstream@0.0.5
+64 silly currentTree ├── strip-ansi@3.0.1
+64 silly currentTree ├── strip-json-comments@2.0.1
+64 silly currentTree ├── supports-color@1.2.0
+64 silly currentTree ├── tar-fs@1.16.0
+64 silly currentTree ├── tar-stream@1.5.4
+64 silly currentTree ├── tar@2.2.1
+64 silly currentTree ├── through@2.3.8
+64 silly currentTree ├── tldjs@1.8.0
+64 silly currentTree ├── to-iso-string@0.0.2
+64 silly currentTree ├── tough-cookie@2.3.3
+64 silly currentTree ├── tunnel-agent@0.6.0
+64 silly currentTree ├── tweetnacl@0.14.5
+64 silly currentTree ├── type-detect@1.0.0
+64 silly currentTree ├── typedarray@0.0.6
+64 silly currentTree ├── unorm@1.4.1
+64 silly currentTree ├── unzip-response@1.0.2
+64 silly currentTree ├── util-deprecate@1.0.2
+64 silly currentTree ├─┬ vasync@1.6.3
+64 silly currentTree │ ├── extsprintf@1.2.0
+64 silly currentTree │ └── verror@1.6.0
+64 silly currentTree ├── verror@1.10.0
+64 silly currentTree ├── wbuf@1.7.2
+64 silly currentTree ├── wide-align@1.1.2
+64 silly currentTree ├── wrappy@1.0.2
+64 silly currentTree ├── xml2js@0.1.14
+64 silly currentTree ├── xtend@4.0.1
+64 silly currentTree └── yallist@2.1.2
+65 silly idealTree storj-miniproxy@0.0.0
+65 silly idealTree ├── abstract-leveldown@2.7.2
+65 silly idealTree ├── aes@0.1.0
+65 silly idealTree ├── ajv@5.3.0
+65 silly idealTree ├── ansi-regex@2.1.1
+65 silly idealTree ├── aproba@1.2.0
+65 silly idealTree ├── are-we-there-yet@1.1.4
+65 silly idealTree ├── asn1@0.2.3
+65 silly idealTree ├── assert-plus@1.0.0
+65 silly idealTree ├── assertion-error@1.0.2
+65 silly idealTree ├── async@2.5.0
+65 silly idealTree ├── asynckit@0.4.0
+65 silly idealTree ├── atbf@1.1.0
+65 silly idealTree ├── aws-sign2@0.7.0
+65 silly idealTree ├── aws4@1.6.0
+65 silly idealTree ├── backoff@2.5.0
+65 silly idealTree ├── balanced-match@1.0.0
+65 silly idealTree ├── bcrypt-pbkdf@1.0.1
+65 silly idealTree ├── bindings@1.3.0
+65 silly idealTree ├── bip66@1.1.5
+65 silly idealTree ├── bitbuffer@0.1.3
+65 silly idealTree ├── bitcore-ecies@1.0.1
+65 silly idealTree ├─┬ bitcore-lib@0.13.19
+65 silly idealTree │ ├── bn.js@2.0.4
+65 silly idealTree │ ├── bs58@2.0.0
+65 silly idealTree │ ├── buffer-compare@1.0.0
+65 silly idealTree │ ├─┬ elliptic@3.0.3
+65 silly idealTree │ │ ├── brorand@1.0.5
+65 silly idealTree │ │ └── hash.js@1.0.3
+65 silly idealTree │ ├── inherits@2.0.1
+65 silly idealTree │ └── lodash@3.10.1
+65 silly idealTree ├── bitcore-message@1.0.4
+65 silly idealTree ├── bitcore-mnemonic@1.1.1
+65 silly idealTree ├── bl@1.2.1
+65 silly idealTree ├── block-stream@0.0.9
+65 silly idealTree ├── bloem@0.2.4
+65 silly idealTree ├── bluebird@2.11.0
+65 silly idealTree ├── bn.js@4.11.8
+65 silly idealTree ├── boom@4.3.1
+65 silly idealTree ├── brace-expansion@1.1.8
+65 silly idealTree ├── brorand@1.1.0
+65 silly idealTree ├── browserify-aes@1.1.1
+65 silly idealTree ├── bs58@2.0.1
+65 silly idealTree ├── buffer-xor@1.0.3
+65 silly idealTree ├── bunyan@1.8.12
+65 silly idealTree ├── caseless@0.12.0
+65 silly idealTree ├── chai@3.5.0
+65 silly idealTree ├── chownr@1.0.1
+65 silly idealTree ├── cipher-base@1.0.4
+65 silly idealTree ├── clarinet@0.11.0
+65 silly idealTree ├── co@4.6.0
+65 silly idealTree ├── code-point-at@1.1.0
+65 silly idealTree ├── coinstring@2.3.0
+65 silly idealTree ├── colors@1.1.2
+65 silly idealTree ├── combined-stream@1.0.5
+65 silly idealTree ├── commander@2.11.0
+65 silly idealTree ├── concat-map@0.0.1
+65 silly idealTree ├── concat-stream@1.6.0
+65 silly idealTree ├── console-control-strings@1.1.0
+65 silly idealTree ├── core-util-is@1.0.2
+65 silly idealTree ├── create-hash@1.1.3
+65 silly idealTree ├── create-hmac@1.1.6
+65 silly idealTree ├─┬ cryptiles@3.1.2
+65 silly idealTree │ └── boom@5.2.0
+65 silly idealTree ├── csv-generate@0.0.6
+65 silly idealTree ├── csv-parse@1.3.3
+65 silly idealTree ├── csv-stringify@0.0.8
+65 silly idealTree ├── csv@0.4.6
+65 silly idealTree ├── ctype@0.5.3
+65 silly idealTree ├── dashdash@1.14.1
+65 silly idealTree ├─┬ deep-eql@0.1.3
+65 silly idealTree │ └── type-detect@0.1.1
+65 silly idealTree ├── deep-extend@0.4.2
+65 silly idealTree ├── deferred-leveldown@2.0.2
+65 silly idealTree ├── delayed-stream@1.0.0
+65 silly idealTree ├── delegates@1.0.0
+65 silly idealTree ├── depd@1.1.1
+65 silly idealTree ├── destroy@1.0.4
+65 silly idealTree ├── detect-node@2.0.3
+65 silly idealTree ├── diff@1.4.0
+65 silly idealTree ├── diglet@1.0.6
+65 silly idealTree ├── diskusage@0.2.4
+65 silly idealTree ├── dom-storage@2.0.2
+65 silly idealTree ├── dotenv@4.0.0
+65 silly idealTree ├── drbg.js@1.0.1
+65 silly idealTree ├── dtrace-provider@0.8.5
+65 silly idealTree ├─┬ du@0.1.0
+65 silly idealTree │ └── async@0.1.22
+65 silly idealTree ├── ecc-jsbn@0.1.1
+65 silly idealTree ├── ee-first@1.1.1
+65 silly idealTree ├── elliptic@6.4.0
+65 silly idealTree ├── encodeurl@1.0.1
+65 silly idealTree ├── end-of-stream@1.4.0
+65 silly idealTree ├── errno@0.1.4
+65 silly idealTree ├── escape-html@1.0.3
+65 silly idealTree ├── escape-regexp-component@1.0.2
+65 silly idealTree ├── escape-string-regexp@1.0.2
+65 silly idealTree ├── etag@1.8.1
+65 silly idealTree ├── evp_bytestokey@1.0.3
+65 silly idealTree ├── expand-template@1.1.0
+65 silly idealTree ├── extend@3.0.1
+65 silly idealTree ├── extsprintf@1.3.0
+65 silly idealTree ├── fast-deep-equal@1.0.0
+65 silly idealTree ├── fast-future@1.0.2
+65 silly idealTree ├── fast-json-stable-stringify@2.0.0
+65 silly idealTree ├── fnv@0.1.3
+65 silly idealTree ├── forever-agent@0.6.1
+65 silly idealTree ├── form-data@2.3.1
+65 silly idealTree ├── formidable@1.1.1
+65 silly idealTree ├── fresh@0.5.2
+65 silly idealTree ├── fs.realpath@1.0.0
+65 silly idealTree ├── fstream@1.0.11
+65 silly idealTree ├── gauge@2.7.4
+65 silly idealTree ├── getpass@0.1.7
+65 silly idealTree ├── github-from-package@0.0.0
+65 silly idealTree ├── glob@6.0.4
+65 silly idealTree ├── graceful-fs@4.1.11
+65 silly idealTree ├── growl@1.9.2
+65 silly idealTree ├── handle-thing@1.2.5
+65 silly idealTree ├── har-schema@2.0.0
+65 silly idealTree ├── har-validator@5.0.3
+65 silly idealTree ├── has-unicode@2.0.1
+65 silly idealTree ├── hash-base@2.0.2
+65 silly idealTree ├── hash.js@1.1.3
+65 silly idealTree ├── hat@0.0.3
+65 silly idealTree ├── hawk@6.0.2
+65 silly idealTree ├── hdkey@0.7.1
+65 silly idealTree ├── hmac-drbg@1.0.1
+65 silly idealTree ├── hoek@4.2.0
+65 silly idealTree ├── hpack.js@2.1.6
+65 silly idealTree ├── http-deceiver@1.2.7
+65 silly idealTree ├── http-errors@1.6.2
+65 silly idealTree ├── http-signature@1.2.0
+65 silly idealTree ├── inflight@1.0.6
+65 silly idealTree ├── inherits@2.0.3
+65 silly idealTree ├── ini@1.3.4
+65 silly idealTree ├── ip@1.1.4
+65 silly idealTree ├── is-fullwidth-code-point@1.0.0
+65 silly idealTree ├── is-typedarray@1.0.0
+65 silly idealTree ├── isarray@1.0.0
+65 silly idealTree ├── isstream@0.1.2
+65 silly idealTree ├─┬ jade@0.26.3
+65 silly idealTree │ ├── commander@0.6.1
+65 silly idealTree │ └── mkdirp@0.3.0
+65 silly idealTree ├── jsbn@0.1.1
+65 silly idealTree ├── jsen@0.6.4
+65 silly idealTree ├── json-schema-traverse@0.3.1
+65 silly idealTree ├── json-schema@0.2.3
+65 silly idealTree ├── json-stable-stringify@1.0.1
+65 silly idealTree ├── json-stringify-safe@5.0.1
+65 silly idealTree ├── jsonify@0.0.0
+65 silly idealTree ├── jsprim@1.4.1
+65 silly idealTree ├── kad-fs@0.0.4
+65 silly idealTree ├── kad-localstorage@0.0.7
+65 silly idealTree ├── kad-logger-json@0.1.2
+65 silly idealTree ├── kad-memstore@0.0.1
+65 silly idealTree ├─┬ kad-quasar@1.2.4
+65 silly idealTree │ ├── async@1.5.2
+65 silly idealTree │ └── uuid@3.1.0
+65 silly idealTree ├─┬ kad@1.6.5
+65 silly idealTree │ ├── async@0.9.2
+65 silly idealTree │ └── lodash@3.10.1
+65 silly idealTree ├── keep-alive-agent@0.0.1
+65 silly idealTree ├── kfs@4.0.0
+65 silly idealTree ├── knuth-shuffle@1.0.1
+65 silly idealTree ├── level-errors@1.1.1
+65 silly idealTree ├── level-iterator-stream@2.0.0
+65 silly idealTree ├── leveldown@2.0.0
+65 silly idealTree ├── levelup@2.0.0
+65 silly idealTree ├── lodash@4.17.4
+65 silly idealTree ├── lru-cache@4.1.1
+65 silly idealTree ├─┬ md5.js@1.3.4
+65 silly idealTree │ └── hash-base@3.0.4
+65 silly idealTree ├── merge@1.2.0
+65 silly idealTree ├── mime-db@1.30.0
+65 silly idealTree ├── mime-types@2.1.17
+65 silly idealTree ├── mime@1.4.1
+65 silly idealTree ├── minimalistic-assert@1.0.0
+65 silly idealTree ├── minimalistic-crypto-utils@1.0.1
+65 silly idealTree ├── minimatch@3.0.4
+65 silly idealTree ├── minimist@0.0.8
+65 silly idealTree ├── mkdirp@0.5.1
+65 silly idealTree ├─┬ mocha@2.5.3
+65 silly idealTree │ ├── commander@2.3.0
+65 silly idealTree │ ├── debug@2.2.0
+65 silly idealTree │ ├── glob@3.2.11
+65 silly idealTree │ ├── lru-cache@2.7.3
+65 silly idealTree │ ├── minimatch@0.3.0
+65 silly idealTree │ └── ms@0.7.1
+65 silly idealTree ├── moment@2.19.1
+65 silly idealTree ├── mout@0.11.1
+65 silly idealTree ├── ms@0.7.3
+65 silly idealTree ├── mtree@1.0.0
+65 silly idealTree ├─┬ mv@2.1.1
+65 silly idealTree │ └── rimraf@2.4.5
+65 silly idealTree ├── nan@2.7.0
+65 silly idealTree ├── nat-upnp@1.1.0
+65 silly idealTree ├── ncp@2.0.0
+65 silly idealTree ├── negotiator@0.6.1
+65 silly idealTree ├── node-abi@2.1.1
+65 silly idealTree ├── node-tar.gz@1.0.0
+65 silly idealTree ├── node-uuid@1.4.8
+65 silly idealTree ├── noop-logger@0.1.1
+65 silly idealTree ├── npmlog@4.1.2
+65 silly idealTree ├── ntp-client@0.5.5
+65 silly idealTree ├── number-is-nan@1.0.1
+65 silly idealTree ├── oauth-sign@0.8.2
+65 silly idealTree ├── object-assign@4.1.1
+65 silly idealTree ├── obuf@1.1.1
+65 silly idealTree ├── on-finished@2.3.0
+65 silly idealTree ├── once@1.4.0
+65 silly idealTree ├── os-homedir@1.0.2
+65 silly idealTree ├── parseurl@1.3.2
+65 silly idealTree ├── path-is-absolute@1.0.1
+65 silly idealTree ├── performance-now@2.1.0
+65 silly idealTree ├─┬ portastic@1.0.1
+65 silly idealTree │ ├── debug@2.6.9
+65 silly idealTree │ └── ms@2.0.0
+65 silly idealTree ├─┬ portfinder@1.0.13
+65 silly idealTree │ ├── async@1.5.2
+65 silly idealTree │ ├── debug@2.6.9
+65 silly idealTree │ └── ms@2.0.0
+65 silly idealTree ├─┬ prebuild-install@2.3.0
+65 silly idealTree │ └── minimist@1.2.0
+65 silly idealTree ├── precond@0.2.3
+65 silly idealTree ├── process-nextick-args@1.0.7
+65 silly idealTree ├── prr@0.0.0
+65 silly idealTree ├── pseudomap@1.0.2
+65 silly idealTree ├── pump@1.0.2
+65 silly idealTree ├── punycode@1.4.1
+65 silly idealTree ├── qs@6.5.1
+65 silly idealTree ├── range-parser@1.2.0
+65 silly idealTree ├─┬ rc@1.2.2
+65 silly idealTree │ └── minimist@1.2.0
+65 silly idealTree ├── readable-stream@2.3.3
+65 silly idealTree ├─┬ request@2.83.0
+65 silly idealTree │ └── uuid@3.1.0
+65 silly idealTree ├─┬ restify@4.3.1
+65 silly idealTree │ ├── asn1@0.1.11
+65 silly idealTree │ ├── assert-plus@0.1.5
+65 silly idealTree │ ├── http-signature@0.11.0
+65 silly idealTree │ ├── semver@4.3.6
+65 silly idealTree │ ├── tunnel-agent@0.4.3
+65 silly idealTree │ └── uuid@3.1.0
+65 silly idealTree ├─┬ rimraf@2.6.2
+65 silly idealTree │ └── glob@7.1.2
+65 silly idealTree ├── ripemd160@2.0.1
+65 silly idealTree ├── safe-buffer@5.1.1
+65 silly idealTree ├── safe-json-stringify@1.0.4
+65 silly idealTree ├── sax@1.2.4
+65 silly idealTree ├── scrypt@6.0.3
+65 silly idealTree ├── secp256k1@3.3.0
+65 silly idealTree ├── select-hose@2.0.0
+65 silly idealTree ├── semver@5.4.1
+65 silly idealTree ├─┬ send@0.16.1
+65 silly idealTree │ ├── debug@2.6.9
+65 silly idealTree │ └── ms@2.0.0
+65 silly idealTree ├── serve-static@1.13.1
+65 silly idealTree ├── set-blocking@2.0.0
+65 silly idealTree ├── setprototypeof@1.0.3
+65 silly idealTree ├── sha.js@2.4.9
+65 silly idealTree ├── sigmund@1.0.1
+65 silly idealTree ├── signal-exit@3.0.2
+65 silly idealTree ├── simple-get@1.4.3
+65 silly idealTree ├── sntp@2.1.0
+65 silly idealTree ├─┬ spdy-transport@2.0.20
+65 silly idealTree │ ├── debug@2.6.9
+65 silly idealTree │ └── ms@2.0.0
+65 silly idealTree ├─┬ spdy@3.4.7
+65 silly idealTree │ ├── debug@2.6.9
+65 silly idealTree │ └── ms@2.0.0
+65 silly idealTree ├── sshpk@1.13.1
+65 silly idealTree ├── statuses@1.3.1
+65 silly idealTree ├── storj-lib@8.4.2
+65 silly idealTree ├── storj@5.0.0
+65 silly idealTree ├── stream-transform@0.1.2
+65 silly idealTree ├── string_decoder@1.0.3
+65 silly idealTree ├── string-width@1.0.2
+65 silly idealTree ├── stringstream@0.0.5
+65 silly idealTree ├── strip-ansi@3.0.1
+65 silly idealTree ├── strip-json-comments@2.0.1
+65 silly idealTree ├── supports-color@1.2.0
+65 silly idealTree ├── tar-fs@1.16.0
+65 silly idealTree ├── tar-stream@1.5.4
+65 silly idealTree ├── tar@2.2.1
+65 silly idealTree ├── through@2.3.8
+65 silly idealTree ├── tldjs@1.8.0
+65 silly idealTree ├── to-iso-string@0.0.2
+65 silly idealTree ├── tough-cookie@2.3.3
+65 silly idealTree ├── tunnel-agent@0.6.0
+65 silly idealTree ├── tweetnacl@0.14.5
+65 silly idealTree ├── type-detect@1.0.0
+65 silly idealTree ├── typedarray@0.0.6
+65 silly idealTree ├── unorm@1.4.1
+65 silly idealTree ├── unzip-response@1.0.2
+65 silly idealTree ├── util-deprecate@1.0.2
+65 silly idealTree ├─┬ vasync@1.6.3
+65 silly idealTree │ ├── extsprintf@1.2.0
+65 silly idealTree │ └── verror@1.6.0
+65 silly idealTree ├── verror@1.10.0
+65 silly idealTree ├── wbuf@1.7.2
+65 silly idealTree ├── wide-align@1.1.2
+65 silly idealTree ├── wrappy@1.0.2
+65 silly idealTree ├── xml2js@0.1.14
+65 silly idealTree ├── xtend@4.0.1
+65 silly idealTree └── yallist@2.1.2
+66 silly generateActionsToTake Starting
+67 silly install generateActionsToTake
+68 silly generateActionsToTake Finishing
+69 silly diffTrees action count 1
+70 silly diffTrees add storj@5.0.0
+71 silly decomposeActions action count 8
+72 silly decomposeActions fetch storj@5.0.0
+73 silly decomposeActions extract storj@5.0.0
+74 silly decomposeActions test storj@5.0.0
+75 silly decomposeActions preinstall storj@5.0.0
+76 silly decomposeActions build storj@5.0.0
+77 silly decomposeActions install storj@5.0.0
+78 silly decomposeActions postinstall storj@5.0.0
+79 silly decomposeActions finalize storj@5.0.0
+80 silly runTopLevelLifecycles Starting
+81 silly executeActions Starting
+82 silly install executeActions
+83 silly doSerial global-install 0
+84 silly doParallel fetch 1
+85 verbose correctMkdir /Users/natalievillasana/.npm/_locks correctMkdir not in flight; initializing
+86 verbose lock using /Users/natalievillasana/.npm/_locks/staging-684e410bef476e29.lock for /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging
+87 silly doParallel extract 1
+88 silly extract storj@5.0.0
+89 verbose unbuild node_modules/.staging/storj-3285be6a
+90 silly gentlyRm /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a is being purged from base /Users/natalievillasana/github/storj-miniproxy
+91 verbose gentlyRm don't care about contents; nuking /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a
+92 verbose tar unpack /Users/natalievillasana/.npm/storj/5.0.0/package.tgz
+93 verbose tar unpacking to /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a
+94 silly gentlyRm /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a is being purged
+95 verbose gentlyRm don't care about contents; nuking /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a
+96 silly gunzTarPerm modes [ '755', '644' ]
+97 silly gunzTarPerm extractEntry package.json
+98 silly gunzTarPerm extractEntry .npmignore
+99 silly gunzTarPerm extractEntry README.md
+100 silly gunzTarPerm extractEntry LICENSE
+101 silly gunzTarPerm extractEntry index.js
+102 silly gunzTarPerm extractEntry download.js
+103 silly gunzTarPerm extractEntry binding.js
+104 silly gunzTarPerm extractEntry .travis.sh
+105 silly gunzTarPerm extractEntry binding.gyp
+106 silly gunzTarPerm extractEntry examples/create-bucket.js
+107 silly gunzTarPerm extractEntry examples/list-buckets.js
+108 silly gunzTarPerm extractEntry examples/upload-download-file.js
+109 silly gunzTarPerm extractEntry binding.cc
+110 silly gunzTarPerm extractEntry package-lock.json
+111 silly gunzTarPerm extractEntry .travis.yml
+112 silly gunzTarPerm extractEntry test/index.test.js
+113 silly gunzTarPerm extractEntry test/mockbridge.js
+114 silly gunzTarPerm extractEntry test/mockfarmer.js
+115 silly gunzTarPerm extractEntry test/mockbridge.json
+116 silly gunzTarPerm extractEntry test/mockbridgeinfo.json
+117 silly gentlyRm /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a/node_modules is being purged
+118 verbose gentlyRm don't care about contents; nuking /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a/node_modules
+119 silly doParallel preinstall 1
+120 silly preinstall storj@5.0.0 /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a
+121 info lifecycle storj@5.0.0~preinstall: storj@5.0.0
+122 verbose lifecycle storj@5.0.0~preinstall: unsafe-perm in lifecycle true
+123 verbose lifecycle storj@5.0.0~preinstall: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a/node_modules/.bin:/Users/natalievillasana/github/storj-miniproxy/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Users/natalievillasana/.rvm/bin:/Users/natalievillasana/.rvm/bin:/usr/local/bin
+124 verbose lifecycle storj@5.0.0~preinstall: CWD: /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a
+125 silly lifecycle storj@5.0.0~preinstall: Args: [ '-c', 'node ./download.js' ]
+126 silly lifecycle storj@5.0.0~preinstall: Returned: code: 0  signal: null
+127 silly doReverseSerial remove 0
+128 silly doSerial move 0
+129 silly doSerial finalize 1
+130 silly finalize /Users/natalievillasana/github/storj-miniproxy/node_modules/storj
+131 silly doSerial build 1
+132 silly build storj@5.0.0
+133 info linkStuff storj@5.0.0
+134 silly linkStuff storj@5.0.0 has /Users/natalievillasana/github/storj-miniproxy/node_modules as its parent node_modules
+135 verbose linkBins storj@5.0.0
+136 verbose linkMans storj@5.0.0
+137 silly doSerial global-link 0
+138 silly doParallel update-linked 0
+139 silly doSerial install 1
+140 silly install storj@5.0.0 /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging/storj-3285be6a
+141 info lifecycle storj@5.0.0~install: storj@5.0.0
+142 verbose lifecycle storj@5.0.0~install: unsafe-perm in lifecycle true
+143 verbose lifecycle storj@5.0.0~install: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/natalievillasana/github/storj-miniproxy/node_modules/storj/node_modules/.bin:/Users/natalievillasana/github/storj-miniproxy/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Users/natalievillasana/.rvm/bin:/Users/natalievillasana/.rvm/bin:/usr/local/bin
+144 verbose lifecycle storj@5.0.0~install: CWD: /Users/natalievillasana/github/storj-miniproxy/node_modules/storj
+145 silly lifecycle storj@5.0.0~install: Args: [ '-c', 'node-gyp rebuild' ]
+146 silly lifecycle storj@5.0.0~install: Returned: code: 1  signal: null
+147 info lifecycle storj@5.0.0~install: Failed to exec install script
+148 verbose unlock done using /Users/natalievillasana/.npm/_locks/staging-684e410bef476e29.lock for /Users/natalievillasana/github/storj-miniproxy/node_modules/.staging
+149 silly rollbackFailedOptional Starting
+150 silly rollbackFailedOptional Finishing
+151 silly runTopLevelLifecycles Finishing
+152 silly install printInstalled
+153 verbose stack Error: storj@5.0.0 install: `node-gyp rebuild`
+153 verbose stack Exit status 1
+153 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+153 verbose stack     at emitTwo (events.js:106:13)
+153 verbose stack     at EventEmitter.emit (events.js:191:7)
+153 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+153 verbose stack     at emitTwo (events.js:106:13)
+153 verbose stack     at ChildProcess.emit (events.js:191:7)
+153 verbose stack     at maybeClose (internal/child_process.js:920:16)
+153 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
+154 verbose pkgid storj@5.0.0
+155 verbose cwd /Users/natalievillasana/github/storj-miniproxy/routes
+156 error Darwin 16.7.0
+157 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "github:storj/node-libstorj" "--save"
+158 error node v6.11.4
+159 error npm  v3.10.10
+160 error code ELIFECYCLE
+161 error storj@5.0.0 install: `node-gyp rebuild`
+161 error Exit status 1
+162 error Failed at the storj@5.0.0 install script 'node-gyp rebuild'.
+162 error Make sure you have the latest version of node.js and npm installed.
+162 error If you do, this is most likely a problem with the storj package,
+162 error not with npm itself.
+162 error Tell the author that this fails on your system:
+162 error     node-gyp rebuild
+162 error You can get information on how to open an issue for this project with:
+162 error     npm bugs storj
+162 error Or if that isn't available, you can get their info via:
+162 error     npm owner ls storj
+162 error There is likely additional logging output above.
+163 verbose exit [ 1, true ]
