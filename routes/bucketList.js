@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
   var storj = req.storj;
   console.log(storj);
 
-  // console logs for info(?) and buckets
+  // console logs for bridge info and buckets
   storj.getInfo((err, res) => {
     if (err) {
       return console.error(err);

@@ -8,7 +8,7 @@ require('dotenv').config();
 
 var index = require('./routes/index');
 var bucketList = require('./routes/bucketList');
-// var createBucket = require('./routes/createBucket');
+var createBucket = require('./routes/createBucket');
 // var uploadDownload = require('./routes/uploadDownload');
 
 var app = express();
@@ -17,11 +17,11 @@ var app = express();
 const { Environment } = require('storj');
 
 const storj = new Environment({
-  bridgeUrl: 'https://api.storj.io',
+  bridgeUrl: 'https://api.storj.io', 
   bridgeUser: process.env.BRIDGE_EMAIL,
   bridgePass: process.env.BRIDGE_PASS,
   encryptionKey: process.env.ENCRYPT_KEY,
-  logLevel: 0
+  logLevel: 4
 }); 
 
 // view engine setup
@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/bucketList', bucketList);
-// app.use('/createBucket', createBucket);
+app.use('/createBucket', createBucket);
 // app.use('/uploadDownload', uploadDownload);
 
 // catch 404 and forward to error handler

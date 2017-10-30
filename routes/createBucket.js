@@ -16,3 +16,5 @@ router.get('/', (req, res, next) => {
     storj.destroy();
   });
 });
+
+module.exports = router;
