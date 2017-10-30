@@ -18,7 +18,7 @@ var app = express();
 const { Environment } = require('storj');
 
 const storj = new Environment({
-  bridgeUrl: 'https://api.storj.io', 
+  bridgeUrl: 'http://localhost:8080', 
   bridgeUser: process.env.BRIDGE_EMAIL,
   bridgePass: process.env.BRIDGE_PASS,
   encryptionKey: process.env.ENCRYPT_KEY,

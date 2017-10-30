@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'storj cdn miniproxy' });
+  res.render('index', { title: 'Storj CDN MiniProxy' });
 });
 
 module.exports = router;
