@@ -5,7 +5,6 @@ var router = express.Router();
 router.get('/', (req, res, next) => {
   var storj = req.storj;
   console.log(storj);
-});
 
 // console logs for info(?) and buckets
 // hmm for some reason the var storj here is still undefined
@@ -25,4 +24,5 @@ storj.getInfo((err, res) => {
   });
 });
 
+});
 module.exports = router;

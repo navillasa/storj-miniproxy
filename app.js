@@ -24,6 +24,9 @@ const storj = new Environment({
   logLevel: 0
 }); 
 
+// bucketList
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

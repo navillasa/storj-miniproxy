@@ -9,34 +9,34 @@ const fileName = 'storj-test-upload.data';
 // grabs var storj from app
 router.get('/', (req, res, next) => {
   var storj = req.storj;
-});
 
-// upload file
-storj.storeFile(bucketId, uploadFilePath {
-  filename: fileName,
-  progressCallback: (progress, uploadedBytes, totalBytes) {
-    console.log('Progress: %d, uploadedBytes: %d, totalBytes: %d',
-                progress, uploadedBytes, totalBytes);
-  },
-  finishedCallback: (err, fileId) => {
-    if (err) {
-      return console.error(err);
-    }
-    console.log('File upload complete:', fileId);
-
-    // download file that was just uploaded
-    storj.resolveFile(bucketId, fileId, downloadFilePath {
-      progressCallback: (progress, downloadedBytes, totalBytes) => { 
-        console.log('Progress: %d, downloadedBytes: %d, totalBytes: %d',
-                    progress, downloadedBytes, totalBytes);
-      },
-      finishedCallback: (err) => {
-        if (err) {
-          return console.error(err);
-        }
-        console.log('File download complete');
-        storj.destroy();
+  // upload file
+  storj.storeFile(bucketId, uploadFilePath, {
+    filename: fileName,
+    progressCallback: (progress, uploadedBytes, totalBytes) => {
+      console.log('Progress: %d, uploadedBytes: %d, totalBytes: %d',
+                  progress, uploadedBytes, totalBytes);
+    },
+    finishedCallback: (err, fileId) => {
+      if (err) {
+        return console.error(err);
       }
-    });
-  }
+      console.log('File upload complete:', fileId);
+
+      // download file that was just uploaded
+      storj.resolveFile(bucketId, fileId, downloadFilePath, {
+        progressCallback: (progress, downloadedBytes, totalBytes) => { 
+          console.log('Progress: %d, downloadedBytes: %d, totalBytes: %d',
+                      progress, downloadedBytes, totalBytes);
+        },
+        finishedCallback: (err) => {
+          if (err) {
+            return console.error(err);
+          }
+          console.log('File download complete');
+          storj.destroy();
+        }
+      });
+    }
+  });
 });
