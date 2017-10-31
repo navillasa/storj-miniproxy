@@ -7,21 +7,20 @@ router.get('/', (req, res, next) => {
   console.log(storj);
 
   // console logs for bridge info and buckets
-  storj.getInfo((err, res) => {
+  storj.getBuckets((err, res) => {
     if (err) {
-      return console.error(err);
+      return console.error('meep mo', err);
     }
-    console.log('info:', res);
+    console.log('buckets:', res);
 
-    storj.getBuckets((err, res) => {
-      if (err) {
-        return console.error(err);
-      }
-      console.log('buckets:', res);
-      storj.destroy();
+   //  storj.getBuckets((err, res) => {
+   //   if (err) {
+   //     return console.error(err);
+   //   }
+   //   console.log('buckets:', res);
     });
   });
 
-});
+// });
 
 module.exports = router;
