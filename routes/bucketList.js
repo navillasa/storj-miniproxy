@@ -6,17 +6,17 @@ router.get('/', (req, res, next) => {
   var storj = req.storj;
 
   // console logs buckets
-  storj.getBuckets((err, res) => {
+  storj.getBuckets((err, buckets) => {
     if (err) {
       return console.error(err);
     }
-    console.log('buckets:', res);
+    console.log('buckets:', buckets);
     
     // adds layout default for bucketList page
     res.render('bucketList', {
       layout: 'layout',
       title: 'List of Buckets',
-      buckets: res.buckets
+      buckets: JSON.stringify(buckets)
     });
   });
 
