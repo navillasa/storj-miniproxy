@@ -11,8 +11,16 @@ router.get('/', (req, res, next) => {
       return console.error(err);
     }
     console.log('buckets:', res);
+    
+    // adds layout default for bucketList page
+    res.render('bucketList', {
+      layout: 'layout',
+      title: 'List of Buckets',
+      buckets: res.buckets
+    });
   });
 
+  
 });
 
 module.exports = router;
