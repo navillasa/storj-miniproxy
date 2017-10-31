@@ -7,6 +7,13 @@ Working on setting up basic functionalities such as:
   * Uploading files to a bucket
   * Removing files from a bucket
 
+## Sections
+* [Connecting to a Bridge Server](#connecting-to-a-bridge-server)
+* [Troubleshooting Bridge Access with Storj Integration](#troubleshooting-bridge-access-with-storj-integration)
+* [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
+* [Initial Planning](#initial-planning)
+* [Useful Docker Commands](#useful-docker-commands)
+
 ## Required Dependencies
   * libstorj
   * node-libstorj
