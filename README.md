@@ -23,8 +23,8 @@ GET /bucketList - - ms - -
 Error: Not authorized
     at Error (native)
 ```
-This was because I had the incorrect `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY` in my `.env` file.
-When using storj-integration, you need to `cd` into your storj-integration directory (that's wherever you cloned the repo) and then start the container that you have based on the storj-integration image. You can get its container-id as follows:
+This was because I had the incorrect `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY` in my .env file.
+When using storj-integration, you need to `cd` into your storj-integration directory (wherever you cloned the repo) and then start the container that you have based on the storj-integration image. You can get its container-id as follows:
 ```bash
 docker ps -a|grep storj-integration
 ```
@@ -39,6 +39,7 @@ The last step is to run the `start-everything.sh` script from the container you 
 As long as you want to connect to the bridge server, you need to keep this terminal window running.
 You can then use pm2 commands to view logs etc.
 
+### Verifying Bridge User Credentials
 You can check if your bridge user credentials are working using the `list-buckets` command:
 ```bash
 storj -u http://localhost:8080 list-buckets
@@ -60,6 +61,7 @@ db = connect('storj-sandbox')
 db.users.find({})
 ```
 
+## Useful Docker Commands
 To see what docker containers are running:
 ```bash
 docker ps
@@ -74,5 +76,3 @@ To stop all running docker containers:
 ```bash
 docker stop $(docker ps -q)
 ```
-
-
