@@ -61,6 +61,17 @@ db = connect('storj-sandbox')
 db.users.find({})
 ```
 
+## Initial Planning
+
+#### Current Goals
+- Use WebSockets to make adding/deleting buckets async
+- Each bucket should be a button or route to another page that lists files inside the bucket
+ - Each bucket page should also have options to upload/download from the bucket
+
+#### Other Things to Consider
+- At what point to decrypt the file? (use FlipStream.js?)
+
+
 ## Useful Docker Commands
 To see what docker containers are running:
 ```bash
