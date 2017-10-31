@@ -13,7 +13,6 @@ router.get('/', (req, res, next) => {
       return console.error(err);
     }
     console.log('info:', res);
-    storj.destroy();
   });
 });
 

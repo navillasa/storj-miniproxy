@@ -16,7 +16,8 @@
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5",
     "storj": "github:storj/node-libstorj",
-    "storj-lib": "^8.4.2"
+    "storj-lib": "^8.4.2",
+    "ws": "^3.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

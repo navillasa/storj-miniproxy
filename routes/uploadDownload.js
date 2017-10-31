@@ -34,7 +34,6 @@ router.get('/', (req, res, next) => {
             return console.error(err);
           }
           console.log('File download complete');
-          storj.destroy();
         }
       });
     }

@@ -25,6 +25,17 @@ const storj = new Environment({
   logLevel: 4
 }); 
 
+// socket setup
+const ws = require('ws');
+const wsServer = new ws.Server({ port: 9000});
+
+// server.on('connection', (socket) => {
+//  socket.on('message', (msg) => {
+//    console.log('They said: ' + msg);
+//    socket.send('myelloo');
+//  });
+// });
+
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 
