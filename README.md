@@ -9,21 +9,22 @@ Working on setting up basic functionalities such as:
 
 ## Sections
 * [Connecting to a Bridge Server](#connecting-to-a-bridge-server)
-* [Troubleshooting Bridge Access with Storj Integration](#troubleshooting-bridge-access-with-storj-integration)
+* [Troubleshooting Bridge Access with Storj-SDK](#troubleshooting-bridge-access-with-storj-sdk)
+* [Troubleshooting Bridge Access with Storj-Integration](#troubleshooting-bridge-access-with-storj-integration)
 * [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
 * [Initial Planning](#initial-planning)
 * [Useful Docker Commands](#useful-docker-commands)
 
 ## Required Dependencies
-  * libstorj
-  * node-libstorj
+  * [libstorj](https://github.com/Storj/libstorj)
+  * [node-libstorj](https://github.com/Storj/node-libstorj)
   * dotenv
 
 ## Connecting to a Bridge Server
 In progress!
-Storj-sdk is recommended for setting up the bridge server for use with this app.
+[Storj-SDK](https://github.com/Storj/storj-sdk) is recommended for setting up the bridge server for use with this app.
 
-### Troubleshooting Bridge Access with Storj-SDK
+### Troubleshooting Bridge Access with [Storj-SDK](https://github.com/Storj/storj-sdk)
 
 When attempting to use the `bucketList` route to list buckets, I ran into the following error:
 ```
@@ -32,8 +33,7 @@ Error: Couldn't connect to server
     at Error (native)
 ```
 
-
-### Troubleshooting Bridge Access with Storj-Integration
+### Troubleshooting Bridge Access with [Storj-Integration](https://github.com/Storj/integration)
 
 When attempting to use the `bucketList` route to list buckets, I ran into the following error:
 ```
