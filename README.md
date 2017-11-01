@@ -21,17 +21,55 @@ Working on setting up basic functionalities such as:
   * dotenv
 
 ## Connecting to a Bridge Server
-In progress!
-[Storj-SDK](https://github.com/Storj/storj-sdk) is recommended for setting up the bridge server for use with this app.
+[Storj-SDK](https://github.com/Storj/storj-sdk) is recommended for setting up the bridge server for use with this app. See storj-sdk README for setup.
+Inside your storj-sdk repo, you can check what containers are running with this command:
+```bash
+docker-compose ps
+```
+To run the bridge:
+```bash
+docker-compose up -d
+```
+To set host entries:
+```bash
+source ./scripts/set_host_entries.sh
+```
+To set the bridge address:
+```bash
+source ./scripts/setbr
+```
+You'll then be given the address to where the bridge is set. The `BRIDGE_URL` variable needs to be set to this address in your .env file.
+
+Now, when you use the command `storj export-keys`, the resulting email, password, and encryption key need to be saved to your `.env` file respectively as `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY`.
+
 
 ### Troubleshooting Bridge Access with [Storj-SDK](https://github.com/Storj/storj-sdk)
 
-When attempting to use the `bucketList` route to list buckets, I ran into the following error:
+Once inside the storj-sdk directory...
+To check your hosts:
+```bash
+cat /etc/hosts
 ```
-GET /bucketList - - ms - -
-Error: Couldn't connect to server
-    at Error (native)
+Use `mongo` to check which port that mongo is using. You should get back:
 ```
+MongoDB shell version vx.x.x
+connecting to: mongodb://127.0.0.x.yourPortNumber
+```
+To enter the mongo shell:
+```
+mongo db:yourPortNumber
+```
+You'll want to see what databases are available with `show dbs`, then `use storj-sandbox`.
+You can view tables with `show tables`.
+In order to find your activated bridge user, you can use:
+```
+db.users.find()
+```
+Then find the entry where `"activated" : true`.
+
+In your `~/.storj` directory (for OSX) there should be a list of IP.json files. Make sure that the credentials in that file match the IP given by the `setbr` script inside `storj-sdk/`.
+You may have to rename your .json file with the correct IP address.
+
 
 ### Troubleshooting Bridge Access with [Storj-Integration](https://github.com/Storj/integration)
 
