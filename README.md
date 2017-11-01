@@ -7,15 +7,71 @@ Working on setting up basic functionalities such as:
   * Uploading files to a bucket
   * Removing files from a bucket
 
+## Sections
+* [Connecting to a Bridge Server](#connecting-to-a-bridge-server)
+* [Troubleshooting Bridge Access with Storj-SDK](#troubleshooting-bridge-access-with-storj-sdk)
+* [Troubleshooting Bridge Access with Storj-Integration](#troubleshooting-bridge-access-with-storj-integration)
+* [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
+* [Initial Planning](#initial-planning)
+* [Useful Docker Commands](#useful-docker-commands)
+
 ## Required Dependencies
-  * libstorj
-  * node-libstorj
+  * [libstorj](https://github.com/Storj/libstorj)
+  * [node-libstorj](https://github.com/Storj/node-libstorj)
   * dotenv
 
 ## Connecting to a Bridge Server
-Storj-sdk is recommended for setting up the bridge server for use with this app.
+[Storj-SDK](https://github.com/Storj/storj-sdk) is recommended for setting up the bridge server for use with this app. See storj-sdk README for setup.
+Inside your storj-sdk repo, you can check what containers are running with this command:
+```bash
+docker-compose ps
+```
+To run the bridge:
+```bash
+docker-compose up -d
+```
+To set host entries:
+```bash
+source ./scripts/set_host_entries.sh
+```
+To set the bridge address:
+```bash
+source ./scripts/setbr
+```
+You'll then be given the address to where the bridge is set. The `BRIDGE_URL` variable needs to be set to this address in your .env file.
 
-### Troubleshooting Bridge Access with Storj Integration
+Now, when you use the command `storj export-keys`, the resulting email, password, and encryption key need to be saved to your `.env` file respectively as `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY`.
+
+
+### Troubleshooting Bridge Access with [Storj-SDK](https://github.com/Storj/storj-sdk)
+
+Once inside the storj-sdk directory...
+To check your hosts:
+```bash
+cat /etc/hosts
+```
+Use `mongo` to check which port that mongo is using. You should get back:
+```
+MongoDB shell version vx.x.x
+connecting to: mongodb://127.0.0.x.yourPortNumber
+```
+To enter the mongo shell:
+```
+mongo db:yourPortNumber
+```
+You'll want to see what databases are available with `show dbs`, then `use storj-sandbox`.
+You can view tables with `show tables`.
+In order to find your activated bridge user, you can use:
+```
+db.users.find()
+```
+Then find the entry where `"activated" : true`.
+
+In your `~/.storj` directory (for OSX) there should be a list of IP.json files. Make sure that the credentials in that file match the IP given by the `setbr` script inside `storj-sdk/`.
+You may have to rename your .json file with the correct IP address.
+
+
+### Troubleshooting Bridge Access with [Storj-Integration](https://github.com/Storj/integration)
 
 When attempting to use the `bucketList` route to list buckets, I ran into the following error:
 ```
@@ -30,7 +86,7 @@ docker ps -a|grep storj-integration
 ```
 Then you can start and attach to the container with:
 ```bash
-start -ai <container-id>
+docker start -ai <container-id>
 ```
 The last step is to run the `start-everything.sh` script from the container you started/attached to:
 ```bash
@@ -60,6 +116,17 @@ Then connect to the `storj-sandbox` database and look for users:
 db = connect('storj-sandbox')
 db.users.find({})
 ```
+
+## Initial Planning
+
+#### Current Goals
+- Use WebSockets to make adding/deleting buckets async
+- Each bucket should be a button or route to another page that lists files inside the bucket
+ - Each bucket page should also have options to upload/download from the bucket
+
+#### Other Things to Consider
+- At what point to decrypt the file? (use FlipStream.js?)
+
 
 ## Useful Docker Commands
 To see what docker containers are running:
