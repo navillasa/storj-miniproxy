@@ -20,6 +20,7 @@ Working on setting up basic functionalities such as:
   * dotenv
 
 ## Connecting to a Bridge Server
+In progress!
 Storj-sdk is recommended for setting up the bridge server for use with this app.
 
 ### Troubleshooting Bridge Access with Storj Integration
@@ -37,7 +38,7 @@ docker ps -a|grep storj-integration
 ```
 Then you can start and attach to the container with:
 ```bash
-start -ai <container-id>
+docker start -ai <container-id>
 ```
 The last step is to run the `start-everything.sh` script from the container you started/attached to:
 ```bash
