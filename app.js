@@ -12,29 +12,25 @@ var bucketList = require('./routes/bucketList');
 var createBucket = require('./routes/createBucket');
 // var uploadDownload = require('./routes/uploadDownload');
 
+const ws = require('ws');
+const ServerSocket = require('./serverSocket');
+
 var app = express();
+
+// instantiates ServerSocket
+const wss = new ws.Server({ port: 9000 });
+serverSocket = new ServerSocket(wss, ws);
 
 // setup storj environment
 const { Environment } = require('storj');
 
 const storj = new Environment({
-  bridgeUrl: 'http://localhost:8080', 
+  bridgeUrl: process.env.BRIDGE_URL, 
   bridgeUser: process.env.BRIDGE_EMAIL,
   bridgePass: process.env.BRIDGE_PASS,
   encryptionKey: process.env.ENCRYPT_KEY,
   logLevel: 4
 }); 
-
-// socket setup
-const ws = require('ws');
-const wsServer = new ws.Server({ port: 9000});
-
-// server.on('connection', (socket) => {
-//  socket.on('message', (msg) => {
-//    console.log('They said: ' + msg);
-//    socket.send('myelloo');
-//  });
-// });
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));

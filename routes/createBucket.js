@@ -16,7 +16,6 @@ router.get('/', (req, res, next) => {
     console.log('info:', res);
   });
 
-  // adds layout default for createBucket page
 });
 
 module.exports = router;
