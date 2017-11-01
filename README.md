@@ -23,7 +23,17 @@ Working on setting up basic functionalities such as:
 In progress!
 Storj-sdk is recommended for setting up the bridge server for use with this app.
 
-### Troubleshooting Bridge Access with Storj Integration
+### Troubleshooting Bridge Access with Storj-SDK
+
+When attempting to use the `bucketList` route to list buckets, I ran into the following error:
+```
+GET /bucketList - - ms - -
+Error: Couldn't connect to server
+    at Error (native)
+```
+
+
+### Troubleshooting Bridge Access with Storj-Integration
 
 When attempting to use the `bucketList` route to list buckets, I ran into the following error:
 ```
