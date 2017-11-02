@@ -12,8 +12,8 @@ Working on setting up basic functionalities such as:
 * [Troubleshooting Bridge Access with Storj-SDK](#troubleshooting-bridge-access-with-storj-sdk)
 * [Troubleshooting Bridge Access with Storj-Integration](#troubleshooting-bridge-access-with-storj-integration)
 * [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
-* [Initial Planning](#initial-planning)
 * [Useful Docker Commands](#useful-docker-commands)
+* [Development Process](#development-process)
 
 ## Required Dependencies
   * [libstorj](https://github.com/Storj/libstorj)
@@ -117,17 +117,6 @@ db = connect('storj-sandbox')
 db.users.find({})
 ```
 
-## Initial Planning
-
-#### Current Goals
-- Use WebSockets to make adding/deleting buckets async
-- Each bucket should be a button or route to another page that lists files inside the bucket
- - Each bucket page should also have options to upload/download from the bucket
-
-#### Other Things to Consider
-- At what point to decrypt the file? (use FlipStream.js?)
-
-
 ## Useful Docker Commands
 To see what docker containers are running:
 ```bash
@@ -143,3 +132,17 @@ To stop all running docker containers:
 ```bash
 docker stop $(docker ps -q)
 ```
+
+## Development Process
+
+#### Current Goals
+- Each bucket should be a route to another page that lists files inside the bucket
+- Each bucket page should also have options to upload/download from the bucket
+
+#### Other Things to Consider
+- At what point to decrypt the file? (use FlipStream.js?)
+
+#### Issues
+- Ended up creating a bunch of test user logins for both storj-integration and storj-sdk
+  - Everyday some new problem with connecting to the bridge due to inconsistent credentials on my part (seems like either the sdk or integration defaults to a login other than the one in my .env file)
+  - Majority of problems have been due to incorrect bridge user login
