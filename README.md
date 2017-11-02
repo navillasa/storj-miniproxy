@@ -12,7 +12,7 @@ Working on setting up basic functionalities such as:
 * [Troubleshooting Bridge Access with Storj-SDK](#troubleshooting-bridge-access-with-storj-sdk)
 * [Troubleshooting Bridge Access with Storj-Integration](#troubleshooting-bridge-access-with-storj-integration)
 * [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
-* [Initial Planning](#initial-planning)
+* [Development Process](#development-process)
 * [Useful Docker Commands](#useful-docker-commands)
 
 ## Required Dependencies
