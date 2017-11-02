@@ -11,6 +11,9 @@ router.get('/', (req, res, next) => {
       return console.error(err);
     }
     console.log('buckets:', buckets);
+    // buckets.forEach((bucket) => {
+    //   console.log('id:', bucket['id']);
+    // });
     
     // adds layout default for bucketList page
     res.render('bucketList', {
@@ -19,7 +22,6 @@ router.get('/', (req, res, next) => {
       buckets: JSON.stringify(buckets)
     });
   });
-
   
 });
 
