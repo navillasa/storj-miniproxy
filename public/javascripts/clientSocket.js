@@ -12,7 +12,6 @@ ws.onmessage = (message) => {
   console.log(parsedData);
   console.log(parsedData.bucketList);
   var divList = parsedData.bucketList.map((bucket) => {
-    // bucketSection.appendChild('<p>', bucket, '</p>');
     return bucket
   });
   console.log(divList);
