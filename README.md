@@ -30,14 +30,21 @@ To run the bridge:
 ```bash
 docker-compose up -d
 ```
-To set host entries:
-```bash
-source ./scripts/set_host_entries.sh
-```
 To set the bridge address:
 ```bash
 source ./scripts/setbr
 ```
+To set host entries:
+```bash
+source ./scripts/set_host_entries.sh
+```
+Note that as of 11/3/17, this script will do its job but automatically close your shell when it's finished.
+
+You can confirm where your local bridge is set with:
+```bash
+source ./scripts/get_local_bridge.sh
+```
+
 You'll then be given the address to where the bridge is set. The `BRIDGE_URL` variable needs to be set to this address in your .env file.
 
 Now, when you use the command `storj export-keys`, the resulting email, password, and encryption key need to be saved to your `.env` file respectively as `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY`.
