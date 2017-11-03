@@ -1,21 +1,25 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var exphbs = require('express-handlebars');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const exphbs = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const cors = require('cors');
+const fs = require('fs');
+const ws = require('ws');
+const upload = multer({ dest: 'uploads/' });
 require('dotenv').config();
 
-var index = require('./routes/index');
-var bucketList = require('./routes/bucketList');
-var createBucket = require('./routes/createBucket');
-// var uploadDownload = require('./routes/uploadDownload');
-
-const ws = require('ws');
+// setup
 const ServerSocket = require('./serverSocket');
+const index = require('./routes/index');
+const bucketList = require('./routes/bucketList');
+const createBucket = require('./routes/createBucket');
 
-var app = express();
+const app = express();
+app.use(cors());
 
 // instantiates ServerSocket
 const wss = new ws.Server({ port: 9000 });
@@ -23,7 +27,6 @@ serverSocket = new ServerSocket(wss, ws);
 
 // setup storj environment
 const { Environment } = require('storj');
-
 const storj = new Environment({
   bridgeUrl: process.env.BRIDGE_URL, 
   bridgeUser: process.env.BRIDGE_EMAIL,
@@ -33,8 +36,6 @@ const storj = new Environment({
 }); 
 
 // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-
 app.engine('.hbs', exphbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
@@ -56,11 +57,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/bucketList', bucketList);
 app.use('/createBucket', createBucket);
-// app.use('/uploadDownload', uploadDownload);
+
+// app.post('/upload', upload.single('dogPhoto'), (req, res) => {
+//   try {
+//     res.send({ fileName: req.file });
+//   } catch (err) {
+//     res.sendStatus(400);
+//   }
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
