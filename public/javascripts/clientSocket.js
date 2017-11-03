@@ -10,21 +10,6 @@ ws.onopen = () => {
 ws.onmessage = (message) => {
   let parsedData = JSON.parse(message.data);
   console.log(parsedData);
-  console.log(parsedData.bucketList);
-  var divList = parsedData.bucketList.map((bucket) => {
-    return bucket
-  });
-  console.log(divList);
-
-  for (var i in divList) {
-    var newElement = document.createElement('a');
-    newElement.id = divList[i];
-    newElement.href = divList[i];
-    newElement.className = 'bucket';
-    newElement.innerHTML = 'bucket id: ' + divList[i];
-    document.body.appendChild(newElement);
-  }
-
 }
 
 // createBucketButton.onclick = () => {

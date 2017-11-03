@@ -29,24 +29,24 @@ router.get('/', (req, res, next) => {
     res.render('bucketList', {
       layout: 'layout',
       title: 'List of Buckets',
-      buckets: JSON.stringify(buckets)
+      buckets: buckets,
     });
   });
   
 });
 
-storj.getBuckets((err, buckets) => {
-  if (err) {
-    return console.log(err);
-  }
-  buckets.forEach((bucket) => {
-    router.get('/' + bucket['id'], (req, res) => {
-      res.render(bucket['id'], {
-        layout: 'layout',
-        title: 'I\'m a Bucket'
-      });
-    });
-  });
-});
+// storj.getBuckets((err, buckets) => {
+//   if (err) {
+//     return console.log(err);
+//   }
+//   buckets.forEach((bucket) => {
+//     router.get('/' + bucket['id'], (req, res) => {
+//       res.render(bucket['id'], {
+//         layout: 'layout',
+//         title: 'I\'m a Bucket'
+//       });
+//     });
+//   });
+// });
 
 module.exports = router;
