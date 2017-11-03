@@ -35,18 +35,9 @@ router.get('/', (req, res, next) => {
   
 });
 
-// storj.getBuckets((err, buckets) => {
-//   if (err) {
-//     return console.log(err);
-//   }
-//   buckets.forEach((bucket) => {
-//     router.get('/' + bucket['id'], (req, res) => {
-//       res.render(bucket['id'], {
-//         layout: 'layout',
-//         title: 'I\'m a Bucket'
-//       });
-//     });
-//   });
-// });
+router.get('/:bucketId', (req, res) => {
+  var bucketId = req.params.bucketId;
+  res.send(bucketId);
+}); 
 
 module.exports = router;

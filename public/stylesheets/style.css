@@ -6,12 +6,13 @@ body {
 }
 
 a {
+  text-decoration: none;
   color: #00B7FF;
   padding: .2rem;
 }
 
 .bucket {
-  padding: 1rem;
+  padding: .5rem;
   margin: 1rem;
   border: 1px solid black;
 }

@@ -1,12 +1,14 @@
 <h1>{{title}}</h1>
 
 {{#each buckets}}
-<div class='bucket'>
-  <p>bucket name: {{this.name}}</p>
-  <p>id: {{this.id}}</p>
-  <p>created: {{this.created}}</p>
-  <p>decrypted: {{this.decrypted}}</p>
-</div>
+<a href={{this.id}}>
+  <div class='bucket'>
+    <p>bucket name: {{this.name}}</p>
+    <p>id: {{this.id}}</p>
+    <p>created: {{this.created}}</p>
+    <p>decrypted: {{this.decrypted}}</p>
+  </div>
+</a>
 {{/each}}
 
 <a href='/createBucket'>Add Bucket</a>
