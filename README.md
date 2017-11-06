@@ -46,6 +46,7 @@ source ./scripts/get_local_bridge.sh
 ```
 
 You'll then be given the address to where the bridge is set. The `BRIDGE_URL` variable needs to be set to this address in your .env file.
+In your `~/.storj` directory (for OSX) there should be some IP.json files. Make sure that the credentials in that file match your local bridge's IP address as well. You may have to rename your .json file with the correct IP address.
 
 Now, when you use the command `storj export-keys`, the resulting email, password, and encryption key need to be saved to your `.env` file respectively as `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY`.
 
@@ -76,6 +77,8 @@ Then find the entry where `"activated" : true`.
 
 In your `~/.storj` directory (for OSX) there should be a list of IP.json files. Make sure that the credentials in that file match the IP given by the `setbr` script inside `storj-sdk/`.
 You may have to rename your .json file with the correct IP address.
+
+Finally, make sure that you are connected to the storj-local VPN! See the storj-sdk README for specific setup.
 
 
 ### Troubleshooting Bridge Access with [Storj-Integration](https://github.com/Storj/integration)
