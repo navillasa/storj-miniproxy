@@ -1,4 +1,13 @@
 <h1>Welcome to a bucket!</h1>
 <h3>Bucket ID: {{id}}</h3>
 <p>Here is where the files in your bucket will be listed.</p>
-<a href='#'>Upload File</a>
+
+<form method='post' action='/upload' enctype='multipart/form-data'>
+  <div>
+    <label for='dogPhoto'>Choose file to upload:</label>
+    <input type='file' id='dogPhoto' name='dogPhoto'>
+  </div>
+  <div>
+    <button>Submit</button>
+  </div>
+</form>

@@ -6,10 +6,9 @@ const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const cors = require('cors');
-const fs = require('fs');
+// const cors = require('cors');
+// const fs = require('fs');
 const ws = require('ws');
-const upload = multer({ dest: 'uploads/' });
 require('dotenv').config();
 
 // setup
@@ -17,9 +16,9 @@ const ServerSocket = require('./serverSocket');
 const index = require('./routes/index');
 const bucketList = require('./routes/bucketList');
 const createBucket = require('./routes/createBucket');
+const upload = require('./routes/upload');
 
 const app = express();
-app.use(cors());
 
 // instantiates ServerSocket
 const wss = new ws.Server({ port: 9000 });
@@ -52,19 +51,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/bucketList', bucketList);
 app.use('/createBucket', createBucket);
-
-// app.post('/upload', upload.single('dogPhoto'), (req, res) => {
-//   try {
-//     res.send({ fileName: req.file });
-//   } catch (err) {
-//     res.sendStatus(400);
-//   }
-// });
+app.use('/upload', upload); 
+app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
