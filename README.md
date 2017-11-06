@@ -35,11 +35,11 @@ To set the bridge address:
 source ./scripts/setbr
 ```
 To set host entries:
+
+(Note that as of 11/3/17, this script will do its job but automatically close your shell when it's finished.)
 ```bash
 source ./scripts/set_host_entries.sh
 ```
-Note that as of 11/3/17, this script will do its job but automatically close your shell when it's finished.
-
 You can confirm where your local bridge is set with:
 ```bash
 source ./scripts/get_local_bridge.sh
