@@ -7,9 +7,6 @@ Working on setting up basic functionalities such as:
   * Uploading files to a bucket
   * Removing files from a bucket
   
-![screenshot of list of buckets](readme-images/bucketList.png)
-![screenshot of file upload prompt](readme-images/bucket.png)
-
 ## Sections
 * [Connecting to a Bridge Server](#connecting-to-a-bridge-server)
 * [Troubleshooting Bridge Access with Storj-SDK](#troubleshooting-bridge-access-with-storj-sdk)
