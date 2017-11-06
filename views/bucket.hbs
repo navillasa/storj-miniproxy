@@ -2,7 +2,7 @@
 <h3>Bucket ID: {{id}}</h3>
 <p>Here is where the files in your bucket will be listed.</p>
 
-<form method='post' action='/upload' enctype='multipart/form-data'>
+<form method='post' action='{{id}}/upload' enctype='multipart/form-data'>
   <p>
     <label for='dogPhoto'>Choose file to upload:</label><br><br>
     <input type='file' id='dogPhoto' name='dogPhoto'>
