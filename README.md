@@ -18,7 +18,7 @@ Working on setting up basic functionalities such as:
 ## Required Dependencies
   * [libstorj](https://github.com/Storj/libstorj)
   * [node-libstorj](https://github.com/Storj/node-libstorj)
-  * dotenv
+  * [dotenv](https://github.com/motdotla/dotenv)
   * [multer](https://github.com/expressjs/multer)
 
 ## Connecting to a Bridge Server
@@ -109,11 +109,11 @@ You can then use pm2 commands to view logs etc.
 ### Verifying Bridge User Credentials
 You can check if your bridge user credentials are working using the `list-buckets` command:
 ```bash
-storj -u http://localhost:8080 list-buckets
+storj -u http://localhost:6382 list-buckets
 ```
 To check your current bridge username, password, and encryption key, you can also use the command:
 ```bash
-storj -u http://localhost:8080 export-keys
+storj -u http://localhost:6382 export-keys
 ```
 <b>These credentials</b> are the ones that need to be in your `.env` file, respectively assigned to `BRIDGE_EMAIL`, `BRIDGE_PASS`, `ENCRYPT_KEY`.
 
