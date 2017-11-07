@@ -18,7 +18,8 @@ Working on setting up basic functionalities such as:
 ## Required Dependencies
   * [libstorj](https://github.com/Storj/libstorj)
   * [node-libstorj](https://github.com/Storj/node-libstorj)
-  * dotenv
+  * [dotenv](https://github.com/motdotla/dotenv)
+  * [multer](https://github.com/expressjs/multer)
 
 ## Connecting to a Bridge Server
 [Storj-SDK](https://github.com/Storj/storj-sdk) is recommended for setting up the bridge server for use with this app. See storj-sdk README for setup.
@@ -98,9 +99,9 @@ Then you can start and attach to the container with:
 ```bash
 docker start -ai <container-id>
 ```
-The last step is to run the `start-everything.sh` script from the container you started/attached to:
+When it prompts with `root@<container-id>:~#`, the last step is to run the `start_everything.sh` script:
 ```bash
-/scripts/start-everything.sh
+./scripts/start_everything.sh
 ```
 As long as you want to connect to the bridge server, you need to keep this terminal window running.
 You can then use pm2 commands to view logs etc.
@@ -108,11 +109,11 @@ You can then use pm2 commands to view logs etc.
 ### Verifying Bridge User Credentials
 You can check if your bridge user credentials are working using the `list-buckets` command:
 ```bash
-storj -u http://localhost:8080 list-buckets
+storj -u http://localhost:6382 list-buckets
 ```
 To check your current bridge username, password, and encryption key, you can also use the command:
 ```bash
-storj -u http://localhost:8080 export-keys
+storj -u http://localhost:6382 export-keys
 ```
 <b>These credentials</b> are the ones that need to be in your `.env` file, respectively assigned to `BRIDGE_EMAIL`, `BRIDGE_PASS`, `ENCRYPT_KEY`.
 
@@ -150,9 +151,14 @@ docker stop $(docker ps -q)
 - Each bucket page should also have options to upload/download from the bucket
 
 #### Other Things to Consider
-- At what point to decrypt the file? (use FlipStream.js?)
+- How/when to stream uploads
 
 #### Issues
-- Ended up creating a bunch of test user logins for both storj-integration and storj-sdk
-  - Everyday some new problem with connecting to the bridge due to inconsistent credentials on my part (seems like either the sdk or integration defaults to a login other than the one in my .env file)
-  - Majority of problems have been due to incorrect bridge user login
+- Maybe not an "issue" exactly, but files can't be uploaded directly from the clientside to the Storj library, so I'm using multer to save uploaded files to the local server (in `uploads/`), and then running the bridge method `storeFile`.
+- Running into network error when uploading files using the sdk. Successfully retrieves frame id and creates frame, which is good, but when it starts `Pushing frame for shard index 0...`, begins to receive this error:
+```
+{"message": "fn[push_frame] - JSON Response: { "error": "getaddrinfo ENOTFOUND landlord landlord:8081" }", "level": 4, "timestamp": 1510079825998}
+
+Error: Unable to receive storage offer
+    at Error (native)
+```
