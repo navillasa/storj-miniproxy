@@ -20,7 +20,7 @@ const createBucket = require('./routes/createBucket');
 const app = express();
 
 // instantiates ServerSocket
-const wss = new ws.Server({ port: 9000 });
+const wss = new ws.Server({ port: 2000 });
 serverSocket = new ServerSocket(wss, ws);
 
 // setup storj environment

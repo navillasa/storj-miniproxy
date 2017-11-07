@@ -1,4 +1,4 @@
-let ws = new WebSocket('ws://localhost:9000');
+let ws = new WebSocket('ws://localhost:2000');
 // const createBucketButton = document.getElementById('createBucket');
 const bucketSection = document.getElementById('buckets');
 var div = document.createElement('div');
