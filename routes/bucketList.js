@@ -11,7 +11,7 @@ const storj = new Environment({
   logLevel: 4
 });
 
-const fileTitle = 'dogPhoto.jpg';
+const fileTitle = 'pogPhoto-' + Date.now() + '.jpg';
 const uploadFilePath = './uploads/' + fileTitle;
 
 let storage = multer.diskStorage({
@@ -19,8 +19,9 @@ let storage = multer.diskStorage({
     callback(null, 'uploads/')
   },
   filename: function(req, file, callback) {
+    callback(null, fileTitle)
     // callback(null, file.fieldname + '-' + Date.now() + '.jpg')
-    callback(null, file.fieldname + '.jpg')
+    // callback(null, file.fieldname + '.jpg')
   }
 });
 
@@ -61,30 +62,72 @@ router.get('/:bucketId', (req, res, next) => {
 
 router.post('/:bucketId/upload/', (req, res) => {
   let bucketId = req.params.bucketId;
-  upload(req, res, function(err) {
-    if (err) {
-      console.log('an error occurred when uploading');
-      return
-    } else {
-    res.json({
-      success: true,
-      message: 'image uploaded to local server'
+
+  function uploadFile() {
+    console.log('entering uploadFile');
+    let uploadFilePromise = new Promise((resolve, reject) => {
+      upload(req, res, function(err) {
+        if (err) {
+          reject(err);
+          res.end('error uploading file');
+        } else {
+          console.log('upload resolve');
+          resolve(req);
+          res.end('file successfully uploaded to local server!');
+        }
+      });
     });
-    }
-  });
-  storj.storeFile(bucketId, uploadFilePath, {
-    filename: fileTitle,
-    progressCallback: (progress, uploadedBytes, totalBytes) => {
-      console.log('Progress: %d, UploadedBytes: %d, TotalBytes: %d',
-          progress, uploadedBytes, totalBytes);
-    },
-    finishedCallback: (err, fileId) => {
-      if (err) {
-        return console.log(err);
+    return uploadFilePromise;
+  }
+
+  function sendToBridge() {
+    console.log('entering sendToBridge');
+    console.log('uploadFilePath: %s', uploadFilePath);
+    storj.storeFile(bucketId, uploadFilePath, {
+      filename: fileTitle,
+      progressCallback: (progress, uploadedBytes, totalBytes) => {
+        console.log('Progress: %d, UploadedBytes: %d, TotalBytes: %d',
+            progress, uploadedBytes, totalBytes);
+      },
+      finishedCallback: (err, fileId) => {
+        if (err) {
+          return console.log(err);
+        }
+        console.log('File upload complete:', fileId);
       }
-      console.log('File upload complete:', fileId);
-    }
-  });
+    });
+  }
+
+  uploadFile().then(sendToBridge);
+
 });
 
 module.exports = router;
+
+  // upload(req, res, function(err) {
+  //   if (err) {
+  //     console.log('an error occurred when uploading');
+  //     return
+  //   } 
+  //   else { console.log('uploaded'); }
+  //   // else {
+  //   // res.json({
+  //   //   success: true,
+  //   //   message: 'image uploaded to local server'
+  //   // });
+  //   // }
+  // }).then((result) => {
+  //   storj.storeFile(bucketId, uploadFilePath, {
+  //     filename: fileTitle,
+  //     progressCallback: (progress, uploadedBytes, totalBytes) => {
+  //       console.log('Progress: %d, UploadedBytes: %d, TotalBytes: %d',
+  //           progress, uploadedBytes, totalBytes);
+  //     },
+  //     finishedCallback: (err, fileId) => {
+  //       if (err) {
+  //         return console.log(err);
+  //       }
+  //       console.log('File upload complete:', fileId);
+  //     }
+  //   });
+  // });
