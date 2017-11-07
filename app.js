@@ -16,7 +16,6 @@ const ServerSocket = require('./serverSocket');
 const index = require('./routes/index');
 const bucketList = require('./routes/bucketList');
 const createBucket = require('./routes/createBucket');
-// const upload = require('./routes/upload');
 
 const app = express();
 
@@ -55,7 +54,6 @@ app.use(cookieParser());
 app.use('/', index);
 app.use('/bucketList', bucketList);
 app.use('/createBucket', createBucket);
-// app.use('/upload', upload); 
 app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
