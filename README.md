@@ -99,9 +99,9 @@ Then you can start and attach to the container with:
 ```bash
 docker start -ai <container-id>
 ```
-The last step is to run the `start-everything.sh` script from the container you started/attached to:
+When it prompts with `root@<container-id>:~#`, the last step is to run the `start_everything.sh` script:
 ```bash
-/scripts/start-everything.sh
+./scripts/start_everything.sh
 ```
 As long as you want to connect to the bridge server, you need to keep this terminal window running.
 You can then use pm2 commands to view logs etc.
