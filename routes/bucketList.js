@@ -11,6 +11,9 @@ const storj = new Environment({
   logLevel: 4
 });
 
+const fileTitle = 'dogPhoto.jpg';
+const uploadFilePath = './uploads/' + fileTitle;
+
 let storage = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, 'uploads/')
@@ -69,8 +72,8 @@ router.post('/:bucketId/upload/', (req, res) => {
     });
     }
   });
-  storj.storeFile(bucketId, './uploads/dogPhoto.jpg', {
-    filename: 'dogPhoto.jpg',
+  storj.storeFile(bucketId, uploadFilePath, {
+    filename: fileTitle,
     progressCallback: (progress, uploadedBytes, totalBytes) => {
       console.log('Progress: %d, UploadedBytes: %d, TotalBytes: %d',
           progress, uploadedBytes, totalBytes);
@@ -85,26 +88,3 @@ router.post('/:bucketId/upload/', (req, res) => {
 });
 
 module.exports = router;
-
-// can't stream file from client directly to storj lib
-// router.post('/:bucketId/upload/', (req, res) => {
-//   let bucketId = req.params.bucketId;
-//   console.log(req);
-//   storj.storeFile(bucketId, 'uploads/', {
-//     filename: 'test.jpg',
-//     progressCallback: (progress, uploadedBytes, totalBytes) => {
-//       console.log('Progress: %d, UploadedBytes: %d, TotalBytes: %d',
-//           progress, uploadedBytes, totalBytes);
-//     },
-//     finishedCallback: (err, fileId) => {
-//       if (err) {
-//         return console.log(err);
-//       }
-//       console.log('File upload complete: ', fileId);
-//       res.json({
-//         success: true,
-//         message: 'image uploaded :)'
-//       });
-//     }
-//   });
-// });
