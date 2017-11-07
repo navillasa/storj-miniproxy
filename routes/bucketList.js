@@ -16,7 +16,8 @@ let storage = multer.diskStorage({
     callback(null, 'uploads/')
   },
   filename: function(req, file, callback) {
-    callback(null, file.fieldname + '-' + Date.now() + '.jpg')
+    // callback(null, file.fieldname + '-' + Date.now() + '.jpg')
+    callback(null, file.fieldname + '.jpg')
   }
 });
 
@@ -61,12 +62,26 @@ router.post('/:bucketId/upload/', (req, res) => {
     if (err) {
       console.log('an error occurred when uploading');
       return
-    }
+    } else {
     res.json({
       success: true,
-      message: 'image uploaded'
+      message: 'image uploaded to local server'
     });
-  })
+    }
+  });
+  storj.storeFile(bucketId, './uploads/dogPhoto.jpg', {
+    filename: 'dogPhoto.jpg',
+    progressCallback: (progress, uploadedBytes, totalBytes) => {
+      console.log('Progress: %d, UploadedBytes: %d, TotalBytes: %d',
+          progress, uploadedBytes, totalBytes);
+    },
+    finishedCallback: (err, fileId) => {
+      if (err) {
+        return console.log(err);
+      }
+      console.log('File upload complete:', fileId);
+    }
+  });
 });
 
 module.exports = router;
