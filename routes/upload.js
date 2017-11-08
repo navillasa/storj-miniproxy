@@ -14,6 +14,7 @@ const storj = new Environment({
 const fileTitle = 'pogPhoto-' + Date.now() + '.jpg';
 const uploadFilePath = './uploads/' + fileTitle;
 
+// multer middleware setup
 let storage = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, 'uploads/')
@@ -23,7 +24,7 @@ let storage = multer.diskStorage({
   }
 });
 
-// we accept a single file with field name 'dogPhoto'
+// accepts a single file with field name 'dogPhoto'
 let upload = multer({ storage: storage }).single('dogPhoto');
 
 router.post('/bucketList/:bucketId/upload', (req, res) => {
