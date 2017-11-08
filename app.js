@@ -14,6 +14,7 @@ const ServerSocket = require('./serverSocket');
 const index = require('./routes/index');
 const bucketList = require('./routes/bucketList');
 const upload = require('./routes/upload');
+const download = require('./routes/download');
 const createBucket = require('./routes/createBucket');
 
 const app = express();
@@ -53,6 +54,7 @@ app.use(cookieParser());
 app.use('/', index);
 app.use('/bucketList', bucketList);
 app.use('/', upload);
+app.use('/', download);
 app.use('/createBucket', createBucket);
 app.use(express.static(path.join(__dirname, 'public')));
 

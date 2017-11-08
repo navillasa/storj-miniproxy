@@ -16,3 +16,10 @@ a {
   margin: 1rem;
   border: 1px solid black;
 }
+
+.bucketFile {
+  width: 18rem; 
+  padding: .5rem;
+  margin: 1rem;
+  border: 1px solid black;
+}

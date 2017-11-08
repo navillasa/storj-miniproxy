@@ -49,7 +49,6 @@ router.post('/bucketList/:bucketId/upload', (req, res) => {
 
   function sendToBridge() {
     console.log('entering sendToBridge');
-    console.log('uploadFilePath: %s', uploadFilePath);
     storj.storeFile(bucketId, uploadFilePath, {
       filename: fileTitle,
       progressCallback: (progress, uploadedBytes, totalBytes) => {

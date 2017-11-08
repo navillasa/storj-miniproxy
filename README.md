@@ -19,7 +19,6 @@ Working on setting up basic functionalities such as:
   * [libstorj](https://github.com/Storj/libstorj)
   * [node-libstorj](https://github.com/Storj/node-libstorj)
   * [dotenv](https://github.com/motdotla/dotenv)
-  * [multer](https://github.com/expressjs/multer)
 
 ## Connecting to a Bridge Server
 [Storj-SDK](https://github.com/Storj/storj-sdk) is recommended for setting up the bridge server for use with this app. See storj-sdk README for setup.
@@ -147,14 +146,12 @@ docker stop $(docker ps -q)
 ## Development Process
 
 #### Current Goals
-- Each bucket should be a route to another page that lists files inside the bucket
-- Each bucket page should also have options to upload/download from the bucket
-
-#### Other Things to Consider
-- How/when to stream uploads
+- Each bucket page should also have options to upload/download/delete from the bucket
+- Delete buckets
+- Write tests for uploading specific file types
 
 #### Issues
-- Maybe not an "issue" exactly, but files can't be uploaded directly from the clientside to the Storj library, so I'm using multer to save uploaded files to the local server (in `uploads/`), and then running the bridge method `storeFile`.
+- Maybe not an "issue" exactly, but files can't be uploaded directly from the clientside to the Storj library (Reed Solomon requires entire file, not streamed parts), so I'm using multer to save uploaded files to the local server (in `uploads/`), and then running the bridge method `storeFile`.
 - Running into network error when uploading files using the sdk. Successfully retrieves frame id and creates frame, which is good, but when it starts `Pushing frame for shard index 0...`, begins to receive this error:
 ```
 {"message": "fn[push_frame] - JSON Response: { "error": "getaddrinfo ENOTFOUND landlord landlord:8081" }", "level": 4, "timestamp": 1510079825998}

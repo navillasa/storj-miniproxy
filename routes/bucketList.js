@@ -41,7 +41,7 @@ router.get('/:bucketId', (req, res, next) => {
 
     res.render('bucket', {
       layout: 'layout',
-      id: bucketId,
+      bucketId: bucketId,
       files: bucketFiles
     });
   });
