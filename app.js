@@ -6,8 +6,6 @@ const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-// const cors = require('cors');
-// const fs = require('fs');
 const ws = require('ws');
 require('dotenv').config();
 
@@ -15,6 +13,7 @@ require('dotenv').config();
 const ServerSocket = require('./serverSocket');
 const index = require('./routes/index');
 const bucketList = require('./routes/bucketList');
+const upload = require('./routes/upload');
 const createBucket = require('./routes/createBucket');
 
 const app = express();
@@ -53,6 +52,7 @@ app.use(cookieParser());
 
 app.use('/', index);
 app.use('/bucketList', bucketList);
+app.use('/', upload);
 app.use('/createBucket', createBucket);
 app.use(express.static(path.join(__dirname, 'public')));
 
