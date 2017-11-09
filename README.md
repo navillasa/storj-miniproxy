@@ -150,7 +150,7 @@ docker stop $(docker ps -q)
 - Write tests for uploading specific file types
 
 #### Issues
-- Maybe not an "issue" exactly, but files can't be uploaded directly from the clientside to the Storj library (Reed Solomon requires entire file, not streamed parts), so I'm using multer to save uploaded files to the local server (in `uploads/`), and then running the bridge method `storeFile`.
+- Files can't be uploaded directly from the clientside to the Storj library (Reed Solomon requires entire file, not streamed parts), so I'm using multer to save uploaded files to the local server (in `uploads/`), and then running the bridge method `storeFile`.
 - Running into network error when uploading files using the sdk. Successfully retrieves frame id and creates frame, which is good, but when it starts `Pushing frame for shard index 0...`, begins to receive this error:
 ```
 {"message": "fn[push_frame] - JSON Response: { "error": "getaddrinfo ENOTFOUND landlord landlord:8081" }", "level": 4, "timestamp": 1510079825998}
@@ -158,3 +158,9 @@ docker stop $(docker ps -q)
 Error: Unable to receive storage offer
     at Error (native)
 ```
+- On the bucketList page, after adding one bucket and refreshing, generates error:
+```
+Error: Internal error
+    at Error (native)
+```
+and no more buckets can be added. I'm pretty sure this is a routing problem. Will fix after adding bucket deletion.
