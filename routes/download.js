@@ -27,7 +27,7 @@ router.get('/bucketList/:bucketId/:fileId/download', (req, res) => {
         return console.log(err);
       }
       console.log('file download complete!');
-      res.end('i think file is downloaded..');
+      res.end('file downloaded!');
     }
   });
 });
