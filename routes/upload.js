@@ -66,6 +66,10 @@ router.post('/bucketList/:bucketId/upload', (req, res) => {
 
   uploadFile().then(sendToBridge);
 
+  // sometimes this will redirect before the file is uploaded
+  // so the file won't appear in the browser-- needs fixing
+  res.redirect('back');
+
 });
 
 module.exports = router;

@@ -16,6 +16,8 @@ router.get('/', (req, res, next) => {
     console.log('info:', res);
   });
 
+  res.redirect('back');
+
 });
 
 module.exports = router;

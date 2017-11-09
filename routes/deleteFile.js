@@ -21,6 +21,9 @@ router.get('/bucketList/:bucketId/:fileId/deleteFile', (req, res) => {
     }
     console.log('deletes file');
   });
+
+  res.redirect('back');
+
 });
 
 module.exports = router;

@@ -20,6 +20,9 @@ router.get('/bucketList/:bucketId/deleteBucket', (req, res) => {
     }
     console.log('*deletes bucket*');
   });
+
+  res.redirect('back');
+
 });
 
 module.exports = router;
