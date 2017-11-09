@@ -14,7 +14,12 @@ router.get('/bucketList/:bucketId/deleteBucket', (req, res) => {
   let bucketId = req.params.bucketId;
 
   // deletes bucket
-  console.log('i\'m here to delete your bucket');
+  storj.deleteBucket(bucketId, function (err) {
+    if (err) {
+     return console.log(err);
+    }
+    console.log('*deletes bucket*');
+  });
 });
 
 module.exports = router;
