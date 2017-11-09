@@ -1,14 +1,15 @@
 <h1>{{title}}</h1>
 
 {{#each buckets}}
-<a href={{this.id}}>
-  <div class='bucket'>
+<div class='bucket'>
+  <a href={{this.id}}>
     <p>bucket name: {{this.name}}</p>
     <p>id: {{this.id}}</p>
     <p>created: {{this.created}}</p>
     <p>decrypted: {{this.decrypted}}</p>
-  </div>
-</a>
+  </a>
+  <a class='deleteBucket' href='{{this.id}}/deleteBucket'>delete bucket</a>
+</div>
 {{/each}}
 
 <a href='/createBucket'>Add Bucket</a>

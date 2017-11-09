@@ -17,6 +17,7 @@ const upload = require('./routes/upload');
 const download = require('./routes/download');
 const deleteFile = require('./routes/deleteFile');
 const createBucket = require('./routes/createBucket');
+const deleteBucket = require('./routes/deleteBucket');
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use('/bucketList', bucketList);
 app.use('/', upload);
 app.use('/', download);
 app.use('/', deleteFile);
+app.use('/', deleteBucket);
 app.use('/createBucket', createBucket);
 app.use(express.static(path.join(__dirname, 'public')));
 
