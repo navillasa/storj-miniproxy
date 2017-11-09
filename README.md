@@ -1,11 +1,10 @@
 # storj-miniproxy
 
-This is a mini CDN proxy app built using libstorj and node-libstorj.
+This app is a mini "gateway" to the Storj library built using libstorj and node-libstorj.
 Working on setting up basic functionalities such as:
   * Listing the user's buckets
   * Adding/removing buckets
-  * Uploading files to a bucket
-  * Removing files from a bucket
+  * Uploading/downloading/removing files from a bucket
   
 ## Sections
 * [Connecting to a Bridge Server](#connecting-to-a-bridge-server)
