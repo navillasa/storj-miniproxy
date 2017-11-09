@@ -1,10 +1,11 @@
 # storj-miniproxy
 
 This app is a mini "gateway" to the Storj library built using libstorj and node-libstorj.
-Working on setting up basic functionalities such as:
-  * Listing the user's buckets
-  * Adding/removing buckets
-  * Uploading/downloading/removing files from a bucket
+
+Functionalities:
+  * Listing current bridge user's buckets
+  * Adding and removing buckets
+  * Uploading, downloading, and removing files from a bucket
   
 ## Sections
 * [Connecting to a Bridge Server](#connecting-to-a-bridge-server)
@@ -109,6 +110,7 @@ You can check if your bridge user credentials are working using the `list-bucket
 ```bash
 storj -u http://localhost:6382 list-buckets
 ```
+Note: Port 6382 is used with the integration bridge. If you're using the SDK, you should use `http://<bridge address>`.
 To check your current bridge username, password, and encryption key, you can also use the command:
 ```bash
 storj -u http://localhost:6382 export-keys
@@ -124,6 +126,10 @@ Then connect to the `storj-sandbox` database and look for users:
 ```bash
 db = connect('storj-sandbox')
 db.users.find({})
+```
+If you find that the bridge user account that you want to use has `"activated"` set to `"false"` in the user object, then you can use the following to activate:
+```bash
+db.users.findOneAndUpdate({_id:<your user email string>}, {$set:{activated: true, activator: null}});
 ```
 
 ## Useful Docker Commands
@@ -145,8 +151,7 @@ docker stop $(docker ps -q)
 ## Development Process
 
 #### Current Goals
-- Each bucket page should also have options to upload/download/delete from the bucket
-- Delete buckets
+- Fix createBucket bug
 - Write tests for uploading specific file types
 
 #### Issues
