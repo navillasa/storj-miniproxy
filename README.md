@@ -151,7 +151,6 @@ docker stop $(docker ps -q)
 ## Development Process
 
 #### Current Goals
-- Fix createBucket bug
 - Write tests for uploading specific file types
 
 #### Issues
@@ -163,9 +162,3 @@ docker stop $(docker ps -q)
 Error: Unable to receive storage offer
     at Error (native)
 ```
-- On the bucketList page, after adding one bucket and refreshing, generates error:
-```
-Error: Internal error
-    at Error (native)
-```
-and no more buckets can be added. I'm pretty sure this is a routing problem. Will fix after adding bucket deletion.
