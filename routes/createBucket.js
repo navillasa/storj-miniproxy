@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
-
-// assigns test bucket name
-const testBucketName = 'test-' + Date.now();
+const express = require('express');
+const router = express.Router();
 
 // grabs var storj from app
 router.get('/', (req, res, next) => {
-  var storj = req.storj;
+  const storj = req.storj;
+
+  // assigns test bucket name
+  let testBucketName = 'test-' + Date.now();
 
   // creates bucket
   storj.createBucket(testBucketName, (err, res) => {

@@ -11,7 +11,7 @@ const storj = new Environment({
   logLevel: 4
 });
 
-const fileTitle = 'pogPhoto-' + Date.now() + '.jpg';
+const fileTitle = 'testPhoto-' + Date.now() + '.jpg';
 const uploadFilePath = './uploads/' + fileTitle;
 
 // multer middleware setup
