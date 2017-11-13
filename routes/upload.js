@@ -1,15 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const { Environment } = require('storj');
-
-const storj = new Environment({
-  bridgeUrl: process.env.BRIDGE_URL,
-  bridgeUser: process.env.BRIDGE_EMAIL,
-  bridgePass: process.env.BRIDGE_PASS,
-  encryptionKey: process.env.ENCRYPT_KEY,
-  logLevel: 4
-});
 
 const fileTitle = 'testPhoto-' + Date.now() + '.jpg';
 const uploadFilePath = './uploads/' + fileTitle;
@@ -28,6 +19,7 @@ let storage = multer.diskStorage({
 let upload = multer({ storage: storage }).single('dogPhoto');
 
 router.post('/bucketList/:bucketId/upload', (req, res) => {
+  let storj = req.storj;
   let bucketId = req.params.bucketId;
 
   function uploadFile() {
@@ -66,7 +58,7 @@ router.post('/bucketList/:bucketId/upload', (req, res) => {
 
   uploadFile().then(sendToBridge);
 
-  // sometimes this will redirect before the file is uploaded
+  // sometimes this will redirect before file is uploaded
   // so the file won't appear in the browser-- needs fixing
   res.redirect('back');
 
