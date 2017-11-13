@@ -39,12 +39,13 @@ describe('GET /buckets', function () {
 });
 
 describe('GET /bucketList/:id', function () {
-  it('should call listFiles', function () {
+  it('should call listFiles', function (done) {
     request(app)
       .get('/bucketList/e9980f248d1f5b62802e310a')
       .end((err, res) => {
         if (err) throw err;
-        console.log('res: ', res);
+        console.log('res.body', res.body);
+        done();
       }); 
   });
 });
