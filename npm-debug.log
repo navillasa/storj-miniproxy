@@ -7,7 +7,7 @@
 6 silly lifecycle storj-miniproxy@0.0.0~pretest: no script for pretest, continuing
 7 info lifecycle storj-miniproxy@0.0.0~test: storj-miniproxy@0.0.0
 8 verbose lifecycle storj-miniproxy@0.0.0~test: unsafe-perm in lifecycle true
-9 verbose lifecycle storj-miniproxy@0.0.0~test: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/natalievillasana/github/storj-miniproxy/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Users/natalievillasana/.rvm/bin:/usr/local/bin
+9 verbose lifecycle storj-miniproxy@0.0.0~test: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/natalievillasana/github/storj-miniproxy/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Users/natalievillasana/.rvm/bin:/Users/natalievillasana/.rvm/bin:/usr/local/bin
 10 verbose lifecycle storj-miniproxy@0.0.0~test: CWD: /Users/natalievillasana/github/storj-miniproxy
 11 silly lifecycle storj-miniproxy@0.0.0~test: Args: [ '-c', 'mocha' ]
 12 silly lifecycle storj-miniproxy@0.0.0~test: Returned: code: 1  signal: null
