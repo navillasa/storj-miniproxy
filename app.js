@@ -6,11 +6,9 @@ const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const ws = require('ws');
 require('dotenv').config();
 
 // setup
-const ServerSocket = require('./serverSocket');
 const index = require('./routes/index');
 const bucketList = require('./routes/bucketList');
 const upload = require('./routes/upload');
@@ -20,10 +18,6 @@ const createBucket = require('./routes/createBucket');
 const deleteBucket = require('./routes/deleteBucket');
 
 const app = express();
-
-// instantiates ServerSocket
-const wss = new ws.Server({ port: 2000 });
-serverSocket = new ServerSocket(wss, ws);
 
 // setup storj environment
 const { Environment } = require('storj');
