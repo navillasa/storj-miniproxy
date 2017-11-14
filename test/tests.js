@@ -86,8 +86,10 @@ describe('GET /bucketList/:bucketId/:fileId/deleteFile', function () {
 
 describe('GET /bucketList/:bucketId/:fileId/download', function () {
   it('should download file within bucket', (done) => {
+    let bucketId = 'e9980f248d1f5b62802e310a';
+    let fileId = '02bcf6f87966f0bed8fe6fff';
     request(app)
-      .get('/bucketList/fakeBucket/fakeFile/download')
+      .get(`/bucketList/${bucketId}/${fileId}/download`)
       .end((err, res) => {
         if (err) throw err;
         console.log('****res.body for file download', res.body);
@@ -96,6 +98,18 @@ describe('GET /bucketList/:bucketId/:fileId/download', function () {
   });
 });
 
+// describe('POST /bucketList/:bucketId/upload', function () {
+//   it('should send chosen file to local server', (done) => {
+//     request(app)
+//       .post('bucketList/:bucketId/upload')
+//       .end((err, res) => {
+//         if (err) throw err;
+//         console.log('****req.body for upload POST', req.body);
+//         done();
+//       });
+//   });
+// });
+
 describe('GET "/" the home page', function () {
   it('should return home page json', (done) => {
     request(app)
@@ -103,18 +117,6 @@ describe('GET "/" the home page', function () {
       .end((err, res) => {
         if (err) throw err;
         console.log('****res.body for index', res.body);
-        done();
-      });
-  });
-});
-
-describe('POST /bucketList/:bucketId/upload', function () {
-  it('should send chosen file to local server', (done) => {
-    request(app)
-      .post('bucketList/:bucketId/upload')
-      .end((err, res) => {
-        if (err) throw err;
-        console.log('****req.body for upload POST', req.body);
         done();
       });
   });
