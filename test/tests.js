@@ -68,7 +68,7 @@ describe('Tests for GET /bucketList/createBucket', function () {
       .get('/bucketList/createBucket')
       .end((err, res) => {
         if (err) throw err;
-        console.log('createBucket res :::::::::', res);
+        // console.log('createBucket res :::::::::', res);
         done();
       });
   });
