@@ -69,8 +69,6 @@ describe('Tests for GET /createBucket', function () {
       .expect(302)
       .end((err, res) => {
         if (err) throw err;
-
-        // console.log('createBucket res :::::::::', res);
         done();
       });
   });
