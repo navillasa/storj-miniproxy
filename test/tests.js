@@ -41,19 +41,22 @@ describe('Tests for GET /bucketList', function () {
         expect(res.statusCode).to.equal(200);
         expect(res.ok).to.equal(true);
         expect(res.body).to.be.empty;
-        // console.log('****should be a status code', res);
         done();
       });
   });
 });
 
-describe('Tests for GET /bucketList/:id', function () {
-  it('should call listFiles', function (done) {
+describe('Tests for GET /bucketList/:bucketId', function () {
+  it('should respond with given bucket page', function (done) {
+    let bucketId = 'e9980f248d1f5b62802e310a'; 
     request(app)
-      .get('/bucketList/e9980f248d1f5b62802e310a')
+      .get(`/bucketList/${bucketId}`)
       .end((err, res) => {
         if (err) throw err;
-        // console.log('****res.body for GET /bucketList/:id is', res.body);
+        expect(res.statusCode).to.equal(200);
+        expect(res.ok).to.equal(true);
+        expect(res.body).to.be.empty;
+        expect(res.req.path).to.equal(`/bucketList/${bucketId}`);
         done();
       }); 
   });
@@ -61,39 +64,39 @@ describe('Tests for GET /bucketList/:id', function () {
 
 describe('Tests for GET /bucketList/createBucket', function () {
   it('should create a bucket', (done) => {
-    let bucketId = 'e9980f248d1f5b62802e310a';
     request(app)
-      .get(`/bucketList/${bucketId}`)
+      .get('/bucketList/createBucket')
       .end((err, res) => {
         if (err) throw err;
+        console.log('createBucket res :::::::::', res);
         done();
       });
   });
 });
 
-describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
-  it('should delete specified bucket', (done) => {
-    request(app)
-      .get('/bucketList/fakeBucket/deleteBucket')
-      .end((err, res) => {
-        if (err) throw err;
-        // console.log('****res.body for GET /bucketList/:bucketId/deleteBucket');
-        done();
-      })
-  });
-});
+// describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
+//   it('should delete specified bucket', (done) => {
+//     request(app)
+//       .get('/bucketList/fakeBucket/deleteBucket')
+//       .end((err, res) => {
+//         if (err) throw err;
+//         // console.log('****res.body for GET /bucketList/:bucketId/deleteBucket');
+//         done();
+//       })
+//   });
+// });
 
-describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
-  it('should delete file within bucket', (done) => {
-    request(app)
-      .get('/bucketList/fakeBucket/fakeFile')
-      .end((err, res) => {
-        if (err) throw err;
-        // console.log('****res.body for Get /bucketList/:bucketId/:fileId/deleteFile');
-        done();
-      })
-  });
-});
+// describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
+//   it('should delete file within bucket', (done) => {
+//     request(app)
+//       .get('/bucketList/fakeBucket/fakeFile')
+//       .end((err, res) => {
+//         if (err) throw err;
+//         // console.log('****res.body for Get /bucketList/:bucketId/:fileId/deleteFile');
+//         done();
+//       })
+//   });
+// });
 
 // describe('GET /bucketList/:bucketId/:fileId/download', function () {
 //   it('should download file within bucket', (done) => {

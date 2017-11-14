@@ -20,23 +20,4 @@ router.get('/', (req, res, next) => {
   });
 });
 
-// creates bucket page
-router.get('/:bucketId', (req, res, next) => {
-  let storj = req.storj;
-  let bucketId = req.params.bucketId;
-
-  // gets files inside bucket 
-  storj.listFiles(bucketId, (err, bucketFiles) => {
-    if (err) {
-      return console.log('listFiles error:', err);
-    }
-
-    res.render('bucket', {
-      layout: 'layout',
-      bucketId: bucketId,
-      files: bucketFiles
-    });
-  });
-});
-
 module.exports = router;

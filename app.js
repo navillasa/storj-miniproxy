@@ -11,6 +11,7 @@ require('dotenv').config();
 // setup
 const index = require('./routes/index');
 const bucketList = require('./routes/bucketList');
+const bucketPage = require('./routes/bucketPage');
 const upload = require('./routes/upload');
 const download = require('./routes/download');
 const deleteFile = require('./routes/deleteFile');
@@ -49,6 +50,7 @@ app.use(cookieParser());
 
 app.use('/', index);
 app.use('/bucketList', bucketList);
+app.use('/', bucketPage);
 app.use('/', upload);
 app.use('/', download);
 app.use('/', deleteFile);
