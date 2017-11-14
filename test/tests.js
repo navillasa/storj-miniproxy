@@ -6,7 +6,7 @@ const chai = require('chai');
 const expect = require('chai').expect;
 const app = require('../app');
 
-describe('loading express', function () {
+describe('Tests loading express', function () {
   let server;
   beforeEach(function () {
     server = require('../app');
@@ -18,7 +18,9 @@ describe('loading express', function () {
       .expect(200)
       .end((err, res) => {
         if (err) throw err;
-        // console.log('****res.body for index', res.body);
+        expect(res.body).to.be.empty;
+        expect(res.statusCode).to.equal(200);
+        expect(res.ok).to.equal(true);
         done();
       });
   });
@@ -30,20 +32,22 @@ describe('loading express', function () {
   });
 });
 
-describe('GET /bucketList', function () {
-  it('should call getBuckets', function (done) {
+describe('Tests for GET /bucketList', function () {
+  it('should respond with bucketList page', function (done) {
     request(app)
       .get('/bucketList')
       .end((err, res) => {
         if (err) throw err;
-        // console.log('****should be a status code', Response[statusCode]);
+        expect(res.statusCode).to.equal(200);
+        expect(res.ok).to.equal(true);
+        expect(res.body).to.be.empty;
+        // console.log('****should be a status code', res);
         done();
-        // console.log('****res for bucketList is:', res);
       });
   });
 });
 
-describe('GET /bucketList/:id', function () {
+describe('Tests for GET /bucketList/:id', function () {
   it('should call listFiles', function (done) {
     request(app)
       .get('/bucketList/e9980f248d1f5b62802e310a')
@@ -55,7 +59,7 @@ describe('GET /bucketList/:id', function () {
   });
 });
 
-describe('GET /bucketList/createBucket', function () {
+describe('Tests for GET /bucketList/createBucket', function () {
   it('should create a bucket', (done) => {
     let bucketId = 'e9980f248d1f5b62802e310a';
     request(app)
@@ -67,7 +71,7 @@ describe('GET /bucketList/createBucket', function () {
   });
 });
 
-describe('GET /bucketList/:bucketId/deleteBucket', function () {
+describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
   it('should delete specified bucket', (done) => {
     request(app)
       .get('/bucketList/fakeBucket/deleteBucket')
@@ -79,7 +83,7 @@ describe('GET /bucketList/:bucketId/deleteBucket', function () {
   });
 });
 
-describe('GET /bucketList/:bucketId/:fileId/deleteFile', function () {
+describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
   it('should delete file within bucket', (done) => {
     request(app)
       .get('/bucketList/fakeBucket/fakeFile')
