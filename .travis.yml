@@ -1,1 +1,2 @@
+language: javascript
 after_success: npm run coverage
