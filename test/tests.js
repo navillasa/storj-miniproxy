@@ -62,12 +62,14 @@ describe('Tests for GET /bucketList/:bucketId', function () {
   });
 });
 
-describe('Tests for GET /bucketList/createBucket', function () {
+describe('Tests for GET /createBucket', function () {
   it('should create a bucket', (done) => {
     request(app)
-      .get('/bucketList/createBucket')
+      .get('/createBucket')
+      .expect(302)
       .end((err, res) => {
         if (err) throw err;
+
         // console.log('createBucket res :::::::::', res);
         done();
       });

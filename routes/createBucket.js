@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// grabs var storj from app
 router.get('/', (req, res, next) => {
   const storj = req.storj;
 
