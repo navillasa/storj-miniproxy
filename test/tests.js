@@ -74,31 +74,36 @@ describe('Tests for GET /createBucket', function () {
   });
 });
 
-// describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
-//   it('should delete specified bucket', (done) => {
+// describe('POST /bucketList/:bucketId/upload', function () {
+//   it('should send chosen file to local server', (done) => {
 //     request(app)
-//       .get('/bucketList/fakeBucket/deleteBucket')
+//       .post('bucketList/:bucketId/upload')
 //       .end((err, res) => {
 //         if (err) throw err;
-//         // console.log('****res.body for GET /bucketList/:bucketId/deleteBucket');
+//         console.log('****req.body for upload POST', req.body);
 //         done();
-//       })
+//       });
 //   });
 // });
 
-// describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
-//   it('should delete file within bucket', (done) => {
-//     request(app)
-//       .get('/bucketList/fakeBucket/fakeFile')
-//       .end((err, res) => {
-//         if (err) throw err;
-//         // console.log('****res.body for Get /bucketList/:bucketId/:fileId/deleteFile');
-//         done();
-//       })
-//   });
-// });
+describe('Tests for POST /bucketList/:bucketId/upload', function () {
+  it('should send chosen file to local server', (done) => {
+    let bucketId = 'e9980f248d1f5b62802e310a';
+    request(app)
+      .post(`bucketList/${bucketId}/upload`)
+      .field('name', 'littleTest')
+      .attach('test', 'test/test.jpg')
+      .expect('Content-Type', /json/)
+      .expect('Content-Length', '15')
+      .expect(201)
+      .end((err, res) => {
+        if (err) throw err;
+        done();
+      });
+  });
+});
 
-describe('GET /bucketList/:bucketId/:fileId/download', function () {
+describe('Tests for GET /bucketList/:bucketId/:fileId/download', function () {
   it('should download file within bucket', (done) => {
     let bucketId = 'e9980f248d1f5b62802e310a';
     let fileId = '02bcf6f87966f0bed8fe6fff';
@@ -112,14 +117,26 @@ describe('GET /bucketList/:bucketId/:fileId/download', function () {
   });
 });
 
-// describe('POST /bucketList/:bucketId/upload', function () {
-//   it('should send chosen file to local server', (done) => {
+// describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
+//   it('should delete specified bucket', (done) => {
 //     request(app)
-//       .post('bucketList/:bucketId/upload')
+//       .get('/bucketList/fakeBucket/deleteBucket')
 //       .end((err, res) => {
 //         if (err) throw err;
-//         console.log('****req.body for upload POST', req.body);
+//         // console.log('****res.body for GET /bucketList/:bucketId/deleteBucket');
 //         done();
-//       });
+//       })
 //   });
 // });
+
+describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
+  it('should delete file within bucket', (done) => {
+    request(app)
+      .get('/bucketList/fakeBucket/fakeFile')
+      .end((err, res) => {
+        if (err) throw err;
+        console.log('********** FAKE BUKCET', res.body);
+        done();
+      })
+  });
+});

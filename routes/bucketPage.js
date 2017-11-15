@@ -9,7 +9,6 @@ router.get('/bucketList/:bucketId', (req, res, next) => {
   // gets files inside bucket 
   storj.listFiles(bucketId, (err, bucketFiles) => {
     if (err) {
-      console.log('listFiles error:', err);
       return err;
     }
 

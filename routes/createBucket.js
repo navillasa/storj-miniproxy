@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   // creates bucket
   storj.createBucket(testBucketName, (err, res) => {
     if (err) {
-      return console.error(err);
+      return console.log(err);
     }
     console.log('info:', res);
   });
