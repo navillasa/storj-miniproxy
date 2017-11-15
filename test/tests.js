@@ -98,19 +98,19 @@ describe('Tests for GET /createBucket', function () {
 //   });
 // });
 
-// describe('GET /bucketList/:bucketId/:fileId/download', function () {
-//   it('should download file within bucket', (done) => {
-//     let bucketId = 'e9980f248d1f5b62802e310a';
-//     let fileId = '02bcf6f87966f0bed8fe6fff';
-//     request(app)
-//       .get(`/bucketList/${bucketId}/${fileId}/download`)
-//       .end((err, res) => {
-//         if (err) throw err;
-//         // console.log('****res.body for file download', res.body);
-//         done();
-//       });
-//   });
-// });
+describe('GET /bucketList/:bucketId/:fileId/download', function () {
+  it('should download file within bucket', (done) => {
+    let bucketId = 'e9980f248d1f5b62802e310a';
+    let fileId = '02bcf6f87966f0bed8fe6fff';
+    request(app)
+      .get(`/bucketList/${bucketId}/${fileId}/download`)
+      .end((err, res) => {
+        if (err) throw err;
+        // console.log('****res.body for file download', res.body);
+        done();
+      });
+  });
+});
 
 // describe('POST /bucketList/:bucketId/upload', function () {
 //   it('should send chosen file to local server', (done) => {

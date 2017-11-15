@@ -1,2 +1,4 @@
-language: javascript
+language: node_js
+node_js:
+  - "6.11.4"
 after_success: npm run coverage
