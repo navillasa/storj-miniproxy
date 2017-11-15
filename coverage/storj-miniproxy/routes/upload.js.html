@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">29.03% </span>
+        <span class="strong">64.52% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/31</span>
+        <span class='fraction'>20/31</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>1/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">44.44% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/9</span>
+        <span class='fraction'>4/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">29.03% </span>
+        <span class="strong">64.52% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/31</span>
+        <span class='fraction'>20/31</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -131,41 +131,29 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -173,6 +161,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,17 +197,17 @@ let storage = multer.diskStorage({
 // accepts a single file with field name 'dogPhoto'
 let upload = multer({ storage: storage }).single('dogPhoto');
 &nbsp;
-router.post('/bucketList/:bucketId/upload', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  let storj = <span class="cstat-no" title="statement not covered" >req.storj;</span>
-  let bucketId = <span class="cstat-no" title="statement not covered" >req.params.bucketId;</span>
+router.post('/bucketList/:bucketId/upload', (req, res) =&gt; {
+  let storj = req.storj;
+  let bucketId = req.params.bucketId;
 &nbsp;
-  function <span class="fstat-no" title="function not covered" >uploadFile(</span>) {
-<span class="cstat-no" title="statement not covered" >    console.log('entering uploadFile');</span>
-    let uploadFilePromise = <span class="cstat-no" title="statement not covered" >new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      upload(req, res, <span class="fstat-no" title="function not covered" >fu</span>nction(err) {</span>
-<span class="cstat-no" title="statement not covered" >        if (err) {</span>
-<span class="cstat-no" title="statement not covered" >          reject(err);</span>
-<span class="cstat-no" title="statement not covered" >          res.end('multer error uploading file');</span>
+  function uploadFile() {
+    console.log('entering uploadFile');
+    let uploadFilePromise = new Promise((resolve, reject) =&gt; {
+      upload(req, res, function(err) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (err) {
+          reject(err);
+          res.end('multer error uploading file');
         } else {
 <span class="cstat-no" title="statement not covered" >          console.log('upload resolve');</span>
 <span class="cstat-no" title="statement not covered" >          resolve(req);</span>
@@ -215,7 +215,7 @@ router.post('/bucketList/:bucketId/upload', <span class="fstat-no" title="functi
         }
       });
     });
-<span class="cstat-no" title="statement not covered" >    return uploadFilePromise;</span>
+    return uploadFilePromise;
   }
 &nbsp;
   function <span class="fstat-no" title="function not covered" >sendToBridge(</span>) {
@@ -235,11 +235,11 @@ router.post('/bucketList/:bucketId/upload', <span class="fstat-no" title="functi
     });
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  uploadFile().then(sendToBridge);</span>
+  uploadFile().then(sendToBridge);
 &nbsp;
   // sometimes this will redirect before file is uploaded
   // so the file won't appear in the browser-- needs fixing
-<span class="cstat-no" title="statement not covered" >  res.redirect('back');</span>
+  res.redirect('back');
 &nbsp;
 });
 &nbsp;
@@ -250,7 +250,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 16:08:51 GMT-0500 (EST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 17:50:37 GMT-0500 (EST)
 </div>
 </div>
 <script src="../../prettify.js"></script>
