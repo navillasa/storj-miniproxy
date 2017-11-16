@@ -74,11 +74,11 @@ describe('Tests for GET /createBucket', function () {
   });
 });
 
-describe('Tests for POST /bucketList/:bucketId/upload', function () {
+describe('Tests for POST /bucketList/:bucketId', function () {
   it('should send chosen file to local server', (done) => {
     let bucketId = 'e9980f248d1f5b62802e310a';
     request(app)
-      .post(`/bucketList/${bucketId}/upload`)
+      .post(`/bucketList/${bucketId}`)
       .attach('test', 'test/test.jpg')
       .expect(302)
       .end((err, res) => {
@@ -93,7 +93,7 @@ describe('Tests for GET /bucketList/:bucketId/:fileId/download', function () {
     let bucketId = 'e9980f248d1f5b62802e310a';
     let fileId = '1aab03a27cf38e34d9cbb703';
     request(app)
-      .get(`/bucketList/${bucketId}/${fileId}/download`)
+      .get(`/bucketList/${bucketId}/${fileId}`)
       .end((err, res) => {
         if (err) throw err;
         // console.log('****res.body for file download', res.body);
@@ -102,17 +102,25 @@ describe('Tests for GET /bucketList/:bucketId/:fileId/download', function () {
   });
 });
 
-// describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
-//   it('should delete specified bucket', (done) => {
-//     request(app)
-//       .get('/bucketList/fakeBucket/deleteBucket')
-//       .end((err, res) => {
-//         if (err) throw err;
-//         // console.log('****res.body for GET /bucketList/:bucketId/deleteBucket');
-//         done();
-//       })
-//   });
-// });
+describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
+  it('should delete specified bucket', (done) => {
+    request(app)
+      .get('/createBucket')
+      .expect(302)
+      .end((err, res) => {
+        if (err) throw err;
+        console.log('create bucket succeed');
+        const bucketId = ''
+        // get access to the bucket id  
+        request(app)
+          .get('/bucketList/${bucketId}/deleteBucket')
+          .expect(302)
+          .end((err, res) => {
+            done();
+          });
+      });
+  });
+});
 
 // describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
 //   it('should delete file within bucket', (done) => {

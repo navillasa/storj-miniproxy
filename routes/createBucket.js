@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const url = require('url'); 
 
 router.get('/', (req, res, next) => {
   const storj = req.storj;
@@ -8,15 +9,19 @@ router.get('/', (req, res, next) => {
   let testBucketName = 'test-' + Date.now();
 
   // creates bucket
-  storj.createBucket(testBucketName, (err, res) => {
+  storj.createBucket(testBucketName, (err, bucket) => {
     if (err) {
       return console.log(err);
     }
-    console.log('info:', res);
+    return res.redirect(url.format({
+      pathname: '/bucketList',
+      query: {
+        bucket_id: bucket.id,
+        bucket_name: bucket.name,
+        message: 'success'
+      } 
+    }));
   });
-
-  res.redirect('back');
-
 });
 
 module.exports = router;
