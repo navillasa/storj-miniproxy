@@ -151,7 +151,11 @@ docker stop $(docker ps -q)
 ## Development Process
 
 #### Current Goals
-- Write tests for uploading specific file types
+- Make it so that in testing, the `createBucket/` route creates a bucket with an ID that is accessible in the following `deleteBucket/` test.
+ - Right now I'm getting 'Bad request' errors because I'm testing fake buckets and fake file names... Need an easier way to generate files/buckets whose IDs are accessible in testing.
+ - Rewrite routes without the redundant endpoint names.
+ - Write error handling in tests to increase branch coverage-- i.e. if file not found, expect error.
+ - Fix Travis build error.
 
 #### Issues
 - Files can't be uploaded directly from the clientside to the Storj library (Reed Solomon requires entire file, not streamed parts), so I'm using multer to save uploaded files to the local server (in `uploads/`), and then running the bridge method `storeFile`.
