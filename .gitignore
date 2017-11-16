@@ -3,3 +3,6 @@ node_modules/
 *.swp
 .DS_Store
 downloads/
+.nyc_output/
+coverage
+testPhoto*

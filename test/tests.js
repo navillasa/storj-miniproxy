@@ -78,28 +78,29 @@ describe('Tests for POST /bucketList/:bucketId', function () {
     let bucketId = 'e9980f248d1f5b62802e310a';
     request(app)
       .post(`/bucketList/${bucketId}`)
-      .attach('test', 'test/test.jpg')
+      .attach('dogPhoto', 'test/test.jpg')
       .expect(302)
       .end((err, res) => {
         if (err) throw err;
+        // console.log('posting test.jpg res:::::::', res);
         done();
       });
   });
 });
 
-describe('Tests for GET /bucketList/:bucketId/:fileId/download', function () {
-  it('should download file within bucket', (done) => {
-    let bucketId = 'e9980f248d1f5b62802e310a';
-    let fileId = '1aab03a27cf38e34d9cbb703';
-    request(app)
-      .get(`/bucketList/${bucketId}/${fileId}`)
-      .end((err, res) => {
-        if (err) throw err;
-        // console.log('****res.body for file download', res.body);
-        done();
-      });
-  });
-});
+// describe('Tests for GET /bucketList/:bucketId/:fileId/download', function () {
+//   it('should download file within bucket', (done) => {
+//     let bucketId = 'e9980f248d1f5b62802e310a';
+//     let fileId = '1aab03a27cf38e34d9cbb703';
+//     request(app)
+//       .get(`/bucketList/${bucketId}/${fileId}/download`)
+//       .end((err, res) => {
+//         if (err) throw err;
+//         // console.log('****res.body for file download', res.body);
+//         done();
+//       });
+//   });
+// });
 
 describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
   it('should delete specified bucket', (done) => {

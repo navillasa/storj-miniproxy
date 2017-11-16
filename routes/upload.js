@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const url = require('url');
 
 const fileTitle = 'testPhoto-' + Date.now() + '.jpg';
 const uploadFilePath = './uploads/' + fileTitle;
@@ -16,7 +17,8 @@ let storage = multer.diskStorage({
 });
 
 // accepts a single file with field name 'dogPhoto'
-let upload = multer({ storage: storage }).single('dogPhoto');
+const upload = multer({ storage: storage });
+// console.log('***\n\n\n\n\n****', upload);
 
 router.post('/bucketList/:bucketId', (req, res) => {
   let storj = req.storj;
@@ -25,7 +27,7 @@ router.post('/bucketList/:bucketId', (req, res) => {
   function uploadFile() {
     console.log('entering uploadFile');
     let uploadFilePromise = new Promise((resolve, reject) => {
-      upload(req, res, function(err) {
+      upload.single('dogPhoto')(req, res, function(err) {
         if (err) {
           reject(err);
           res.end('multer error uploading file');
@@ -41,6 +43,7 @@ router.post('/bucketList/:bucketId', (req, res) => {
 
   function sendToBridge() {
     console.log('entering sendToBridge');
+    console.log('uploadFilePath: ', uploadFilePath);
     storj.storeFile(bucketId, uploadFilePath, {
       filename: fileTitle,
       progressCallback: (progress, uploadedBytes, totalBytes) => {
@@ -52,11 +55,21 @@ router.post('/bucketList/:bucketId', (req, res) => {
           return console.log(err);
         }
         console.log('File upload complete:', fileId);
+        // return res.redirect(url.format({
+        //   pathname: '/bucketList',
+        //   query: {
+        //     file_id: fileId,
+        //     message: 'success'
+        //   }
+        // }));
       }
     });
   }
 
-  uploadFile().then(sendToBridge);
+  uploadFile()
+    .then(sendToBridge).catch((err) => {
+    console.log(err)
+  });
 
   // sometimes this will redirect before file is uploaded
   // so the file won't appear in the browser-- needs fixing
