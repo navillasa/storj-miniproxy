@@ -3,8 +3,7 @@
 const request = require('supertest');
 const sinon = require('sinon');
 const chai = require('chai');
-const expect = require('chai').expect;
-const app = require('../app');
+const expect = require('chai').expect; const app = require('../app');
 
 describe('Tests loading express', function () {
   let server;
@@ -69,22 +68,11 @@ describe('Tests for GET /createBucket', function () {
       .expect(302)
       .end((err, res) => {
         if (err) throw err;
+        console.log('createBucket res:::::::', res);
         done();
       });
   });
 });
-
-// describe('POST /bucketList/:bucketId/upload', function () {
-//   it('should send chosen file to local server', (done) => {
-//     request(app)
-//       .post('bucketList/:bucketId/upload')
-//       .end((err, res) => {
-//         if (err) throw err;
-//         console.log('****req.body for upload POST', req.body);
-//         done();
-//       });
-//   });
-// });
 
 describe('Tests for POST /bucketList/:bucketId/upload', function () {
   it('should send chosen file to local server', (done) => {
@@ -100,19 +88,19 @@ describe('Tests for POST /bucketList/:bucketId/upload', function () {
   });
 });
 
-// describe('Tests for GET /bucketList/:bucketId/:fileId/download', function () {
-//   it('should download file within bucket', (done) => {
-//     let bucketId = 'e9980f248d1f5b62802e310a';
-//     let fileId = '02bcf6f87966f0bed8fe6fff';
-//     request(app)
-//       .get(`/bucketList/${bucketId}/${fileId}/download`)
-//       .end((err, res) => {
-//         if (err) throw err;
-//         // console.log('****res.body for file download', res.body);
-//         done();
-//       });
-//   });
-// });
+describe('Tests for GET /bucketList/:bucketId/:fileId/download', function () {
+  it('should download file within bucket', (done) => {
+    let bucketId = 'e9980f248d1f5b62802e310a';
+    let fileId = '1aab03a27cf38e34d9cbb703';
+    request(app)
+      .get(`/bucketList/${bucketId}/${fileId}/download`)
+      .end((err, res) => {
+        if (err) throw err;
+        // console.log('****res.body for file download', res.body);
+        done();
+      });
+  });
+});
 
 // describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
 //   it('should delete specified bucket', (done) => {
@@ -128,8 +116,9 @@ describe('Tests for POST /bucketList/:bucketId/upload', function () {
 
 // describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
 //   it('should delete file within bucket', (done) => {
+//     let bucketId = 'e9980f248d1f5b62802e310a';
 //     request(app)
-//       .get('/bucketList/fakeBucket/fakeFile')
+//       .get(`/bucketList/${bucketId}/fakeFile`)
 //       .end((err, res) => {
 //         if (err) throw err;
 //         done();
