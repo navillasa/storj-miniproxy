@@ -68,7 +68,6 @@ describe('Tests for GET /createBucket', function () {
       .expect(302)
       .end((err, res) => {
         if (err) throw err;
-        console.log('createBucket res:::::::', res);
         done();
       });
   });
@@ -110,10 +109,10 @@ describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
       .end((err, res) => {
         if (err) throw err;
         console.log('create bucket succeed');
-        const bucketId = ''
-        // get access to the bucket id  
+        let queryStr = res.header.location;
+        let bucketId = queryStr.substring(queryStr.indexOf('?') + 11, queryStr.indexOf('?') + 35);
         request(app)
-          .get('/bucketList/${bucketId}/deleteBucket')
+          .get(`/bucketList/${bucketId}/deleteBucket`)
           .expect(302)
           .end((err, res) => {
             done();
