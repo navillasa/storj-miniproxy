@@ -18,7 +18,7 @@ let storage = multer.diskStorage({
 // accepts a single file with field name 'dogPhoto'
 let upload = multer({ storage: storage }).single('dogPhoto');
 
-router.post('/bucketList/:bucketId/upload', (req, res) => {
+router.post('/bucketList/:bucketId', (req, res) => {
   let storj = req.storj;
   let bucketId = req.params.bucketId;
 
