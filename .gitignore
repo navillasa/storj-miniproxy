@@ -4,5 +4,5 @@ node_modules/
 .DS_Store
 downloads/
 .nyc_output/
-coverage
+coverage/
 testPhoto*

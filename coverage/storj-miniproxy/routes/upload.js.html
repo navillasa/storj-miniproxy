@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">58.82% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>20/34</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>30/34</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>5/10</span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">58.82% </span>
+        <span class="strong">90% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>9/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.24% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>20/34</span>
+        <span class='fraction'>30/34</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -122,8 +122,7 @@
 77
 78
 79
-80
-81</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+80</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -144,22 +143,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -167,20 +165,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,7 +196,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -221,9 +219,8 @@ let storage = multer.diskStorage({
   }
 });
 &nbsp;
-// accepts a single file with field name 'dogPhoto'
+// accepts a single file
 const upload = multer({ storage: storage });
-// console.log('***\n\n\n\n\n****', upload);
 &nbsp;
 router.post('/bucketList/:bucketId', (req, res) =&gt; {
   let storj = req.storj;
@@ -232,41 +229,41 @@ router.post('/bucketList/:bucketId', (req, res) =&gt; {
   function uploadFile() {
     console.log('entering uploadFile');
     let uploadFilePromise = new Promise((resolve, reject) =&gt; {
-      upload.single('dogPhoto')(req, res, <span class="fstat-no" title="function not covered" >fu</span>nction(err) {
-<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+      upload.single('file')(req, res, function(err) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
 <span class="cstat-no" title="statement not covered" >          reject(err);</span>
-<span class="cstat-no" title="statement not covered" >          res.end('multer error uploading file');</span>
+<span class="cstat-no" title="statement not covered" >          console.log('multer error uploading file');</span>
         } else {
-<span class="cstat-no" title="statement not covered" >          console.log('upload resolve');</span>
-<span class="cstat-no" title="statement not covered" >          resolve(req);</span>
-<span class="cstat-no" title="statement not covered" >          res.end('file successfully uploaded to local server!');</span>
+          console.log('upload resolve');
+          resolve(req);
+          console.log('file successfully uploaded to local server!');
         }
       });
     });
     return uploadFilePromise;
   }
 &nbsp;
-  function <span class="fstat-no" title="function not covered" >sendToBridge(</span>) {
-<span class="cstat-no" title="statement not covered" >    console.log('entering sendToBridge');</span>
-<span class="cstat-no" title="statement not covered" >    console.log('uploadFilePath: ', uploadFilePath);</span>
-<span class="cstat-no" title="statement not covered" >    storj.storeFile(bucketId, uploadFilePath, {</span>
+  function sendToBridge() {
+    console.log('entering sendToBridge');
+    console.log('uploadFilePath: ', uploadFilePath);
+    storj.storeFile(bucketId, uploadFilePath, {
       filename: fileTitle,
-      progressCallback: <span class="fstat-no" title="function not covered" >(p</span>rogress, uploadedBytes, totalBytes) =&gt; {
-<span class="cstat-no" title="statement not covered" >        console.log('Progress: %d, UploadedBytes: %d, TotalBytes: %d',</span>
+      progressCallback: (progress, uploadedBytes, totalBytes) =&gt; {
+        console.log('Progress: %d, UploadedBytes: %d, TotalBytes: %d',
             progress, uploadedBytes, totalBytes);
       },
-      finishedCallback: <span class="fstat-no" title="function not covered" >(e</span>rr, fileId) =&gt; {
-<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+      finishedCallback: (err, fileId) =&gt; {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
 <span class="cstat-no" title="statement not covered" >          return console.log(err);</span>
         }
-<span class="cstat-no" title="statement not covered" >        console.log('File upload complete:', fileId);</span>
-        // return res.redirect(url.format({
-        //   pathname: '/bucketList',
-        //   query: {
-        //     file_id: fileId,
-        //     message: 'success'
-        //   }
-        // }));
+        console.log('File upload complete:', fileId);
+        return res.redirect(url.format({
+          pathname: '/bucketList',
+          query: {
+            file_id: fileId,
+            message: 'success'
+          }
+        }));
       }
     });
   }
@@ -278,7 +275,7 @@ router.post('/bucketList/:bucketId', (req, res) =&gt; {
 &nbsp;
   // sometimes this will redirect before file is uploaded
   // so the file won't appear in the browser-- needs fixing
-  res.redirect('back');
+  // res.redirect('back');
 &nbsp;
 });
 &nbsp;
@@ -289,7 +286,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 16 2017 17:11:28 GMT-0500 (EST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 16 2017 17:35:33 GMT-0500 (EST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

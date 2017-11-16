@@ -78,11 +78,11 @@ describe('Tests for POST /bucketList/:bucketId', function () {
     let bucketId = 'e9980f248d1f5b62802e310a';
     request(app)
       .post(`/bucketList/${bucketId}`)
-      .attach('dogPhoto', 'test/test.jpg')
+      .attach('file', 'test/test.jpg')
       .expect(302)
       .end((err, res) => {
         if (err) throw err;
-        // console.log('posting test.jpg res:::::::', res);
+        console.log('posting test.jpg res:::::::', res);
         done();
       });
   });

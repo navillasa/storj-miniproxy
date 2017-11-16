@@ -16,9 +16,8 @@ let storage = multer.diskStorage({
   }
 });
 
-// accepts a single file with field name 'dogPhoto'
+// accepts a single file
 const upload = multer({ storage: storage });
-// console.log('***\n\n\n\n\n****', upload);
 
 router.post('/bucketList/:bucketId', (req, res) => {
   let storj = req.storj;
@@ -27,14 +26,14 @@ router.post('/bucketList/:bucketId', (req, res) => {
   function uploadFile() {
     console.log('entering uploadFile');
     let uploadFilePromise = new Promise((resolve, reject) => {
-      upload.single('dogPhoto')(req, res, function(err) {
+      upload.single('file')(req, res, function(err) {
         if (err) {
           reject(err);
-          res.end('multer error uploading file');
+          console.log('multer error uploading file');
         } else {
           console.log('upload resolve');
           resolve(req);
-          res.end('file successfully uploaded to local server!');
+          console.log('file successfully uploaded to local server!');
         }
       });
     });
@@ -55,13 +54,13 @@ router.post('/bucketList/:bucketId', (req, res) => {
           return console.log(err);
         }
         console.log('File upload complete:', fileId);
-        // return res.redirect(url.format({
-        //   pathname: '/bucketList',
-        //   query: {
-        //     file_id: fileId,
-        //     message: 'success'
-        //   }
-        // }));
+        return res.redirect(url.format({
+          pathname: '/bucketList',
+          query: {
+            file_id: fileId,
+            message: 'success'
+          }
+        }));
       }
     });
   }
@@ -73,7 +72,7 @@ router.post('/bucketList/:bucketId', (req, res) => {
 
   // sometimes this will redirect before file is uploaded
   // so the file won't appear in the browser-- needs fixing
-  res.redirect('back');
+  // res.redirect('back');
 
 });
 
