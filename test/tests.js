@@ -82,9 +82,24 @@ describe('Tests for POST /bucketList/:bucketId', function () {
       .expect(302)
       .end((err, res) => {
         if (err) throw err;
-        console.log('posting test.jpg res:::::::', res);
+        // console.log('posting test.jpg res:::::::', res);
+        let queryStr = res.header.location;
+        let bucketId = queryStr.substring(queryStr.indexOf('?') + 9, queryStr.indexOf('?') + 33);
+        console.log('HELLO IM THE BUCKETID', bucketId);
         done();
       });
+  });
+});
+
+describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
+  it('should delete file within bucket', (done) => {
+    let bucketId = 'e9980f248d1f5b62802e310a';
+    request(app)
+      .get(`/bucketList/${bucketId}/fakeFile`)
+      .end((err, res) => {
+        if (err) throw err;
+        done();
+      })
   });
 });
 
@@ -121,15 +136,3 @@ describe('Tests for GET /bucketList/:bucketId/deleteBucket', function () {
       });
   });
 });
-
-// describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
-//   it('should delete file within bucket', (done) => {
-//     let bucketId = 'e9980f248d1f5b62802e310a';
-//     request(app)
-//       .get(`/bucketList/${bucketId}/fakeFile`)
-//       .end((err, res) => {
-//         if (err) throw err;
-//         done();
-//       })
-//   });
-// });
