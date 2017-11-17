@@ -7,6 +7,7 @@ const bucketList = require('../routes/bucketList');
 const bucketPage = require('../routes/bucketPage');
 const createBucket = require('../routes/createBucket');
 const deleteBucket = require('../routes/deleteBucket');
+const deleteFile = require('../routes/deleteFile');
 const { Environment } = require('storj');
 
 describe.only('Unit tests for methods in routes', () => {
@@ -72,6 +73,21 @@ describe.only('Unit tests for methods in routes', () => {
     });
   });
 
+  it('should call deleteFile with error', (done) => {
+    const req = {
+      storj: {
+        deleteFile: sinon.stub().callsArgWith(2, new Error('test'))
+      },
+      params: {
+        bucketId: '50141fe9acaaab4e7b52e2e1',
+        fileId: '9a662ffcc463d6afad552bfd'
+      }
+    };
+    const res = {};
+    deleteFile(req, res, (err) => {
+      expect(err.message).to.equal('test');
+      done();
+    });
+  });
     
-
 });
