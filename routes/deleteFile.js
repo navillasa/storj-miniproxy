@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/bucketList/:bucketId/:fileId/deleteFile', (req, res) => {
+module.exports = (req, res) => {
   let storj = req.storj;
   let bucketId = req.params.bucketId;
   let fileId = req.params.fileId;
@@ -16,6 +16,4 @@ router.get('/bucketList/:bucketId/:fileId/deleteFile', (req, res) => {
 
   res.redirect('back');
 
-});
-
-module.exports = router;
+}

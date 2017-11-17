@@ -3,7 +3,7 @@ const router = express.Router();
 
 const downloadFilePath = './downloads/test' + Date.now() + '.jpg';
 
-router.get('/bucketList/:bucketId/:fileId/download', (req, res) => {
+module.exports = (req, res) => {
   let storj = req.storj;
   let bucketId = req.params.bucketId;
   let fileId = req.params.fileId;
@@ -22,6 +22,4 @@ router.get('/bucketList/:bucketId/:fileId/download', (req, res) => {
       res.end('file downloaded!');
     }
   });
-});
-
-module.exports = router;
+}

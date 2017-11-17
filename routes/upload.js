@@ -16,16 +16,16 @@ let storage = multer.diskStorage({
   }
 });
 
-// accepts a single file
 const upload = multer({ storage: storage });
 
-router.post('/bucketList/:bucketId', (req, res) => {
+module.exports = (req, res) => {
   let storj = req.storj;
   let bucketId = req.params.bucketId;
 
   function uploadFile() {
     console.log('entering uploadFile');
     let uploadFilePromise = new Promise((resolve, reject) => {
+      // accepts a single file
       upload.single('file')(req, res, function(err) {
         if (err) {
           reject(err);
@@ -70,10 +70,4 @@ router.post('/bucketList/:bucketId', (req, res) => {
     console.log(err)
   });
 
-  // sometimes this will redirect before file is uploaded
-  // so the file won't appear in the browser-- needs fixing
-  // res.redirect('back');
-
-});
-
-module.exports = router;
+}

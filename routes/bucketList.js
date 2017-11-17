@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
+module.exports = (req, res, next) => {
   let storj = req.storj;
 
   // gets buckets
   storj.getBuckets((err, buckets) => {
     if (err) {
-      return console.log(err);
+      return res.send(err);
     }
 
     // renders buckets to bucketList page
@@ -18,6 +18,4 @@ router.get('/', (req, res, next) => {
       buckets: buckets, // this could be more specific
     });
   });
-});
-
-module.exports = router;
+}

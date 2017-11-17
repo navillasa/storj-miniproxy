@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // creates bucket page
-router.get('/bucketList/:bucketId', (req, res, next) => {
+module.exports = (req, res, next) => {
   let storj = req.storj;
   let bucketId = req.params.bucketId;
 
@@ -18,6 +18,4 @@ router.get('/bucketList/:bucketId', (req, res, next) => {
       files: bucketFiles
     });
   });
-});
-
-module.exports = router;
+}

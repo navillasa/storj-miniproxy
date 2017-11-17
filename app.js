@@ -49,13 +49,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', index);
-app.use('/bucketList', bucketList);
-app.use('/', bucketPage);
-app.use('/', upload);
-app.use('/', download);
-app.use('/', deleteFile);
-app.use('/', deleteBucket);
-app.use('/createBucket', createBucket);
+app.get('/bucketList', bucketList);
+// app.use('/', bucketPage);
+// app.use('/', upload);
+// app.use('/', download);
+// app.use('/', deleteFile);
+// app.use('/', deleteBucket);
+// app.use('/createBucket', createBucket);
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use('/', index);
+// app.use('/', bucketList);
+app.get('/bucketList/:bucketId', bucketPage);
+app.post('/bucketList/:bucketId', upload);
+app.get('/bucketList/:bucketId/:fileId/download', download);
+app.get('/bucketList/:bucketId/:fileId/deleteFile', deleteFile);
+app.get('/bucketList/:bucketId/deleteBucket', deleteBucket);
+app.get('/createBucket', createBucket);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler

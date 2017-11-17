@@ -3,7 +3,8 @@
 const request = require('supertest');
 const sinon = require('sinon');
 const chai = require('chai');
-const expect = require('chai').expect; const app = require('../app');
+const expect = require('chai').expect;
+const app = require('../app');
 
 describe('Tests loading express', function () {
   let server;
@@ -32,7 +33,9 @@ describe('Tests loading express', function () {
 });
 
 describe('Tests for GET /bucketList', function () {
-  let getListStub = sinon.stub();
+  const sandbox = sinon.sandbox.create();
+  afterEach(() => sandbox.restore());
+
   it('should respond with 200 and bucketList page', function (done) {
     request(app)
       .get('/bucketList')
@@ -42,16 +45,6 @@ describe('Tests for GET /bucketList', function () {
           return done(err);
         }
         expect(res.ok).to.equal(true);
-        done();
-      });
-  });
-
-  it('should respond with 404 and null', (done) => {
-    getListStub.returns(null);
-    request(app)
-      .get('/bucketList')
-      .expect(404, (err, res) => {
-        expect(res.body).to.equal({});
         done();
       });
   });

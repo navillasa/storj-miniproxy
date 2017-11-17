@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const url = require('url'); 
 
-router.get('/', (req, res, next) => {
+module.exports = (req, res, next) => {
   const storj = req.storj;
 
   // assigns test bucket name
@@ -22,6 +22,4 @@ router.get('/', (req, res, next) => {
       } 
     }));
   });
-});
-
-module.exports = router;
+}
