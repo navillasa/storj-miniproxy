@@ -32,14 +32,26 @@ describe('Tests loading express', function () {
 });
 
 describe('Tests for GET /bucketList', function () {
-  it('should respond with bucketList page', function (done) {
+  let getListStub = sinon.stub();
+  it('should respond with 200 and bucketList page', function (done) {
     request(app)
       .get('/bucketList')
+      .expect(200)
       .end((err, res) => {
-        if (err) throw err;
-        expect(res.statusCode).to.equal(200);
+        if (err) {
+          return done(err);
+        }
         expect(res.ok).to.equal(true);
-        expect(res.body).to.be.empty;
+        done();
+      });
+  });
+
+  it('should respond with 404 and null', (done) => {
+    getListStub.returns(null);
+    request(app)
+      .get('/bucketList')
+      .expect(404, (err, res) => {
+        expect(res.body).to.equal({});
         done();
       });
   });
@@ -74,7 +86,7 @@ describe('Tests for GET /createBucket', function () {
 });
 
 describe('Tests for POST /bucketList/:bucketId', function () {
-  this.timeout(7000);
+  this.timeout(4000);
   it('should send chosen file to local server', (done) => {
     let bucketId = 'e9980f248d1f5b62802e310a';
     request(app)
@@ -92,7 +104,7 @@ describe('Tests for POST /bucketList/:bucketId', function () {
 });
 
 describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
-  this.timeout(7000);
+  this.timeout(4000);
   it('should delete file within bucket', (done) => {
     let bucketId = 'e995ee7cd50855b04ba2528a';
     request(app)
