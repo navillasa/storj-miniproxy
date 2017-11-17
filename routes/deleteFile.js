@@ -7,7 +7,7 @@ module.exports = (req, res) => {
   let fileId = req.params.fileId;
 
   // deletes file
-  storj.deleteFile(bucketId, fileId, function (err) {
+  storj.deleteFile(bucketId, fileId, (err) => {
     if (err) {
       return console.log(err);
     }

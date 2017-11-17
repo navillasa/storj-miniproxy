@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
     res.render('bucketList', {
       layout: 'layout',
       title: 'List of Buckets',
-      buckets: buckets, // this could be more specific
+      buckets: buckets
     });
   });
 }

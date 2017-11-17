@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
   // gets files inside bucket 
   storj.listFiles(bucketId, (err, bucketFiles) => {
     if (err) {
-      return err;
+      return next(err);
     }
 
     res.render('bucket', {
