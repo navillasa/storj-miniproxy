@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
   // creates bucket
   storj.createBucket(testBucketName, (err, bucket) => {
     if (err) {
-      return console.log(err);
+      return next(err);
     }
     return res.redirect(url.format({
       pathname: '/bucketList',
