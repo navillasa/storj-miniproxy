@@ -8,6 +8,7 @@ const bucketPage = require('../routes/bucketPage');
 const createBucket = require('../routes/createBucket');
 const deleteBucket = require('../routes/deleteBucket');
 const deleteFile = require('../routes/deleteFile');
+const download = require('../routes/download');
 const { Environment } = require('storj');
 
 describe.only('Unit tests for methods in routes', () => {
@@ -89,5 +90,24 @@ describe.only('Unit tests for methods in routes', () => {
       done();
     });
   });
-    
+
+  it('should call download with error', (done) => {
+    const req = {
+      storj: {
+        resolveFile: sinon.stub().onCall(0).returns(1),
+        progressCallback: sinon.stub().onCall(0).returns(1),
+        finishedCallback: sinon.stub().callsArgWith(0, new Error('test'))
+      },
+      params: {
+        bucketId: '4755483a2a2d3c5249ac9e10',
+        fileId: '9520ecd823b3ebb40d716a52'
+      }
+    };
+    const res = {};
+    download(req, res, (err) => {
+      expect(err.message).to.equal('test');
+      done();
+    });
+  });
+      
 });
