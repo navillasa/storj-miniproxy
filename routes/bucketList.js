@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
   // gets buckets
   storj.getBuckets((err, buckets) => {
     if (err) {
-      return res.send(err);
+      return next(err);
     }
 
     // renders buckets to bucketList page
