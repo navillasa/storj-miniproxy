@@ -3,7 +3,7 @@ const router = express.Router();
 
 const downloadFilePath = './downloads/test' + Date.now() + '.jpg';
 
-module.exports = (req, res) => {
+module.exports = (req, res, next) => {
   let storj = req.storj;
   let bucketId = req.params.bucketId;
   let fileId = req.params.fileId;
@@ -16,10 +16,9 @@ module.exports = (req, res) => {
     },
     finishedCallback: (err) => {
       if (err) {
-        return console.log(err);
+        return next(err);
       }
       console.log('file download complete!');
-      res.end('file downloaded!');
     }
   });
 }

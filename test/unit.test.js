@@ -92,11 +92,12 @@ describe.only('Unit tests for methods in routes', () => {
   });
 
   it('should call download with error', (done) => {
+    let resolveFile = function(bucketId, fileId, downloadFilePath, options) {
+      options.finishedCallback(new Error('test'));
+    }
     const req = {
       storj: {
-        resolveFile: sinon.stub().onCall(0).returns(1),
-        progressCallback: sinon.stub().onCall(0).returns(1),
-        finishedCallback: sinon.stub().callsArgWith(0, new Error('test'))
+        resolveFile: resolveFile
       },
       params: {
         bucketId: '4755483a2a2d3c5249ac9e10',
