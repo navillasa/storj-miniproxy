@@ -22,8 +22,6 @@ module.exports = (req, res, next) => {
   let storj = req.storj;
   let bucketId = req.params.bucketId;
 
-  console.log('!!!!!!!!!!');
-
   function uploadFile() {
     console.log('entering uploadFile');
     let uploadFilePromise = new Promise((resolve, reject) => {

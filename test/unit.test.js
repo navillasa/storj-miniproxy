@@ -113,25 +113,40 @@ describe('Unit tests for methods in routes', () => {
     });
   });
 
-  it.only('should call upload to local server with error', function(done) {
+  it('should call upload to local server with error', function(done) {
     const upload = sandbox.stub().callsArgWith(2, new Error('test1'));
     const testUploadFunction = proxyquire('../routes/upload', {
       'multer': sandbox.stub().returns({
         'single': sandbox.stub().returns(upload)
       })
     });
-    
-    // let storeFile = (bucketId, uploadFilePath, options) => {
-    //   options.finishedCallback(new Error('test2'));
-    // };
-    // let uploadFile = function() {
-    //   let uploadFilePromise = new Promise((resolve, reject) => {
-    //     upload(req, res, (new Error('test')));
-    //   });
-    // }
+    const req = {
+      storj: {},
+      params: {
+        bucketId: '4915b3e3ccb5777955827fa5'
+      }
+    };
+    const res = {
+      redirect: 'test'
+    };
+    testUploadFunction(req, res, (err) => {
+      expect(err.message).to.equal('test1');
+      done();
+    });
+  });
+
+  it.only('should call sendToBridge upload with error', function(done) {
+    const upload = sandbox.stub().callsArg(2);
+    const testUploadFunction = proxyquire('../routes/upload', {
+      'multer': sandbox.stub().returns({
+        'single': sandbox.stub().returns(upload)
+      })
+    });
     const req = {
       storj: {
-        // storeFile: storeFile
+        storeFile: function(bucketId, uploadFilePath, options) {
+      options.finishedCallback(new Error('test2'))
+        }
       },
       params: {
         bucketId: '4915b3e3ccb5777955827fa5'
@@ -140,33 +155,10 @@ describe('Unit tests for methods in routes', () => {
     const res = {
       redirect: 'test'
     };
-    // let upload = sinon.stub().callsArgWith(2, new Error('test'));
     testUploadFunction(req, res, (err) => {
-
-      expect(err.message).to.equal('test1');
+      expect(err.message).to.equal('test2');
       done();
     });
   });
-
-  // it('should call sendToBridge upload with error', (done) => {
-  //   let storeFile = (bucketId, uploadFilePath, options) => {
-  //     options.finishedCallback(new Error('test'));
-  //   };
-  //   const req = {
-  //     storj: {
-  //       storeFile: storeFile
-  //     },
-  //     params: {
-  //       bucketId: '4915b3e3ccb5777955827fa5'
-  //     }
-  //   };
-  //   const res = {
-  //     redirect: 'test'
-  //   };
-  //   uploadFunction(req, res, (err) => {
-  //     expect(err.message).to.equal('test');
-  //     done();
-  //   });
-  // });
       
 });
