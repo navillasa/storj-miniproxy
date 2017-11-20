@@ -88,7 +88,6 @@ describe('Tests for POST /bucketList/:bucketId', function () {
       .expect(302)
       .end((err, res) => {
         if (err) throw err;
-        // console.log('posting test.jpg res:::::::', res);
         let queryStr = res.header.location;
         let bucketId = queryStr.substring(queryStr.indexOf('?') + 9, queryStr.indexOf('?') + 33);
         done();
@@ -106,7 +105,6 @@ describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
       .expect(302)
       .end((err, res) => {
         if (err) throw err;
-        // console.log('posting test.jpg res:::::::', res);
         let queryStr = res.header.location;
         let fileId = queryStr.substring(queryStr.indexOf('?') + 9, queryStr.indexOf('?') + 33);
         request(app)
@@ -122,12 +120,11 @@ describe('Tests for GET /bucketList/:bucketId/:fileId/deleteFile', function () {
 describe('Tests for GET /bucketList/:bucketId/:fileId/download', function () {
   it('should download file within bucket', (done) => {
     let bucketId = 'e9980f248d1f5b62802e310a';
-    let fileId = '3da48174708033faf9985584';
+    let fileId = 'ff334080c8171c2e13d78a81';
     request(app)
       .get(`/bucketList/${bucketId}/${fileId}/download`)
       .end((err, res) => {
         if (err) throw err;
-        // console.log('****res.body for file download', res.body);
         done();
       });
   });

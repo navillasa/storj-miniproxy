@@ -135,7 +135,7 @@ describe('Unit tests for methods in routes', () => {
     });
   });
 
-  it.only('should call sendToBridge upload with error', function(done) {
+  it('should call sendToBridge upload with error', function(done) {
     const upload = sandbox.stub().callsArg(2);
     const testUploadFunction = proxyquire('../routes/upload', {
       'multer': sandbox.stub().returns({

@@ -16,6 +16,7 @@ let storage = multer.diskStorage({
   }
 });
 
+// accepts a single file
 const upload = multer({ storage: storage }).single('file');
 
 module.exports = (req, res, next) => {
@@ -25,7 +26,6 @@ module.exports = (req, res, next) => {
   function uploadFile() {
     console.log('entering uploadFile');
     let uploadFilePromise = new Promise((resolve, reject) => {
-      // accepts a single file
       upload(req, res, function(err) {
         if (err) {
           console.log('multer error uploading file');
@@ -42,7 +42,6 @@ module.exports = (req, res, next) => {
 
   function sendToBridge() {
     console.log('entering sendToBridge');
-    console.log('uploadFilePath: ', uploadFilePath);
     storj.storeFile(bucketId, uploadFilePath, {
       filename: fileTitle,
       progressCallback: (progress, uploadedBytes, totalBytes) => {
