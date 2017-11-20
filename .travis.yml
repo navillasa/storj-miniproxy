@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "6"
+dist: trusty
+sudo: true
 env:
   - CXX=g++-4.8
 addons:
@@ -9,6 +11,12 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-# before_script:
-#   - npm rebuild node-gyp
+compiler:
+  - clang
+  - gcc
+before_install:
+  - ./.travis.sh
+script:
+  - npm install
+  - npm run test
 after_success: npm run coverage
