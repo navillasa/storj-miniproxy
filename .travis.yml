@@ -14,8 +14,6 @@ addons:
 compiler:
   - clang
   - gcc
-before_install:
-  - .travis.sh
 script:
   - npm install
   - npm run test
