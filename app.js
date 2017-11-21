@@ -52,7 +52,7 @@ app.use('/', index);
 app.get('/bucketList', bucketList);
 app.get('/bucketList/:bucketId', bucketPage);
 app.post('/bucketList/:bucketId', upload);
-app.get('/bucketList/:bucketId/:fileId/download', download);
+app.get('/bucketList/:bucketId/:fileId', download);
 app.get('/bucketList/:bucketId/:fileId/deleteFile', deleteFile);
 app.get('/bucketList/:bucketId/deleteBucket', deleteBucket);
 app.get('/createBucket', createBucket);
