@@ -2,15 +2,17 @@ language: node_js
 node_js:
   - "6"
 dist: trusty
-sudo: true
+sudo: required 
+before_install:
+  - npm install -g node-gyp
 env:
-  - CXX=g++-4.8
+  - CXX=g++-5
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
+      - g++-5
 compiler:
   - clang
   - gcc
