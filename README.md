@@ -152,7 +152,6 @@ docker stop $(docker ps -q)
 
 #### Current Goals
  - Rewrite routes without the redundant endpoint names.
- - Write error handling in tests to increase branch coverage-- i.e. if file not found, expect error.
  - Fix Travis build error.
 
 #### Issues
