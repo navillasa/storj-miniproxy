@@ -20,6 +20,10 @@ Functionalities:
   * [node-libstorj](https://github.com/Storj/node-libstorj)
   * [dotenv](https://github.com/motdotla/dotenv)
 
+## Instructions
+After setting up a local bridge server (instructions below) using either storj-integration or storj-sdk, use `npm install` then `npm start`.
+Then you can check `http://localhost:7000` to see if the app's index page is there.
+
 ## Connecting to a Bridge Server
 [Storj-SDK](https://github.com/Storj/storj-sdk) is recommended for setting up the bridge server for use with this app. See storj-sdk README for setup.
 Inside your storj-sdk repo, you can check what containers are running with this command:
