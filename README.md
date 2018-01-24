@@ -87,6 +87,13 @@ Finally, make sure that you are connected to the storj-local VPN! See the storj-
 
 ### Troubleshooting Bridge Access with [Storj-Integration](https://github.com/Storj/integration)
 
+Every time you start a new integration instance, you're going to need to register a new user. This user's username and password will be saved to the Mongo database in the integration container.
+
+You can register a new user with the command:
+```
+storj -u http://localhost:6382 register
+```
+
 When attempting to use the `bucketList` route to list buckets, I ran into the following error:
 ```
 GET /bucketList - - ms - -
