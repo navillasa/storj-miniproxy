@@ -25,7 +25,7 @@ After setting up a local bridge server (instructions below) using either storj-i
 Then you can check `http://localhost:7000` to see if the app's index page is there.
 
 ## Connecting to a Bridge Server
-[Storj-SDK](https://github.com/Storj/storj-sdk) is recommended for setting up the bridge server for use with this app. See storj-sdk README for setup.
+See [Storj-SDK](https://github.com/Storj/storj-sdk) README for setup.
 Inside your storj-sdk repo, you can check what containers are running with this command:
 ```bash
 docker-compose ps
