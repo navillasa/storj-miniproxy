@@ -1,6 +1,6 @@
 # storj-miniproxy
 
-This app is a mini "gateway" to the Storj library built using libstorj and node-libstorj.
+This app is a mini Express app "gateway" to the Storj library built using libstorj and node-libstorj.
 
 Functionalities:
   * Listing current bridge user's buckets
