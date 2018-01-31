@@ -55,6 +55,8 @@ In your `~/.storj` directory (for OSX) there should be some IP.json files. Make 
 
 Now, when you use the command `storj export-keys`, the resulting email, password, and encryption key need to be saved to your `.env` file respectively as `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY`.
 
+### Troubleshooting Storj-SDK
+
 Once inside the storj-sdk directory...
 To check your hosts:
 ```bash
