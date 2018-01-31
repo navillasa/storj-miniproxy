@@ -5,7 +5,7 @@ This app is a mini Express app "gateway" to the Storj library built using libsto
 Functionalities:
   * Listing current bridge user's buckets
   * Adding and removing buckets
-  * Uploading, downloading, and removing files from a bucket
+  * Uploading, downloading, and removing files (image/text only) from a bucket
   
 ## Sections
 * [Connecting to a Bridge Server with Storj-SDK](#connecting-to-a-bridge-server-with-storj-sdk)
@@ -20,6 +20,7 @@ Functionalities:
   * [dotenv](https://github.com/motdotla/dotenv)
 
 ## Instructions
+You will need the CLI included with [libstorj](https://github.com/Storj/libstorj).
 After setting up a local bridge server (instructions below) using either storj-integration or storj-sdk, use `npm install` then `npm start`.
 Then you can check `http://localhost:7000` to see if the app's index page is there.
 
@@ -83,7 +84,7 @@ Finally, make sure that you are connected to the storj-local VPN! See the storj-
 
 
 ### Connecting to a Bridge Server with [Storj-Integration](https://github.com/Storj/integration)
-
+See [Storj-Integration](https://github.com/Storj/integration) README for setup.
 Every time you start a new integration instance, you're going to need to register a new user. This user's username and password will be saved to the Mongo database in the integration container.
 
 You can register a new user with the command:
