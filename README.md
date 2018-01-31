@@ -8,9 +8,8 @@ Functionalities:
   * Uploading, downloading, and removing files from a bucket
   
 ## Sections
-* [Connecting to a Bridge Server](#connecting-to-a-bridge-server)
-* [Troubleshooting Bridge Access with Storj-SDK](#troubleshooting-bridge-access-with-storj-sdk)
-* [Troubleshooting Bridge Access with Storj-Integration](#troubleshooting-bridge-access-with-storj-integration)
+* [Connecting to a Bridge Server with Storj-SDK](#connecting-to-a-bridge-server-with-storj-sdk)
+* [Connecting to a Bridge Server with Storj-Integration](#connecting-to-a-bridge-server-with-storj-integration)
 * [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
 * [Useful Docker Commands](#useful-docker-commands)
 * [Development Process](#development-process)
@@ -24,7 +23,8 @@ Functionalities:
 After setting up a local bridge server (instructions below) using either storj-integration or storj-sdk, use `npm install` then `npm start`.
 Then you can check `http://localhost:7000` to see if the app's index page is there.
 
-## Connecting to a Bridge Server
+### Connecting to a Bridge Server with [Storj-SDK](https://github.com/Storj/storj-sdk)
+
 See [Storj-SDK](https://github.com/Storj/storj-sdk) README for setup.
 Inside your storj-sdk repo, you can check what containers are running with this command:
 ```bash
@@ -54,9 +54,6 @@ In your `~/.storj` directory (for OSX) there should be some IP.json files. Make 
 
 Now, when you use the command `storj export-keys`, the resulting email, password, and encryption key need to be saved to your `.env` file respectively as `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY`.
 
-
-### Troubleshooting Bridge Access with [Storj-SDK](https://github.com/Storj/storj-sdk)
-
 Once inside the storj-sdk directory...
 To check your hosts:
 ```bash
@@ -85,7 +82,7 @@ You may have to rename your .json file with the correct IP address.
 Finally, make sure that you are connected to the storj-local VPN! See the storj-sdk README for specific setup.
 
 
-### Troubleshooting Bridge Access with [Storj-Integration](https://github.com/Storj/integration)
+### Connecting to a Bridge Server with [Storj-Integration](https://github.com/Storj/integration)
 
 Every time you start a new integration instance, you're going to need to register a new user. This user's username and password will be saved to the Mongo database in the integration container.
 
@@ -94,7 +91,7 @@ You can register a new user with the command:
 storj -u http://localhost:6382 register
 ```
 
-When attempting to use the `bucketList` route to list buckets, I ran into the following error:
+NB: When attempting to use the `bucketList` route to list buckets, I ran into the following error:
 ```
 GET /bucketList - - ms - -
 Error: Not authorized
@@ -126,7 +123,7 @@ To check your current bridge username, password, and encryption key, you can als
 ```bash
 storj -u http://localhost:6382 export-keys
 ```
-<b>These credentials</b> are the ones that need to be in your `.env` file, respectively assigned to `BRIDGE_EMAIL`, `BRIDGE_PASS`, `ENCRYPT_KEY`.
+These credentials are the ones that need to be in your `.env` file, respectively assigned to `BRIDGE_EMAIL`, `BRIDGE_PASS`, `ENCRYPT_KEY`.
 
 You can also view what users are associated with the container.
 First use the docker shell to get into a mongo shell:
