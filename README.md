@@ -21,7 +21,6 @@ Functionalities:
   * [dotenv](https://github.com/motdotla/dotenv)
 
 ## Instructions
-You will need the CLI included with [libstorj](https://github.com/Storj/libstorj).
 After setting up a local bridge server (instructions below) using either storj-integration or storj-sdk, use `npm install` then `npm start`.
 Then you can check `http://localhost:7000` to see if the app's index page is there.
 
@@ -57,7 +56,6 @@ In your `~/.storj` directory (for OSX) there should be some IP.json files. Make 
 Now, when you use the command `storj export-keys`, the resulting email, password, and encryption key need to be saved to your `.env` file respectively as `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY`.
 
 ### Troubleshooting Bridge Access with Storj-SDK
-
 Once inside the storj-sdk directory...
 To check your hosts:
 ```bash
@@ -94,6 +92,7 @@ You can register a new user with the command:
 ```
 storj -u http://localhost:6382 register
 ```
+The `storj` prefix is used to access the CLI included with [libstorj](https://github.com/Storj/libstorj).
 
 NB: When attempting to use the `bucketList` route to list buckets, I ran into the following error:
 ```
