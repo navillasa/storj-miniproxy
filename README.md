@@ -17,12 +17,11 @@ Functionalities:
 
 ## Required Dependencies
   * [libstorj](https://github.com/Storj/libstorj)
-  * [node-libstorj](https://github.com/Storj/node-libstorj)
   * [dotenv](https://github.com/motdotla/dotenv)
 
 ## Instructions
 After setting up a local bridge server (instructions below) using either storj-integration or storj-sdk, use `npm install` then `npm start`.
-Then you can check `http://localhost:7000` to see if the app's index page is there.
+Then you can check `http://localhost:7000` to see if the app's index page is there. The reason for not using `http://localhost:3000` is because Docker runs on that port, which you will need to run your Storj test server.
 
 ### Connecting to a Bridge Server with [Storj-SDK](https://github.com/Storj/storj-sdk)
 
