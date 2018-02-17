@@ -14,7 +14,7 @@ Functionalities:
 * [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
 * [Useful Docker Commands](#useful-docker-commands)
 * [Development Process](#development-process)
-* [Work in Progress - Notes on Building from Scratch](#work-in-progress--building-from-scratch)
+* [Work in Progress - Building from Scratch](#work-in-progress-building-from-scratch)
 
 ## Required Dependencies
   * [node-libstorj](https://github.com/Storj/node-libstorj)
