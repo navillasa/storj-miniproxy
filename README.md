@@ -20,10 +20,11 @@ Functionalities:
   * [dotenv](https://github.com/motdotla/dotenv)
 
 ## Instructions
-[2/17/18 - Note that if you first install libstorj then try to install node-libstorj, this will cause node-libstorj will break. So for this project, you will just need node-libstorj which you should install like this:
+
+2/17/18 - Note that if you first install libstorj then try to install node-libstorj, this will cause node-libstorj will break. So for this project, you will just need node-libstorj which you should install like this:
 ```
 npm install github:storj/node-libstorj --save
-```]
+```
 The dotenv module can be installed the normal way with `npm install dotenv --save`.
 After setting up a local bridge server (instructions below) using either storj-integration or storj-sdk, use `npm install` then `npm start`.
 Then you can check `http://localhost:7000` to see if the app's index page is there. The reason for not using `http://localhost:3000` is because Docker runs on that port, which you will need to run your Storj test server.
