@@ -183,18 +183,22 @@ This was because I had the incorrect `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT
 
 ## Work in Progress - Notes on Building from Scratch
 
-#### [1.] Create a Local Storj Development Network
+#### 1. Create a Local Storj Development Network
 First you will need to git clone the Storj Integration repo with the following command:
 ```
 git clone git@github.com:Storj/integration.git. 
 ```
 ****** more here .....
 
-#### [2.] Register a Bridge User to Interact with Your Local Network
+#### 2. Register a Bridge User to Interact with Your Local Network
 Now that you have integration’s local sandbox environment running, you need to create a user login and password to interact with the network and have the ability to view, create, list buckets, and upload and download files.
-Now that you have libstorj installed, you can use the CLI to create this user with the command `storj -u http://localhost:6382 register`. This specifically registers a user with the local “integration” network that you’re running using localhost:6382. You will then be prompted for your bridge username (email) and password. The Storj CLI will then generate a secret key for you which it will use to encrypt your files, but first it will ask you what encryption strength to use (128, 160, 192, 224, or 256, with 256-bit being the strongest and recommended).
+
+With node-libstorj installed, you can use the CLI to create this user with the command `storj -u http://localhost:6382 register`. This specifically registers a user with the local “integration” network that you’re running using localhost:6382. You will then be prompted for your bridge username (email) and password. The Storj CLI will then generate a secret key for you which it will use to encrypt your files, but first it will ask you what encryption strength to use (128, 160, 192, 224, or 256, with 256-bit being the strongest and recommended).
+
 Once you input your secret key strength, you will be given your encryption key, a 24-word mnemonic, which you will later need for this project to decrypt any files that you upload to the Storj network-- so make sure to write it down and don’t leave it in a place where it can be hacked or stolen.
+
 Now that you’ve registered a bridge user for your local network, you need to activate that user’s credentials. You can do this by going to your shell that’s running integration. Next to the `root#` prompt, you can enter the MongoDB shell by using the command `mongo`.
+
 Then you can connect to the `storj-sandbox` database to look for users with the following commands:
 ```
 db = connect(‘storj-sandbox’)
@@ -205,17 +209,20 @@ Your bridge user account that you created with the CLI should then be listed her
 db.users.findOneAndUpdate({_id:’<your email>’}, {$set:{activated: true, activator: null}});
 ```
 
-#### [3.] Begin Creating an Express App
-	While not required, using the Express application generator may save some time in setting up your Express app because it creates an application skeleton and installs the Express command-line tool. To do this, use the command:
+#### 3. Begin Creating an Express App
+While not required, using the Express application generator may save some time in setting up your Express app because it creates an application skeleton and installs the Express command-line tool. To do this, use the command:
 ```
 npm install express-generator -g
 ```
 Within your project folder, you can then use the command `express --view=hbs storj-miniproxy`  to generate the express app and set its view engine to Handlebars.
+
 Then install dependencies: `npm install --save dotenv express-handlebars multer`. We will talk about these dependencies later on as we continue to develop the app.
 
-[4.] Enabling Your App to Talk to Your Local Test Network
+#### 4. Enabling Your App to Talk to Your Local Test Network
 In order to let your app access your local test network (the one that you set up in Step 1), you need to set those variables in a way that your app can use then, while also protecting your password and encryption key (even though you’re only connecting your app to a local test network for now, you wouldn’t want to forget and later upload your login secrets to Github where anyone could use them and unlock your data!)
+
 In order to solve this problem, we use the Dotenv module to protect our environment variables (which we npm installed in the last step).
+
 Now, create a file named `.env` in the root of your project folder. In the `.env` folder, you should have the following variables:
 ```
 BRIDGE_URL=’http://localhost:6382’
