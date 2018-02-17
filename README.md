@@ -17,6 +17,7 @@ Functionalities:
 
 ## Required Dependencies
   * [libstorj](https://github.com/Storj/libstorj)
+  * [node-libstorj](https://github.com/Storj/node-libstorj)
   * [dotenv](https://github.com/motdotla/dotenv)
 
 ## Instructions
