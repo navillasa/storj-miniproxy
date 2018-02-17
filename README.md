@@ -14,7 +14,7 @@ Functionalities:
 * [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
 * [Useful Docker Commands](#useful-docker-commands)
 * [Development Process](#development-process)
-* [Work in Progress - Notes on Building from Scratch](#work-in-progress-notes-on-building-from-scratch)
+* [Work in Progress - Notes on Building from Scratch](#work-in-progress--building-from-scratch)
 
 ## Required Dependencies
   * [node-libstorj](https://github.com/Storj/node-libstorj)
@@ -181,7 +181,7 @@ Error: Not authorized
 ```
 This was because I had the incorrect `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY` in my .env file.
 
-## Work in Progress - Notes on Building from Scratch
+## Work in Progress - Building from Scratch
 
 #### 1. Create a Local Storj Development Network
 First you will need to git clone the Storj Integration repo with the following command:
