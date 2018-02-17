@@ -94,13 +94,6 @@ storj -u http://localhost:6382 register
 ```
 The `storj` prefix is used to access the CLI included with [libstorj](https://github.com/Storj/libstorj).
 
-NB: When attempting to use the `bucketList` route to list buckets, I ran into the following error:
-```
-GET /bucketList - - ms - -
-Error: Not authorized
-    at Error (native)
-```
-This was because I had the incorrect `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY` in my .env file.
 When using storj-integration, you need to `cd` into your storj-integration directory (wherever you cloned the repo) and then start the container that you have based on the storj-integration image. You can get its container-id as follows:
 ```bash
 docker ps -a|grep storj-integration
@@ -174,3 +167,10 @@ docker stop $(docker ps -q)
 Error: Unable to receive storage offer
     at Error (native)
 ```
+- NB: When attempting to use the `bucketList` route to list buckets, I ran into the following error:
+```
+GET /bucketList - - ms - -
+Error: Not authorized
+    at Error (native)
+```
+This was because I had the incorrect `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY` in my .env file.
