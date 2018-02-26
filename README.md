@@ -27,14 +27,14 @@ Then `cd` into your storj-integration directory and use the following command to
 ```
 docker build -t storj-integration .
 ```
-To then create a persistent container with ports for the bridge and farmers exposed for testing uploading and downloading:
+Then, use the following command to create a container with exposed ports to simulate farmers and enable uploads/downloads:
 ```
 docker create -p 6382:6382 -p 3000:3000 -p 9000:9000 -p 9001:9001 -p 9002:9002 -p 9003:9003 -p 9004:9004 -p 9005:9005 -p 9006:9006 -p 9007:9007 -p 9008:9008 -p 9009:9009 -p 9010:9010 -p 9011:9011 -p 9012:9012 -p 9013:9013 -p 9014:9014 -p 9015:9015 -p 9016:9016 -t -i storj-integration bash
 ```
 You will then be given a 32-bit hex number, which is your container id.
 Then you can then start and attach to the container with:
 ```bash
-docker start -ai <container id>
+docker start -ai <container-id>
 ```
 When it prompts with `root@<container-id>:~#`, the last step is to run the `start_everything.sh` script:
 ```bash
@@ -94,7 +94,7 @@ You can then use your browser to view your buckets, add buckets, upload/download
 
 ## Useful Docker Commands
 
-If at any point you stop your storj-integration instance and want to return to it, you can get its container-id as follows:
+If at any point you stop your storj-integration instance and want to return to it, you can get its container id as follows:
 ```bash
 docker ps -a|grep storj-integration
 ```
@@ -212,9 +212,27 @@ The dotenv module can be installed the normal way with `npm install dotenv --sav
 #### 1. Create a Local Storj Development Network
 First you will need to git clone the Storj Integration repo with the following command:
 ```
-git clone git@github.com:Storj/integration.git. 
+git clone git@github.com:Storj/integration.git 
 ```
-****** more here .....
+Then `cd` into your new storj-integration repo and use this command to build the docker image:
+```
+docker build -t storj-integration .
+```
+Then, use the following command to create a container with exposed ports to simulate farmers and enable uploads/downloads:
+```
+docker create -p 6382:6382 -p 3000:3000 -p 9000:9000 -p 9001:9001 -p 9002:9002 -p 9003:9003 -p 9004:9004 -p 9005:9005 -p 9006:9006 -p 9007:9007 -p 9008:9008 -p 9009:9009 -p 9010:9010 -p 9011:9011 -p 9012:9012 -p 9013:9013 -p 9014:9014 -p 9015:9015 -p 9016:9016 -t -i storj-integration bash
+```
+You will then be given a 32-bit hex number, which is your container id.
+Then you can then start and attach to the container with:
+```bash
+docker start -ai <container-id>
+```
+When it prompts with `root@<container-id>:~#`, the last step is to run the `start_everything.sh` script:
+```bash
+./scripts/start_everything.sh
+```
+As long as you want to connect to the bridge server, you need to keep this terminal window running.
+You can then use pm2 commands to view logs etc.
 
 #### 2. Register a Bridge User to Interact with Your Local Network
 Now that you have integration’s local sandbox environment running, you need to create a user login and password to interact with the network and have the ability to view, create, list buckets, and upload and download files.
@@ -223,7 +241,7 @@ With node-libstorj installed, you can use the CLI to create this user with the c
 
 Once you input your secret key strength, you will be given your encryption key, a 24-word mnemonic, which you will later need for this project to decrypt any files that you upload to the Storj network-- so make sure to write it down and don’t leave it in a place where it can be hacked or stolen.
 
-Now that you’ve registered a bridge user for your local network, you need to activate that user’s credentials. You can do this by going to your shell that’s running integration. Next to the `root#` prompt, you can enter the MongoDB shell by using the command `mongo`.
+Now that you’ve registered a bridge user for your local network, you need to activate that user’s credentials. You can do this by going to your shell that’s running integration. Next to the `root@<container-id>:~#` prompt, you can enter the MongoDB shell by using the command `mongo`.
 
 Then you can connect to the `storj-sandbox` database to look for users with the following commands:
 ```
