@@ -8,27 +8,139 @@ Functionalities:
   * Uploading, downloading, and removing files (image/text only) from a bucket
   
 ## Sections
-* [Connecting to a Bridge Server with Storj-SDK](#connecting-to-a-bridge-server-with-storj-sdk)
-* [Troubleshooting Bridge Access with Storj-SDK](#troubleshooting-storj-sdk)
-* [Connecting to a Bridge Server with Storj-Integration](#connecting-to-a-bridge-server-with-storj-integration)
-* [Verifying Bridge User Credentials](#verifying-bridge-user-credentials)
+* [1. Connecting to a Bridge Server with Storj-Integration](#1-connecting-to-a-bridge-server-with-storj-integration)
+* [2. Register a Bridge User](#2-register-a-bridge-user)
+* [3. Activate Your Bridge User](#3-activate-your-bridge-user)
+* [4. Installing and Running the Express App](#4-installing-and-running-the-express-app)
 * [Useful Docker Commands](#useful-docker-commands)
 * [Development Process](#development-process)
+* [Connecting to a Bridge Server with Storj-SDK](#connecting-to-a-bridge-server-with-storj-sdk)
+* [Troubleshooting Bridge Access with Storj-SDK](#troubleshooting-storj-sdk)
 * [Work in Progress - Building from Scratch](#work-in-progress-building-from-scratch)
-
-## Required Dependencies
-  * [node-libstorj](https://github.com/Storj/node-libstorj)
-  * [dotenv](https://github.com/motdotla/dotenv)
 
 ## Instructions
 
-2/17/18 - Note that if you first install libstorj then try to install node-libstorj, this will cause node-libstorj will break. So for this project, you will just need node-libstorj which you should install like this:
+### 1. Connecting to a Bridge Server with [Storj-Integration](https://github.com/Storj/integration)
+First you need to git clone both this repo _and_ [Storj-Integration](https://github.com/Storj/integration) into a `projects/` folder.
+
+Then `cd` into your storj-integration directory and use the following command to build the docker image:
 ```
-npm install github:storj/node-libstorj --save
+docker build -t storj-integration .
 ```
-The dotenv module can be installed the normal way with `npm install dotenv --save`.
-After setting up a local bridge server (instructions below) using either storj-integration or storj-sdk, use `npm install` then `npm start`.
-Then you can check `http://localhost:7000` to see if the app's index page is there. The reason for not using `http://localhost:3000` is because Docker runs on that port, which you will need to run your Storj test server.
+To then create a persistent container with ports for the bridge and farmers exposed for testing uploading and downloading:
+```
+docker create -p 6382:6382 -p 3000:3000 -p 9000:9000 -p 9001:9001 -p 9002:9002 -p 9003:9003 -p 9004:9004 -p 9005:9005 -p 9006:9006 -p 9007:9007 -p 9008:9008 -p 9009:9009 -p 9010:9010 -p 9011:9011 -p 9012:9012 -p 9013:9013 -p 9014:9014 -p 9015:9015 -p 9016:9016 -t -i storj-integration bash
+```
+You will then be given a 32-bit hex number, which is your container id.
+Then you can then start and attach to the container with:
+```bash
+docker start -ai <container id>
+```
+When it prompts with `root@<container-id>:~#`, the last step is to run the `start_everything.sh` script:
+```bash
+./scripts/start_everything.sh
+```
+As long as you want to connect to the bridge server, you need to keep this terminal window running.
+You can then use pm2 commands to view logs etc.
+
+### 2. Register a Bridge User
+Every time you start a new integration instance, in a separate window you're going to need to register a new bridge user with the CLI. This is because bridge users are stored in a Mongo collection inside each integration container.
+You can register a new user with the command:
+```
+storj -u http://localhost:6382 register
+```
+This specifically registers a user with the local integration instance that you’re running using port 6382. You will then be prompted for your bridge username (email) and password. The Storj CLI will generate a secret key for you which it will use to encrypt your files, but first it will ask you what encryption strength to use (128, 160, 192, 224, or 256, with 256-bit being the strongest and recommended). Once you input your secret key strength, you will be given your encryption key, a 24-word mnemonic.
+
+In yet another window, `cd` into your `storj-miniproxy/` directory and create a `.env` file.
+You should then write the following values into this file to protect these variables.
+```
+BRIDGE_URL=’http://localhost:6382’
+BRIDGE_EMAIL=’<same bridge email registered with the CLI>’’
+BRIDGE_PASS=’<same password registered with the CLI>’
+ENCRYPT_KEY=’<this is the 24-word mnemonic secret key that the CLI created for you>’
+```
+Keeping these bridge credentials in a dotenv file allows the storj-miniproxy app to decrypt and interact with your bridge user's files and buckets.
+
+### 3. Activate Your Bridge User
+Now you'll need to register your new CLI user's credentials inside the mongo user collection in your integration instance.
+First use the docker shell to get into a mongo shell. Next to `root@<container-id>:~#`, type:
+```bash
+mongo
+```
+Then connect to the `storj-sandbox` database and look for users:
+```bash
+db = connect('storj-sandbox')
+db.users.find({})
+```
+If you find that the bridge user account that you want to use has `"activated"` set to `"false"` in the user object, then you can use the following to activate:
+```bash
+db.users.findOneAndUpdate({_id:<your user email string>}, {$set:{activated: true, activator: null}});
+```
+You can check if your bridge user credentials are working using the `list-buckets` command:
+```bash
+storj -u http://localhost:6382 list-buckets
+```
+Note: Port 6382 is used with the integration bridge. If you're using the SDK, you should use `http://<bridge address>`.
+To check your current bridge username, password, and encryption key, you can also use the command:
+```bash
+storj -u http://localhost:6382 export-keys
+```
+
+### 4. Installing and Running the Express App
+
+After activating your bridge user credentials inside the integration container's mongo collection, `cd` back to the storj-miniproxy repo and use `npm install` then `npm start`.
+Then you can check `http://localhost:7000` to see if the app's index page is there. (The reason for not using `http://localhost:3000` is because Docker runs on that port, which you will need to run your Storj test server.)
+You can then use your browser to view your buckets, add buckets, upload/download, then delete buckets/files.
+
+## Useful Docker Commands
+
+If at any point you stop your storj-integration instance and want to return to it, you can get its container-id as follows:
+```bash
+docker ps -a|grep storj-integration
+```
+
+To see what docker containers are running:
+```bash
+docker ps
+```
+
+To stop a specific container from running:
+```bash
+docker stop <container id>
+```
+
+To stop all running docker containers:
+```bash
+docker stop $(docker ps -q)
+```
+
+## Development Process
+
+#### Dependencies Used
+  * [node-libstorj](https://github.com/Storj/node-libstorj)
+  * [dotenv](https://github.com/motdotla/dotenv)
+  * [multer](https://github.com/expressjs/multer)
+
+#### Current Goals
+ - Rewrite routes without the redundant endpoint names.
+ - Fix Travis build error.
+
+#### Issues
+- Files can't be uploaded directly from the clientside to the Storj library (Reed Solomon requires entire file, not streamed parts), so I'm using multer to save uploaded files to the local server (in `uploads/`), and then running the bridge method `storeFile`.
+- Running into network error when uploading files using the sdk. Successfully retrieves frame id and creates frame, which is good, but when it starts `Pushing frame for shard index 0...`, begins to receive this error:
+```
+{"message": "fn[push_frame] - JSON Response: { "error": "getaddrinfo ENOTFOUND landlord landlord:8081" }", "level": 4, "timestamp": 1510079825998}
+
+Error: Unable to receive storage offer
+    at Error (native)
+```
+- NB: When attempting to use the `bucketList` route to list buckets, I ran into the following error:
+```
+GET /bucketList - - ms - -
+Error: Not authorized
+    at Error (native)
+```
+This was because I had the incorrect `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY` in my .env file.
 
 ### Connecting to a Bridge Server with [Storj-SDK](https://github.com/Storj/storj-sdk)
 
@@ -89,98 +201,13 @@ You may have to rename your .json file with the correct IP address.
 
 Finally, make sure that you are connected to the storj-local VPN! See the storj-sdk README for specific setup.
 
-
-### Connecting to a Bridge Server with [Storj-Integration](https://github.com/Storj/integration)
-See [Storj-Integration](https://github.com/Storj/integration) README for setup.
-
-When using storj-integration, you need to `cd` into your storj-integration directory (wherever you cloned the repo) and then start the container that you have based on the storj-integration image. You can get its container-id as follows:
-```bash
-docker ps -a|grep storj-integration
-```
-Then you can start and attach to the container with:
-```bash
-docker start -ai <container-id>
-```
-When it prompts with `root@<container-id>:~#`, the last step is to run the `start_everything.sh` script:
-```bash
-./scripts/start_everything.sh
-```
-As long as you want to connect to the bridge server, you need to keep this terminal window running.
-You can then use pm2 commands to view logs etc.
-
-Every time you start a new integration instance, in a separate window you're going to need to register a new user with the CLI. This user's username and password will be saved to the Mongo database in the integration container.
-You can register a new user with the command:
-```
-storj -u http://localhost:6382 register
-```
-The `storj` prefix is used to access the CLI included with [libstorj](https://github.com/Storj/libstorj).
-
-### Verifying Bridge User Credentials
-You'll need to register your new CLI user's credentials inside the mongo user collection in your integration instance.
-First use the docker shell to get into a mongo shell:
-```bash
-mongo
-```
-Then connect to the `storj-sandbox` database and look for users:
-```bash
-db = connect('storj-sandbox')
-db.users.find({})
-```
-If you find that the bridge user account that you want to use has `"activated"` set to `"false"` in the user object, then you can use the following to activate:
-```bash
-db.users.findOneAndUpdate({_id:<your user email string>}, {$set:{activated: true, activator: null}});
-```
-You can check if your bridge user credentials are working using the `list-buckets` command:
-```bash
-storj -u http://localhost:6382 list-buckets
-```
-Note: Port 6382 is used with the integration bridge. If you're using the SDK, you should use `http://<bridge address>`.
-To check your current bridge username, password, and encryption key, you can also use the command:
-```bash
-storj -u http://localhost:6382 export-keys
-```
-These credentials are the ones that need to be in your `.env` file, respectively assigned to `BRIDGE_EMAIL`, `BRIDGE_PASS`, `ENCRYPT_KEY`.
-
-## Useful Docker Commands
-To see what docker containers are running:
-```bash
-docker ps
-```
-
-To stop a specific container from running:
-```bash
-docker stop <container id>
-```
-
-To stop all running docker containers:
-```bash
-docker stop $(docker ps -q)
-```
-
-## Development Process
-
-#### Current Goals
- - Rewrite routes without the redundant endpoint names.
- - Fix Travis build error.
-
-#### Issues
-- Files can't be uploaded directly from the clientside to the Storj library (Reed Solomon requires entire file, not streamed parts), so I'm using multer to save uploaded files to the local server (in `uploads/`), and then running the bridge method `storeFile`.
-- Running into network error when uploading files using the sdk. Successfully retrieves frame id and creates frame, which is good, but when it starts `Pushing frame for shard index 0...`, begins to receive this error:
-```
-{"message": "fn[push_frame] - JSON Response: { "error": "getaddrinfo ENOTFOUND landlord landlord:8081" }", "level": 4, "timestamp": 1510079825998}
-
-Error: Unable to receive storage offer
-    at Error (native)
-```
-- NB: When attempting to use the `bucketList` route to list buckets, I ran into the following error:
-```
-GET /bucketList - - ms - -
-Error: Not authorized
-    at Error (native)
-```
-This was because I had the incorrect `BRIDGE_EMAIL`, `BRIDGE_PASS`, and `ENCRYPT_KEY` in my .env file.
-
 ## Work in Progress - Building from Scratch
+
+2/17/18 - Note that if you first install libstorj then try to install node-libstorj, this will cause node-libstorj will break. So for this project, you will just need node-libstorj which you should install like this:
+```
+npm install github:storj/node-libstorj --save
+```
+The dotenv module can be installed the normal way with `npm install dotenv --save`.
 
 #### 1. Create a Local Storj Development Network
 First you will need to git clone the Storj Integration repo with the following command:
@@ -222,7 +249,7 @@ In order to let your app access your local test network (the one that you set up
 
 In order to solve this problem, we use the Dotenv module to protect our environment variables (which we npm installed in the last step).
 
-Now, create a file named `.env` in the root of your project folder. In the `.env` folder, you should have the following variables:
+Now, create a file named `.env` in the root of your project folder. In the `.env` file, you should have the following variables:
 ```
 BRIDGE_URL=’http://localhost:6382’
 BRIDGE_EMAIL=’<bridge email registered with the CLI>’’
