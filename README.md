@@ -92,13 +92,6 @@ Finally, make sure that you are connected to the storj-local VPN! See the storj-
 
 ### Connecting to a Bridge Server with [Storj-Integration](https://github.com/Storj/integration)
 See [Storj-Integration](https://github.com/Storj/integration) README for setup.
-Every time you start a new integration instance, you're going to need to register a new user. This user's username and password will be saved to the Mongo database in the integration container.
-
-You can register a new user with the command:
-```
-storj -u http://localhost:6382 register
-```
-The `storj` prefix is used to access the CLI included with [libstorj](https://github.com/Storj/libstorj).
 
 When using storj-integration, you need to `cd` into your storj-integration directory (wherever you cloned the repo) and then start the container that you have based on the storj-integration image. You can get its container-id as follows:
 ```bash
@@ -115,19 +108,15 @@ When it prompts with `root@<container-id>:~#`, the last step is to run the `star
 As long as you want to connect to the bridge server, you need to keep this terminal window running.
 You can then use pm2 commands to view logs etc.
 
-### Verifying Bridge User Credentials
-You can check if your bridge user credentials are working using the `list-buckets` command:
-```bash
-storj -u http://localhost:6382 list-buckets
+Every time you start a new integration instance, in a separate window you're going to need to register a new user with the CLI. This user's username and password will be saved to the Mongo database in the integration container.
+You can register a new user with the command:
 ```
-Note: Port 6382 is used with the integration bridge. If you're using the SDK, you should use `http://<bridge address>`.
-To check your current bridge username, password, and encryption key, you can also use the command:
-```bash
-storj -u http://localhost:6382 export-keys
+storj -u http://localhost:6382 register
 ```
-These credentials are the ones that need to be in your `.env` file, respectively assigned to `BRIDGE_EMAIL`, `BRIDGE_PASS`, `ENCRYPT_KEY`.
+The `storj` prefix is used to access the CLI included with [libstorj](https://github.com/Storj/libstorj).
 
-You can also view what users are associated with the container.
+### Verifying Bridge User Credentials
+You'll need to register your new CLI user's credentials inside the mongo user collection in your integration instance.
 First use the docker shell to get into a mongo shell:
 ```bash
 mongo
@@ -141,6 +130,16 @@ If you find that the bridge user account that you want to use has `"activated"` 
 ```bash
 db.users.findOneAndUpdate({_id:<your user email string>}, {$set:{activated: true, activator: null}});
 ```
+You can check if your bridge user credentials are working using the `list-buckets` command:
+```bash
+storj -u http://localhost:6382 list-buckets
+```
+Note: Port 6382 is used with the integration bridge. If you're using the SDK, you should use `http://<bridge address>`.
+To check your current bridge username, password, and encryption key, you can also use the command:
+```bash
+storj -u http://localhost:6382 export-keys
+```
+These credentials are the ones that need to be in your `.env` file, respectively assigned to `BRIDGE_EMAIL`, `BRIDGE_PASS`, `ENCRYPT_KEY`.
 
 ## Useful Docker Commands
 To see what docker containers are running:
