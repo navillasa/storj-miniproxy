@@ -89,6 +89,10 @@ storj -u http://localhost:6382 export-keys
 ### 4. Installing and Running the Express App
 
 After activating your bridge user credentials inside the integration container's mongo collection, `cd` back to the storj-miniproxy repo and use `npm install` then `npm start`.
+
+[3/05/18 Note] If you already have [libstorj](https://github.com/Storj/libstorj) installed on your computer, you may receive `gyp ERR! build error`s when attempting to `npm install`. If this is the case, you need to go to your `libstorj` directory and `sudo make uninstall`. Then go back to the `storj-miniproxy` directory and try to `npm install` and `npm start` again.
+(This problem occurs because storj-miniproxy uses node-libstorj, which conflicts with the current release of libstorj.)
+
 Then you can check `http://localhost:7000` to see if the app's index page is there. (The reason for not using `http://localhost:3000` is because Docker runs on that port, which you will need to run your Storj test server.)
 You can then use your browser to view your buckets, add buckets, upload/download, then delete buckets/files.
 
